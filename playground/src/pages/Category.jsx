@@ -1,6 +1,5 @@
 import '../App.scss';
 import React from "react";
-import { useQuery } from "react-query";
 import axios from "axios";
 
 class Category extends React.Component {
@@ -13,7 +12,7 @@ class Category extends React.Component {
             endpoint: "http://localhost:4000/",
             CATEGORIES_QUERY: `
             {
-                categories  {
+                categories {
                     products  {
                         id
                         name
@@ -23,36 +22,36 @@ class Category extends React.Component {
                         }
                     }
             }`,
-            res: null
+            res: []
         }
     }
 
     componentDidMount() {
-        
-        //const { data, isLoading, error } = useQuery("launches", () => {
-        //return
-          
-            console.log(axios({
+        axios({
             url: this.state.endpoint,
             method: "POST",
             data: {
                 query: this.state.CATEGORIES_QUERY
-                
-                }
-            })
-            .then(response => response.data.data))
-            
-        //});
-
-        //if (isLoading) return "Loading...";
-        //if (error) return <pre>{error.message}</pre>;
+            }
+        })
+        .then(response => response.data.data)
+        .then(response => this.setState({res: response.categories[0].products}, () => {
+            console.log(this.state.res)})
+        )       
     }
-
-
+        
     render() {
         return (
             <div className="container">
                 Category
+                {   !this.state.res ?
+
+                        <>not loaded</> : 
+
+                        //this.state.res.map(item => <div>{item.description}</div>)
+                        this.state.res.map(item => <div className="question-text" dangerouslySetInnerHTML={{__html: item.description}}/>)
+
+                }
             </div> 
         )
     }
