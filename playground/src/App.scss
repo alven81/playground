@@ -126,3 +126,24 @@ $--c-primary: #5ECE7B;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.product-card {
+    width: 386px;
+    height: 444px;
+    padding: 16px;
+    &:hover {
+        cursor: pointer;
+        border: 1px solid brown;
+        filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+    }
+    &_img{
+        width: 354px;
+        height: 330px;
+        margin-bottom: 24px;
+        img {
+            //width: 354px;
+            height: 330px;
+        }
+    }
+    
+}

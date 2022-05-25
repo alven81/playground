@@ -12,7 +12,7 @@ class App extends Component {
             <div>
                 <BrowserRouter>
                     <div>
-                        <div>
+                        {/* <div>
                             <Link to='/'>Home</Link>
                             |
                             <Link to='/redux-thunk'>Redux-Thunk</Link>
@@ -22,13 +22,13 @@ class App extends Component {
                             <Link to='/suspense'>Suspense</Link>
                             |
                             <Link to='/hooks'>Hooks</Link>
-                        </div>
+                        </div> */}
                         <Switch>
-                            <Route path="/redux-thunk" component={UsersWithReduxThunk}/>
+                            {/* <Route path="/redux-thunk" component={UsersWithReduxThunk}/>
                             <Route path="/redux-saga" component={UsersWithReduxSaga}/>
                             <Route path="/suspense" component={UsersWithSuspense}/>
-                            <Route path="/hooks" component={UsersWithHooks}/>
-                            <Route path="/" component={Home}/>
+                            <Route path="/hooks" component={UsersWithHooks}/> */}
+                            <Route path="/" component={UsersWithReduxThunk}/>
                         </Switch>
                     </div>
                 </BrowserRouter>

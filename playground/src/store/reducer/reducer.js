@@ -1,4 +1,4 @@
-import {LOAD_CATEGORY_ERROR, LOAD_CATEGORY_LOADING, LOAD_CATEGORY_SUCCESS} from "./actions";
+import {LOAD_CATEGORY_ERROR, LOAD_CATEGORY_LOADING, LOAD_CATEGORY_SUCCESS} from "../actions/actions";
 
 const initialState = {
     data: [],

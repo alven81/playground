@@ -1,11 +1,30 @@
-const API_BASE_ADDRESS = 'http://localhost:4000';
+import axios from "axios";
+
+const API_BASE_ADDRESS = 'http://localhost:4000/';
+const categoriesQuery = `
+                            {
+                                categories {
+                                    products  {
+                                        id
+                                        name
+                                        gallery
+                                        description
+                                        category
+                                        }
+                                    }
+                            }`
 
 export default class Api {
     static getUsers() {
-        const uri = API_BASE_ADDRESS + "/users";
+        const uri = API_BASE_ADDRESS;
 
-        return fetch(uri, {
-            method: 'GET'
-        });
+        return axios({
+            url: uri, 
+            method: 'POST',
+            data: {
+                query: categoriesQuery
+                    }
+        })
     }
 }
+      

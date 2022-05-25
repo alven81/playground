@@ -1,4 +1,4 @@
-import {default as reduxThunk} from "./../redux-thunk/reducer"
+import {default as reduxThunk} from "./reducer/reducer"
 import {combineReducers} from "redux";
 
 
