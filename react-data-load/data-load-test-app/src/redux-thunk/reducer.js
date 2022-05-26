@@ -1,4 +1,4 @@
-import {LOAD_CATEGORY_ERROR, LOAD_CATEGORY_LOADING, LOAD_CATEGORY_SUCCESS} from "./actions";
+import {LOAD_USERS_ERROR, LOAD_USERS_LOADING, LOAD_USERS_SUCCESS} from "./actions";
 
 const initialState = {
     data: [],
@@ -8,21 +8,21 @@ const initialState = {
 
 export default function reduxThunkReducer(state = initialState, action) {
     switch (action.type) {
-        case LOAD_CATEGORY_LOADING: {
+        case LOAD_USERS_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error:''
             };
         }
-        case LOAD_CATEGORY_SUCCESS: {
+        case LOAD_USERS_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false
             }
         }
-        case LOAD_CATEGORY_ERROR: {
+        case LOAD_USERS_ERROR: {
             return {
                 ...state,
                 loading: false,

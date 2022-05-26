@@ -39,7 +39,9 @@ class Menu extends React.Component {
                         <>
                             <MenuButton 
                                 menuItem={item}
-                                key = {index} />
+                                key = {index}
+                                index = {index}
+                            />
                         </>
                     ) 
                 }

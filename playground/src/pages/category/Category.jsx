@@ -27,7 +27,7 @@ class Category extends React.Component {
                 }
                 }
             }`,
-            idCategory: 0
+            idCategory: 2
         }
     }
 
@@ -43,17 +43,24 @@ class Category extends React.Component {
             return <div style={{ color: 'red' }}>ERROR: {this.props.error}</div>
         }
         return (
-            <div className="container category">
-                {   !this.props.data ?
+            <>                      
+                <div className="container category">
+                    <div className="category_title">
+                        <h2>Category name</h2>
+                    </div>
+                    <div className="category_product">
+                        {   !this.props.data ?
 
-                    <>LOADER</> :
+                            <>LOADER</> :
 
-                      this.props.data.map((item, index) =>  <ProductCard 
-                        item = {item} 
-                        key = {item.id} 
-                    />)
-                }
-            </div> 
+                            this.props.data.map((item, index) =>  <ProductCard 
+                                item = {item} 
+                                key = {item.id}
+                            />)
+                        }
+                    </div>
+                </div> 
+            </>
         )
     }
 }
@@ -72,3 +79,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Category);
+
