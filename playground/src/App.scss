@@ -1,42 +1,42 @@
 $--c-primary: #5ECE7B;
 
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .container {
@@ -90,10 +90,11 @@ $--c-primary: #5ECE7B;
             }
             
             &:active {
-                //border-bottom: 2px solid $--c-primary;
-                padding-top: 7px;
+              border-bottom: 2px solid $--c-primary;
+                img {
+                  transform: scale(0.9);
+                }
             }
-            
         }
     }
     &-currency {
@@ -101,6 +102,7 @@ $--c-primary: #5ECE7B;
         &-select {
             border: none;
             background-color: transparent;
+            cursor: pointer;
         }
         &-button {
             display: block;
@@ -111,20 +113,21 @@ $--c-primary: #5ECE7B;
             &:hover {
                 transform: scale(1.08);
                 border-bottom: 2px solid $--c-primary;
-            }
-            
+          }
             &:active {
                 border-bottom: 2px solid $--c-primary;
-                padding-top: 7px;
+                img {
+                    transform: scale(0.9);
+                }
             }
         }
     }
 }
 
 .category {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .product-card {
@@ -133,17 +136,18 @@ $--c-primary: #5ECE7B;
     padding: 16px;
     &:hover {
         cursor: pointer;
-        border: 1px solid brown;
-        filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+        box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+    }
+    &:active {
+        transform: scale(0.99);
     }
     &_img{
+        text-align: center;
         width: 354px;
         height: 330px;
         margin-bottom: 24px;
         img {
-            //width: 354px;
             height: 330px;
         }
     }
-    
 }

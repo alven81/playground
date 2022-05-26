@@ -1,19 +1,18 @@
 import React from "react";
+import Currency from "./Currency";
+import Menu from "./Menu";
 
 class Header extends React.Component {
+
+    handleOnSelect = (e) => {
+        console.log(e)
+    }
+    
         render() {
             return (
                 <header className="container header">
                     <div className="header-nav">
-                        <button className="header-nav-button">
-                            Women
-                        </button>
-                        <button className="header-nav-button">
-                            Men
-                        </button>
-                        <button className="header-nav-button">
-                            Kids
-                        </button>
+                       <Menu />
                     </div>
                     <div className="header-cart">
                         <button className="header-cart-button">
@@ -21,10 +20,8 @@ class Header extends React.Component {
                         </button>
                     </div>
                     <div className="header-currency">
-                        <select name="currency" className="header-currency-select">
-                            <option value="$" selected>$ USD</option>
-                            <option value="€" selected>€ EUR</option>
-                            <option value="¥" selected>¥ JPY</option>
+                        <select name="currency" className="header-currency-select" onChange={(e) => this.handleOnSelect(e.target.selectedIndex)}>
+                            <Currency />
                         </select>
                         <button className="header-currency-button">
                             <img src="./img/cart.svg" alt="Cart" />

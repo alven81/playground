@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router";
-import NavBar from "./NavBar";
+import NavBar from "./navbar/NavBar";
 
 
 class Layout extends React.Component {

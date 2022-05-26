@@ -6,8 +6,33 @@ import { connect } from 'react-redux';
 
 class Category extends React.Component {
    
+    constructor(props) {
+        super(props);
+        this.state = {
+            categoriesQuery: `
+            {
+                categories {
+                products {
+                    id
+                    name
+                    gallery
+                    description
+                        prices {
+                            currency {
+                                label
+                                symbol
+                            }
+                    amount
+                    }
+                }
+                }
+            }`,
+            idCategory: 0
+        }
+    }
+
     componentDidMount() {
-        this.props.loadCategory();
+        this.props.loadCategory(this.state.categoriesQuery, this.state.idCategory);
     };
         
     render() {
@@ -21,14 +46,12 @@ class Category extends React.Component {
             <div className="container category">
                 {   !this.props.data ?
 
-                        <>LOADER</> : 
+                    <>LOADER</> :
 
-                          this.props.data.map((item, index) =>  <ProductCard 
-                            item = {item} 
-                            key = {item.id} 
-                            />) 
-                            /* this.props.data.map(item => <div className="question-text" dangerouslySetInnerHTML={{__html: item.description}}/>) */
-
+                      this.props.data.map((item, index) =>  <ProductCard 
+                        item = {item} 
+                        key = {item.id} 
+                    />)
                 }
             </div> 
         )
@@ -36,9 +59,9 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    data: state.reduxThunk.data,
-    loading: state.reduxThunk.loading,
-    error: state.reduxThunk.error,
+    data: state.reduxСategories.data,
+    loading: state.reduxСategories.loading,
+    error: state.reduxСategories.error,
 });
 
 const mapDispatchToProps = {
