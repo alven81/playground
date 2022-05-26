@@ -4,39 +4,41 @@ import { setCategory } from "../../store/actions/actions";
 
 class MenuButton extends React.Component {
 
-    componentDidMount() {
-        this.props.setCategory(0);
-    };
+    // componentDidMount() {
+    //     this.props.setCategory(0);
+    // };
 
-    componentDidUpdate() {
-        //this.setState({currencyValue: this.props.data})
-    }
+    // componentDidUpdate() {
+    //     //this.setState({currencyValue: this.props.data})
+    // }
 
-    handleOnClick = (e) => {
-           this.props.setCategory(e);
+    // handleOnClick = (e) => {
+    //        this.props.setCategory(e);
         //console.log(e);
-    }
+    //}
 
     render() {
         return (
-            <button className="header-nav-button" onClick={(e) => this.handleOnClick(1)}>
+            <button className="header-nav-button" onClick={(e) => this.props.handleSetCategoryOnClick(this.props.index)}>
                 {this.props.menuItem.name}
             </button>
         )
     }
 }
 
-const mapStateToProps = state => ({
-    data: state.reduxСategory.data
-});
+// const mapStateToProps = state => ({
+//     data: state.reduxСategory.data
+// });
 
 const mapDispatchToProps = {
     setCategory
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    //mapStateToProps,
+    //mapDispatchToProps
 )(MenuButton);
 
 // export default MenuButton
+
+//

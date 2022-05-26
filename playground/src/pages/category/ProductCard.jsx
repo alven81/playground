@@ -20,7 +20,10 @@ constructor (props) {
                     <p className="product-card_description">
                         {this.props.item.name}
                     </p>
-                    <p className="product-card_description">{this.props.item.prices[this.props.getCurrency].currency.symbol}{this.props.item.prices[this.props.getCurrency].amount}</p>
+                    <p className="product-card_description">
+                        {this.props.item.prices[this.props.getCurrency].currency.symbol}
+                        {this.props.item.prices[this.props.getCurrency].amount}
+                    </p>
                 </div>
             </div>
         )

@@ -1,7 +1,7 @@
 import React from "react";
 import Currency from "./Currency";
 import Menu from "./Menu";
-import { setCurrency } from "../../store/actions/actions";
+import { setCurrency, setCategory } from "../../store/actions/actions";
 import { connect } from 'react-redux';
 class Header extends React.Component {
     constructor(props) {
@@ -13,6 +13,7 @@ class Header extends React.Component {
 
     componentDidMount() {
         this.props.setCurrency(0);
+        //this.props.setCategory(0);
     };
 
     handleOnSelect = (e) => {
@@ -20,11 +21,16 @@ class Header extends React.Component {
         //this.setState({currencyValue: this.props.data})
     }
     
+    handleSetCategoryOnClick = (e) => {
+        this.props.setCategory(e);
+        //console.log(e);
+    }
+
     render() {
         return (
             <header className="container header">
                 <div className="header-nav">
-                   <Menu />
+                   <Menu handleSetCategoryOnClick={this.handleSetCategoryOnClick}/>
                 </div>
                 <div className="header-cart">
                     <button className="header-cart-button">
@@ -45,11 +51,12 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    data: state.reduxCurrency.data,
+    //data: state.reduxCurrency.data,
 });
     
 const mapDispatchToProps = {
-    setCurrency
+    setCurrency,
+    setCategory
 };
 
 export default connect(

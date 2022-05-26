@@ -22,6 +22,8 @@ class Menu extends React.Component {
         this.props.loadMenu(this.state.menuQuery);
     };
 
+
+
     render() {
         if (this.props.loading) {
             return <div>Loading</div>
@@ -41,6 +43,7 @@ class Menu extends React.Component {
                                 menuItem={item}
                                 key = {index}
                                 index = {index}
+                                handleSetCategoryOnClick={this.props.handleSetCategoryOnClick}
                             />
                         </>
                     ) 

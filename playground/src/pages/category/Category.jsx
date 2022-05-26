@@ -27,14 +27,20 @@ class Category extends React.Component {
                 }
                 }
             }`,
-            idCategory: 2
+            idCategory: 0
         }
     }
 
     componentDidMount() {
-        this.props.loadCategory(this.state.categoriesQuery, this.state.idCategory);
+         this.props.loadCategory(this.state.categoriesQuery, this.state.idCategory);
     };
-        
+
+
+    
+    // componentDidMount() {
+    //     this.props.loadCategory(this.state.categoriesQuery, this.state.idCategory);
+    // };
+
     render() {
         if (this.props.loading) {
             return <div>Loading</div>
@@ -45,6 +51,7 @@ class Category extends React.Component {
         return (
             <>                      
                 <div className="container category">
+                
                     <div className="category_title">
                         <h2>Category name</h2>
                     </div>
@@ -69,6 +76,7 @@ const mapStateToProps = state => ({
     data: state.reduxСategories.data,
     loading: state.reduxСategories.loading,
     error: state.reduxСategories.error,
+    //getСategory: state.reduxСategory.data
 });
 
 const mapDispatchToProps = {
