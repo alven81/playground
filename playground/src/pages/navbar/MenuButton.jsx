@@ -4,7 +4,7 @@ import { setCategory } from "../../store/actions/actions";
 
 class MenuButton extends React.Component {
 
-    // componentDidMount() {
+    // componentDidUpdate() {
     //     this.props.setCategory(0);
     // };
 
@@ -19,7 +19,7 @@ class MenuButton extends React.Component {
 
     render() {
         return (
-            <button className="header-nav-button" onClick={(e) => this.props.handleSetCategoryOnClick(this.props.index)}>
+            <button className="header-nav-button" onClick={(e) => this.props.handleSetCategoryOnClick([this.props.index, this.props.menuItem.name])}>
                 {this.props.menuItem.name}
             </button>
         )
@@ -30,9 +30,9 @@ class MenuButton extends React.Component {
 //     data: state.reduxСategory.data
 // });
 
-const mapDispatchToProps = {
-    setCategory
-};
+// const mapDispatchToProps = {
+//     setCategory
+// };
 
 export default connect(
     //mapStateToProps,

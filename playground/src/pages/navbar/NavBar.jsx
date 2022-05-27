@@ -7,7 +7,8 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currencyValue: null
+            currencyValue: null,
+            //categryValue: null
         }
     }
 
@@ -51,7 +52,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    //data: state.reduxCurrency.data,
+    data: state.reduxCurrency.data
 });
     
 const mapDispatchToProps = {
