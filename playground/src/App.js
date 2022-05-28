@@ -13,8 +13,8 @@ class App extends React.Component {
                 <Routes>
                     <Route path='/' element={<Layout />}>
                         <Route index element={<Category />} />
-                        <Route path="product" element={<Product />} />
-                        {/* <Route path="product/:id" element={<Product />} /> */}
+                        <Route path="/product/:id" element={<Product />} />
+                        {/* <Route state={this.state} exact path="product/:id" render={(props) => <Product {...props} state={this.state} />} /> */}
                         <Route path="*" element={<PageNotFound />} />
                     </Route>
                 </Routes>

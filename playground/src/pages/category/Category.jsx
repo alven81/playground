@@ -35,7 +35,7 @@ class Category extends React.Component {
     }
 
     componentDidMount() {
-         this.props.loadCategory(this.state.categoriesQuery, this.state.idCategory);
+        this.props.loadCategory(this.state.categoriesQuery, this.props.category[0]);
     };
 
     componentDidUpdate(prevProps) {
@@ -63,20 +63,13 @@ class Category extends React.Component {
                             <>LOADER</> :
 
                             this.props.data.map((item, index) =>  
-                            <Link to={{
-                                pathname: 'product',
-                                state: { data: item }
-                            }}>
-                                <ProductCard 
-                                item = {item}
-                                key = {item.id}
-                                />
-                            </Link>
-
-
-
-
-
+                                <Link key={index}
+                                to={`/product/${item.id}`}>
+                                    <ProductCard 
+                                    item = {item}
+                                    key = {item.id}
+                                    />
+                                </Link>
                             )
                         }
                     </div>

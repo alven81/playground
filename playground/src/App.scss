@@ -2,9 +2,14 @@ $--c-primary: #5ECE7B;
 $--c-text: #1D1F22;
 $--c-black: #1D1F22;
 $--c-stock: #8D8F9A;
+$--c-white: #FFFFFF;
 
 @mixin fontRaleway ($weight, $fontSize, $lineHeight) {
     font: $weight #{$fontSize}px/#{$lineHeight}px "Raleway", sans-serif;
+}
+
+@mixin fontRoboto ($weight, $fontSize, $lineHeight) {
+    font: $weight #{$fontSize}px/#{$lineHeight}px "Roboto", sans-serif;
 }
 
 .hide {
@@ -57,7 +62,7 @@ h2 {
 }
 
 .container {
-    width: 1440px;
+    width: 1238px;
     margin: 0 auto;
 }
 
@@ -190,7 +195,7 @@ h2 {
     }
     &_description {
         @include fontRaleway(300, 18, 29);
-            color: $--c-black;
+        color: $--c-black;
         &_name {
             margin: 0;
         }
@@ -242,8 +247,142 @@ h2 {
 .product {
     display: flex;
     justify-content: space-between;
+    gap: 100px;
     &_images {
         display: flex;
+        max-height: 511px;
+        &_thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            overflow: auto;
+            scrollbar-width: none;
+            overflow-x:hidden;
+            div {
+                box-sizing: border-box;
+                width: 79px;
+                height: 80px;
+                text-align: center;
+                img {
+                    
+                    max-width: 79px;
+                    max-height: 80px;
+                    cursor: zoom-in;
+                    transition: border-color 0.2s;
+                    box-sizing: border-box;
+                }
+            }
+        }
+        &_image {
+        position: relative;
+        width: 610px;
+        height: 511px;
+        display: flex;
+        justify-content: center;
+        margin: 0 40px
+            img {
+                display: inline-block;
+                max-width: 610px;
+                height: auto;
+            }
+        }
+    }
+
+    &_info {
+        display: flex;
+        flex-direction: column;
+        max-width: 292px;
+        &_title {
+            font: inherit;
+            @include fontRaleway(400, 30, 27);
+            p {
+                margin: 0;
+                &:first-child {
+                    font-weight: 600;
+                    margin-bottom: 16px;
+                }    
+            }
+
+        }
+        &_button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            margin: 20px 0 40px;
+            box-sizing: border-box;
+            max-height: 52px;
+            min-height: 52px;
+            border: none;
+            background-color: $--c-primary;
+            @include fontRaleway(600, 16, 19);
+            text-transform: uppercase;
+            color: $--c-white;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.01);
+            }
+            &:active {
+                transform: scale(0.98);
+            }
+        }
+        &_description {
+            max-width: 292px;
+        }
+
+    }
+}
+
+.attribute {
+    display: flex;
+    flex-direction: column;
+    &_element {
+        &_name {
+            @include fontRaleway(700, 18, 18);
+            color: $--c-text;
+            text-transform: uppercase;
+        }
+        &_items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            &_text{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid black;
+                width: 40px;
+                height: 40px;
+                gap: 10px;
+            }
+            &_swatch{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid black;
+                width: 40px;
+                height: 40px;
+                gap: 10px;
+            }
+        }
+    }
+}
+
+
+.price {
+    &_label-show {
+        @include fontRoboto(700, 18, 18);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        //margin: 0;
+    }
+    &_label-hide {
+        display: none;
+    }
+    &_currency {
+        margin: 0;
+        @include fontRaleway(700, 24, 18);
     }
 }
 

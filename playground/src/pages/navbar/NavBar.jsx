@@ -7,24 +7,20 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currencyValue: null,
-            //categryValue: null
+            currencyValue: null
         }
     }
 
     componentDidMount() {
         this.props.setCurrency(0);
-        //this.props.setCategory(0);
     };
 
     handleOnSelect = (e) => {
         this.props.setCurrency(e);
-        //this.setState({currencyValue: this.props.data})
     }
     
     handleSetCategoryOnClick = (e) => {
         this.props.setCategory(e);
-        //console.log(e);
     }
 
     render() {
@@ -64,55 +60,3 @@ export default connect(
 mapStateToProps,
 mapDispatchToProps
 )(Header);
-
-
-
-
-
-
-
-
-// componentDidMount() {
-//     this.props.loadCategory(this.state.categoriesQuery, this.state.idCategory);
-// };
-    
-// render() {
-//     if (this.props.loading) {
-//         return <div>Loading</div>
-//     }
-//     if (this.props.error) {
-//         return <div style={{ color: 'red' }}>ERROR: {this.props.error}</div>
-//     }
-//     return (
-//         <>
-//             <h2>Category name</h2>
-//             <div className="container category">
-//                 {   !this.props.data ?
-
-//                     <>LOADER</> :
-
-//                     this.props.data.map((item, index) =>  <ProductCard 
-//                         item = {item} 
-//                         key = {item.id} 
-//                     />)
-//                 }
-//             </div> 
-//         </>
-//     )
-// }
-// }
-
-// const mapStateToProps = state => ({
-// data: state.reduxСategories.data,
-// loading: state.reduxСategories.loading,
-// error: state.reduxСategories.error,
-// });
-
-// const mapDispatchToProps = {
-// loadCategory
-// };
-
-// export default connect(
-// mapStateToProps,
-// mapDispatchToProps
-// )(Category);

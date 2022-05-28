@@ -1,44 +1,17 @@
 import React from "react"
-import { connect } from "react-redux";
-import { setCategory } from "../../store/actions/actions";
+import { Link } from "react-router-dom";
 
 class MenuButton extends React.Component {
 
-    // componentDidUpdate() {
-    //     this.props.setCategory(0);
-    // };
-
-    // componentDidUpdate() {
-    //     //this.setState({currencyValue: this.props.data})
-    // }
-
-    // handleOnClick = (e) => {
-    //        this.props.setCategory(e);
-        //console.log(e);
-    //}
-
     render() {
         return (
-            <button className="header-nav-button" onClick={(e) => this.props.handleSetCategoryOnClick([this.props.index, this.props.menuItem.name])}>
-                {this.props.menuItem.name}
-            </button>
+            <Link to="/">
+                <button className="header-nav-button" onClick={(e) => this.props.handleSetCategoryOnClick([this.props.index, this.props.menuItem.name])}>
+                    {this.props.menuItem.name} 
+                </button>
+            </Link>
         )
     }
 }
 
-// const mapStateToProps = state => ({
-//     data: state.reduxСategory.data
-// });
-
-// const mapDispatchToProps = {
-//     setCategory
-// };
-
-export default connect(
-    //mapStateToProps,
-    //mapDispatchToProps
-)(MenuButton);
-
-// export default MenuButton
-
-//
+export default MenuButton
