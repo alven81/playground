@@ -8,9 +8,9 @@ class Layout extends React.Component {
         return (
             <>
                 <NavBar />
-                    <main>
-                        <Outlet />
-                    </main>
+                <main>
+                    <Outlet />
+                </main>
             </> 
         )
     }

@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux";
 import { setSelectedProductId } from "../../store/actions/actions";
+
 class ProductCard extends React.Component {
 
     constructor (props) {

@@ -15,6 +15,7 @@ export const LOAD_PRODUCT_ERROR = 'REDUX_THUNK_LOAD_PRODUCT_ERROR';
 export const SET_CURRENCY = 'REDUX_SET_CURRENCY';
 export const SET_CATEGORY = 'REDUX_SET_CATEGORY';
 export const SET_SELECTED_PRODUCT_ID = 'REDUX_SET_SELECTED_PRODUCT_ID';
+export const WAIT_FOR_CART = 'REDUX_WAIT_FOR_CART';
 
 
 export const loadCategory = (query, idCategory) => dispatch => {
@@ -82,6 +83,14 @@ export const setCategory = (query) => {
 export const setSelectedProductId = (query) => {
     return {
         type: SET_SELECTED_PRODUCT_ID,
+        payload: query
+    };
+};
+
+export const waitForCart = (query) => {
+
+    return {
+        type: WAIT_FOR_CART,
         payload: query
     };
 }; 

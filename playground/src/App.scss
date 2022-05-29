@@ -12,6 +12,10 @@ $--c-white: #FFFFFF;
     font: $weight #{$fontSize}px/#{$lineHeight}px "Roboto", sans-serif;
 }
 
+@mixin fontSource ($weight, $fontSize, $lineHeight) {
+    font: $weight #{$fontSize}px/#{$lineHeight}px "Source Sans Pro", sans-serif;
+}
+
 .hide {
     display: none;
 }
@@ -246,15 +250,18 @@ h2 {
 
 .product {
     display: flex;
-    justify-content: space-between;
-    gap: 100px;
+    justify-content:flex-start;
+    //gap: 100px;
+    margin-top: 60px;
     &_images {
         display: flex;
         max-height: 511px;
+        margin-right: 100px;
         &_thumbnails {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            //gap: 40px;
+            margin-right: 40px;
             overflow: auto;
             scrollbar-width: none;
             overflow-x:hidden;
@@ -295,9 +302,11 @@ h2 {
         &_title {
             font: inherit;
             @include fontRaleway(400, 30, 27);
+            margin-bottom: 45px;
             p {
                 margin: 0;
                 &:first-child {
+                    margin-bottom: 20px;
                     font-weight: 600;
                     margin-bottom: 16px;
                 }    
@@ -309,7 +318,7 @@ h2 {
             justify-content: center;
             align-items: center;
             flex: 1;
-            margin: 20px 0 40px;
+            margin: 0 0 40px 0;
             box-sizing: border-box;
             max-height: 52px;
             min-height: 52px;
@@ -338,50 +347,64 @@ h2 {
     flex-direction: column;
     &_element {
         &_name {
+            margin: 0 0 8px 0;
             @include fontRaleway(700, 18, 18);
             color: $--c-text;
             text-transform: uppercase;
         }
         &_items {
             display: flex;
-            justify-content: center;
+            justify-content:flex-start;
             align-items: center;
             gap: 10px;
+            margin-bottom: 24px;
             &_text{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid black;
-                width: 40px;
-                height: 40px;
-                gap: 10px;
+                border: 1px solid $--c-black;
+                width: 63px;
+                height: 45px;
+                gap: 12px;
+                @include fontSource(400, 16, 18);
+                color: $--c-black;
+                background-color: $--c-white;
+                cursor: pointer;
+                &_selected {
+                    background-color: $--c-black;
+                    color: $--c-white;
+                }
             }
             &_swatch{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid black;
-                width: 40px;
-                height: 40px;
-                gap: 10px;
+                border: none;
+                width: 32px;
+                height: 32px;
+                gap: 8px;
+                cursor: pointer;
+                &_selected {
+                    outline: 1px solid $--c-primary;
+                    outline-offset: 2px;
+                }
             }
         }
     }
 }
 
-
 .price {
     &_label-show {
         @include fontRoboto(700, 18, 18);
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 25px;
         //margin: 0;
     }
     &_label-hide {
         display: none;
     }
     &_currency {
-        margin: 0;
+        margin: 0 0 30px 0;
         @include fontRaleway(700, 24, 18);
     }
 }

@@ -3,7 +3,7 @@ import React from "react";
 import ProductCard from './ProductCard';
 import {loadCategory} from "../../store/actions/actions";
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 class Category extends React.Component {
    

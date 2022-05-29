@@ -77,7 +77,7 @@ class Product extends React.Component {
                             price={this.props.productOptions.prices}
                         />
                     </ErrorBoundary>
-                    <button className="product_info_button">Add to cart</button>
+                    <button className="product_info_button" onClick={() => console.log("click!")}>Add to cart</button>
                     <div className="product_info_description">
                         <p dangerouslySetInnerHTML={{__html: this.props.productOptions.description}}/>
                     </div>
