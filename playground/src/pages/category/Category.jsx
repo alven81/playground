@@ -63,7 +63,7 @@ class Category extends React.Component {
                             <>LOADER</> :
 
                             this.props.data.map((item, index) =>  
-                                <Link key={index}
+                                <Link style={{ textDecoration: 'none' }} key={index}
                                 to={`/product/${item.id}`}>
                                     <ProductCard 
                                     item = {item}

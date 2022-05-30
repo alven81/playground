@@ -21,7 +21,7 @@ class AttributeElement extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.state.itemList !== prevProps.itemList)
         this.props.waitForCart(this.state.itemList);
-        console.log("itemList: ", this.state.itemList);
+        //console.log("itemList: ", this.state.itemList);
     }
 
     setItemListProperty = (itemId, itemResult) => {        

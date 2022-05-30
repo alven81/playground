@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Attribute from "../components/Attribute";
 import Name from "../components/Name";
 import Price from "../components/Price";
-import { loadProduct } from "../../store/actions/actions";
+import { loadProduct, addToCart } from "../../store/actions/actions";
 import ImageBox from "./ImageBox";
 import ErrorBoundary from "../../utils/ErrorBoundary";
 class Product extends React.Component {
@@ -41,7 +41,8 @@ class Product extends React.Component {
                     }
                 }
                 `,   
-            productOptions: this.props.productOptions
+            productOptions: this.props.productOptions,
+            waitForCart: {}
         }
     }
 
@@ -49,9 +50,37 @@ class Product extends React.Component {
         this.props.loadProduct(this.state.categoriesQuery, this.props.productId[0]);
     }
 
+    // componentDidUdate(prevProps) {
+
+    //     if (this.props.waitForCartAttributes !== prevProps.waitForCartAttributes)
+    //     this.setState({waitForCart: this.props.waitForCartAttributes})
+    //     console.log("UPDATE!");
+    // }
+
+    handleAddToCart = (e) => {
+        //e.preventDefault();
+        this.isAllAttributesSelected(this.props.waitForCartAttributes)
+    }
+
+    isAllAttributesSelected (attributes) {
+        let isEmpty = 0;
+        for (let item in attributes) {
+            if (attributes[item] === "" ) {++isEmpty}
+        }
+        if (isEmpty)
+                {console.log("not all attributes were filled!!!")}
+                    else 
+                {//console.log(isEmpty);
+                attributes["id"] = this.props.productId[0];
+                const reset = Object.assign({}, attributes);
+                this.props.addToCart(reset);}
+                
+        
+    }
+
     render() {
         if (this.props.loading) {
-            return <div>Loading</div>
+            return <div>Loading...</div>
         }
         if (this.props.error) {
             return <div style={{ color: 'red' }}>ERROR: {this.props.error}</div>
@@ -77,7 +106,7 @@ class Product extends React.Component {
                             price={this.props.productOptions.prices}
                         />
                     </ErrorBoundary>
-                    <button className="product_info_button" onClick={() => console.log("click!")}>Add to cart</button>
+                    <button className="product_info_button" onClick={() => this.handleAddToCart()}>Add to cart</button>
                     <div className="product_info_description">
                         <p dangerouslySetInnerHTML={{__html: this.props.productOptions.description}}/>
                     </div>
@@ -87,14 +116,15 @@ class Product extends React.Component {
     }
 }
 
-
 const mapStateToProps = state => ({
     productId: state.reduxProductId.data,
     productOptions: state.reduxProduct.data,
+    waitForCartAttributes: state.reduxWaitForCart.data
 });
 
 const mapDispatchToProps = {
-    loadProduct
+    loadProduct,
+    addToCart
 };
 
 export default connect(

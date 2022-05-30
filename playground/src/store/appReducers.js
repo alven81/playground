@@ -6,6 +6,7 @@ import {default as reduxCurrency} from "./reducer/currencyReducer"
 import {default as reduxCategory} from "./reducer/categoryReducer"
 import {default as reduxProductId} from "./reducer/setSelectedProductIdReducer"
 import {default as reduxWaitForCart} from "./reducer/forCartReducer"
+import {default as reduxCart} from "./reducer/toCartReducer"
 import {combineReducers} from "redux";
 
 
@@ -17,7 +18,8 @@ const reducers = combineReducers({
     reduxCategory,
     reduxProductId,
     reduxProduct,
-    reduxWaitForCart
+    reduxWaitForCart,
+    reduxCart
 });
 
 export default reducers;

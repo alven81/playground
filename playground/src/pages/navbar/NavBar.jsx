@@ -3,6 +3,7 @@ import Currency from "./Currency";
 import Menu from "./Menu";
 import { setCurrency, setCategory } from "../../store/actions/actions";
 import { connect } from 'react-redux';
+
 class Header extends React.Component {
     constructor(props) {
         super(props);

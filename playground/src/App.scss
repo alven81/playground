@@ -270,13 +270,13 @@ h2 {
                 width: 79px;
                 height: 80px;
                 text-align: center;
+                margin-bottom: 40px;
                 img {
-                    
                     max-width: 79px;
                     max-height: 80px;
                     cursor: zoom-in;
                     transition: border-color 0.2s;
-                    box-sizing: border-box;
+                    //box-sizing: border-box;
                 }
             }
         }
