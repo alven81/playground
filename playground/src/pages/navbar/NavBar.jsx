@@ -3,6 +3,7 @@ import Currency from "./Currency";
 import Menu from "./Menu";
 import { setCurrency, setCategory } from "../../store/actions/actions";
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
     constructor(props) {
@@ -31,17 +32,21 @@ class Header extends React.Component {
                    <Menu handleSetCategoryOnClick={this.handleSetCategoryOnClick}/>
                 </div>
                 <div className="header-cart">
-                    <button className="header-cart-button">
-                        <img src="./img/logo_transparent.svg" alt="Switch to cart"/>
-                    </button>
+                    <Link to="/cart">
+                        <button className="header-cart-button">
+                            <img src="./img/logo_transparent.svg" alt="Switch to cart"/>
+                        </button>
+                    </Link>
                 </div>
                 <div className="header-currency">
                     <select name="currency" className="header-currency-select" onChange={(e) => this.handleOnSelect(e.target.selectedIndex)}>
                         <Currency />
                     </select>
-                    <button className="header-currency-button">
-                        <img src="./img/cart.svg" alt="Cart" />
-                    </button>
+                    
+                        <button className="header-currency-button">
+                            <img src="./img/cart.svg" alt="Cart" />
+                        </button>
+                    
                 </div>
             </header> 
         )

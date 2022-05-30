@@ -58,24 +58,23 @@ class Product extends React.Component {
     // }
 
     handleAddToCart = (e) => {
-        //e.preventDefault();
         this.isAllAttributesSelected(this.props.waitForCartAttributes)
     }
 
     isAllAttributesSelected (attributes) {
         let isEmpty = 0;
+        let reset = [];
         for (let item in attributes) {
             if (attributes[item] === "" ) {++isEmpty}
         }
         if (isEmpty)
-                {console.log("not all attributes were filled!!!")}
-                    else 
-                {//console.log(isEmpty);
-                attributes["id"] = this.props.productId[0];
-                const reset = Object.assign({}, attributes);
-                this.props.addToCart(reset);}
-                
-        
+            {console.log("not all attributes were filled!!!")}
+                else 
+            {//console.log(isEmpty);
+            attributes["id"] = this.props.productId[0];
+            //attributes["qty"] = 1;
+            reset = [1, Object.assign({}, attributes)];
+            this.props.addToCart(reset)}  
     }
 
     render() {

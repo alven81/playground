@@ -1,3 +1,4 @@
+import findSameProduct from "../../utils/findSameProduct";
 import {ADD_TO_CART} from "../actions/actions";
 
 const initialState = {
@@ -6,14 +7,20 @@ const initialState = {
 
 export default function reduxToCartReducer(state = initialState, action) {
     switch (action.type) {
-        case ADD_TO_CART: 
-            console.log("action: ", action.payload)
-            console.log("state: ", state.data)
-            return {
-                ...state,
-                data: state.data.concat(action.payload)
+        case ADD_TO_CART:{ 
+            if (findSameProduct(state.data, action.payload)[0] === -1) {
+                return {
+                    ...state,
+                    data: [...state.data, action.payload]
+                } 
             }
-        
+            else  {
+                return {
+                    ...state,
+                    data: [...state.data]
+                }
+            }
+        }
         default: {
             return state;
         }

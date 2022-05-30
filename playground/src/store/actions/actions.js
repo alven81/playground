@@ -54,7 +54,7 @@ export const loadCurrencies = (query) => dispatch => {
         )
 }; 
 
-export const loadProduct = (query, idProduct) => dispatch => {
+export const loadProduct =  (query, idProduct) => dispatch => {
     dispatch({ type: LOAD_PRODUCT_LOADING });
 
     Api.getData(query, idProduct)
