@@ -264,7 +264,7 @@ h2 {
             margin-right: 40px;
             overflow: auto;
             scrollbar-width: none;
-            overflow-x:hidden;
+            overflow-x: hidden;
             div {
                 box-sizing: border-box;
                 width: 79px;
@@ -275,7 +275,7 @@ h2 {
                     max-width: 79px;
                     max-height: 80px;
                     cursor: zoom-in;
-                    transition: border-color 0.2s;
+                    //transition: border-color 0.2s;
                     //box-sizing: border-box;
                 }
             }
@@ -286,7 +286,7 @@ h2 {
         height: 511px;
         display: flex;
         justify-content: center;
-        margin: 0 40px
+        margin: 0 40px;
             img {
                 display: inline-block;
                 max-width: 610px;

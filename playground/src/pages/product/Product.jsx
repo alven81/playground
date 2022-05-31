@@ -12,7 +12,7 @@ class Product extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            productId: this.props.productId,
+            //productId: this.props.productId,
             categoriesQuery: `
                 {
                     product (id: "${this.props.productId[0]}") {
@@ -41,7 +41,7 @@ class Product extends React.Component {
                     }
                 }
                 `,   
-            productOptions: this.props.productOptions,
+            //productOptions: this.props.productOptions,
             waitForCart: {}
         }
     }
@@ -49,13 +49,6 @@ class Product extends React.Component {
     componentDidMount() {
         this.props.loadProduct(this.state.categoriesQuery, this.props.productId[0]);
     }
-
-    // componentDidUdate(prevProps) {
-
-    //     if (this.props.waitForCartAttributes !== prevProps.waitForCartAttributes)
-    //     this.setState({waitForCart: this.props.waitForCartAttributes})
-    //     console.log("UPDATE!");
-    // }
 
     handleAddToCart = (e) => {
         //e.preventDefault();
@@ -89,7 +82,7 @@ class Product extends React.Component {
             <div className="product container">
                 <div className="product_images">
                     <ErrorBoundary>
-                        <ImageBox images={this.props.productOptions.gallery}/>
+                        {this.props.productOptions.gallery && <ImageBox images={this.props.productOptions.gallery}/>}
                     </ErrorBoundary>
                 </div>    
                 <div className="product_info">     
@@ -101,14 +94,14 @@ class Product extends React.Component {
                         <Attribute item={this.props.productOptions.attributes}/>
                     </ErrorBoundary>    
                     <ErrorBoundary>
-                        <Price
+                        {this.props.productOptions.prices && <Price
                             classCurrency={"price_label-show"} 
                             price={this.props.productOptions.prices}
-                        />
+                        />}
                     </ErrorBoundary>
                     <button className="product_info_button" onClick={() => this.handleAddToCart()}>Add to cart</button>
                     <div className="product_info_description">
-                        <p dangerouslySetInnerHTML={{__html: this.props.productOptions.description}}/>
+                        <div dangerouslySetInnerHTML={{__html: this.props.productOptions.description}}/>
                     </div>
                 </div>
             </div>

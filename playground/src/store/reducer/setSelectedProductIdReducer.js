@@ -1,7 +1,7 @@
 import {SET_SELECTED_PRODUCT_ID} from "../actions/actions";
 
 const initialState = {
-    data: [0]
+    data: []
 };
 
 export default function reduxSetProductIdReducer(state = initialState, action) {

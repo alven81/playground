@@ -1,7 +1,7 @@
 import {SET_CATEGORY} from "../actions/actions";
 
 const initialState = {
-    data: [0]
+    data: [0, "all"]
 };
 
 export default function reduxCategoryReducer(state = initialState, action) {

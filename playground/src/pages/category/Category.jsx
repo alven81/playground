@@ -4,6 +4,7 @@ import ProductCard from './ProductCard';
 import {loadCategory} from "../../store/actions/actions";
 import { connect } from 'react-redux';
 import { Link} from 'react-router-dom';
+import ErrorBoundary from "../../utils/ErrorBoundary";
 
 class Category extends React.Component {
    
@@ -28,28 +29,25 @@ class Category extends React.Component {
                     }
                 }
                 }
-            }`,
-            setCategory: null,
-            setCategories: null,
+            }`
         }
     }
 
     componentDidMount() {
 
-        this.setState({setCategory: this.props.getCategory});
+        this.props.loadCategory(this.state.categoriesQuery, this.props.categoryName[0]);
 
-       setTimeout(() => //(if (this.state.setCategory !== null)
-            {this.props.loadCategory(this.state.categoriesQuery, this.state.setCategory[0])}, 100);
-            
-            setTimeout(() => //if (this.state.setCategories !== null)
-            {this.setState({setCategories: this.props.getCategories})}, 200);
+        console.log("DidMount");
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.getCategory !== prevProps.getCategory) {
-            this.props.loadCategory(this.state.categoriesQuery, this.state.setCategory[0]);
+
+        if (this.props.categoryName !== prevProps.categoryName )
+            { 
+                this.props.loadCategory(this.state.categoriesQuery, this.props.categoryName[0])
+                console.log("update menu", this.props.categoryName);
+            }
         }
-    }
 
     render() {
         if (this.props.loading) {
@@ -60,25 +58,25 @@ class Category extends React.Component {
         }
         return (
             <>  
-            {   !this.state.setCategory ?
+            {     (this.props.categoriesList === null) ? <>LOADER</> : 
 
-                            <>HEADER LOADER</> :                    
                 <div className="container category">
                     <div className="category_title">
-                        <h2>{this.state.setCategory[1]}</h2>
+                        <h2>{this.props.categoryName[1]}</h2>
                     </div>
                     <div className="category_product">
-                        {   !this.state.setCategories ?
+                        {   
 
-                                        <>LOADER</> : 
+                                       
 
-                            this.state.setCategories.map((item, index) =>  
-                                <Link style={{ textDecoration: 'none' }} key={index}
-                                to={`/product/${item.id}`}>
-                                    <ProductCard 
-                                    item = {item}
-                                    key = {item.id}
-                                    />
+                            this.props.categoriesList.map((item, index) =>
+                              
+                                <Link style={{ textDecoration: 'none' }} key={index} to={`/product/${item.id}`}>
+                                    <ErrorBoundary>
+                                        <ProductCard 
+                                            item = {item}
+                                        />
+                                    </ErrorBoundary>
                                 </Link>
                             )
                         }
@@ -90,8 +88,12 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    getCategories: state.reduxСategories.data,
-    getCategory: state.reduxCategory.data,
+
+    categoriesList: state.reduxСategories.data,
+    
+    // Array [category number, category name]
+    categoryName: state.reduxCategory.data,
+
     loading: state.reduxСategories.loading,
     error: state.reduxСategories.error
  });

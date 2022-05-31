@@ -1,7 +1,7 @@
 import {SET_CURRENCY} from "../actions/actions";
 
 const initialState = {
-    data: [0]
+    data: []
 };
 
 export default function reduxCurrencyReducer(state = initialState, action) {

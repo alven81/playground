@@ -1,7 +1,7 @@
 import {LOAD_PRODUCT_ERROR, LOAD_PRODUCT_LOADING, LOAD_PRODUCT_SUCCESS} from "../actions/actions";
 
 const initialState = {
-    data: [],
+    data: {},
     loading: false,
     error: ''
 };

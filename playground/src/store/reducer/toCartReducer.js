@@ -2,7 +2,7 @@ import findSameProduct from "../../utils/findSameProduct";
 import {ADD_TO_CART} from "../actions/actions";
 
 const initialState = {
-    data: []
+    data: [0]
 };
 
 export default function reduxToCartReducer(state = initialState, action) {

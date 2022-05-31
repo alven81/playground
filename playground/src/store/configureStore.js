@@ -10,7 +10,7 @@ export function configureStore(initialState) {
   const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(...middleware)));
 
   store.subscribe(() => {
-   // console.log("store data: ", store.getState())
+    console.log("store data: ", store.getState())
 })
 
   return store;

@@ -5,13 +5,20 @@ class ImageBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            mainImage: this.props.images[0]
+            mainImage: this.props.images[0],
+            setImages: null
         }
+    }
+
+    componentDidMount() {
+        this.setState({setImages: this.props.images});
+        console.log("images", this.state.setImages);
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.images !== prevProps.images) {
             this.setState({mainImage: this.props.images[0]})
+            //this.setState({setImages: this.props.images});
         }
     }
     render() {
@@ -19,11 +26,11 @@ class ImageBox extends React.Component {
             <>
                 <div className="product_images_thumbnails">
                     {
-                        !this.props.images ?
+                    (this.state.setImages === null) ?
 
                             <>LOADER</> :
 
-                        this.props.images.map((item, index) => 
+                        this.state.setImages.map((item, index) => 
                             
                             <div key={index}>
                                 <img src={item} alt="" onClick={() => this.setState({mainImage: item})}/>
