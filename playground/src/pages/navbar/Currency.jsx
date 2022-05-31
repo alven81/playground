@@ -24,24 +24,18 @@ class Currency extends React.Component {
     };
 
     render() {
-        if (this.props.loading) {
-            return <div>Loading</div>
-        }
-        if (this.props.error) {
-            return <div style={{ color: 'red' }}>ERROR: {this.props.error}</div>
-        }
         return (
             <>
-                {   !this.props.data ?
+                { !this.props.data ?
 
                     <>LOADER</> : 
 
                     this.props.data.map((item, index) =>
-                        <>
+                        
                             <CurrencyElement 
                                 currencyItem={item}
                                 key = {index} />
-                        </>
+                       
                     ) 
                 }
             </> 

@@ -25,7 +25,7 @@ class Cart extends React.Component {
                             this.props.reduxCartInclude.map((item, index) =>  
                             
                             <div>
-                                <CartElement cartItem={item[1]} qty={item[0]} />
+                                <CartElement cartItem={item[1]} qty={item[0]} key={index} />
                             </div>
                             
                         )}

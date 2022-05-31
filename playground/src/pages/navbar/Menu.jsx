@@ -36,14 +36,14 @@ class Menu extends React.Component {
                     <>LOADER</> : 
 
                     this.props.data.map((item, index) =>  
-                        <>
+                        
                             <MenuButton 
                                 menuItem={item}
                                 key = {index}
                                 index = {index}
                                 handleSetCategoryOnClick={this.props.handleSetCategoryOnClick}
                             />
-                        </>
+                        
                     ) 
                 }
             </> 

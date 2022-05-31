@@ -26,8 +26,8 @@ class Attribute extends React.Component {
 
             <div className="attribute">
                     {
-                        this.state.item.map(element => 
-                            <AttributeElement element={element} itemList={this.state.itemList}/>
+                        this.state.item.map((element, index) => 
+                            <AttributeElement element={element} itemList={this.state.itemList} key={index}/>
                         )
                     }
 

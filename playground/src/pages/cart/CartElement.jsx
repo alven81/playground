@@ -1,11 +1,9 @@
- /* this.props.data.map(item => <div className="question-text" dangerouslySetInnerHTML={{__html: item.description}}/>) */
  import React from "react";
   import { connect } from "react-redux";
   import Attribute from "../components/Attribute";
   import Name from "../components/Name";
   import Price from "../components/Price";
   import { loadProduct } from "../../store/actions/actions";
-//  //import ImageBox from "./ImageBox";
   import ErrorBoundary from "../../utils/ErrorBoundary";
 import axios from "axios";
 
@@ -87,7 +85,7 @@ import axios from "axios";
 
          return (
 
-            !this.state.productOptions ? <>Load!</> :
+            (this.state.productOptions === null) ? <>Load!</> :
 
             <div className="product container">
             

@@ -46,15 +46,16 @@ class AttributeElement extends React.Component {
                 <p className="attribute_element_name">{this.props.element.name}:</p>
                 <div className="attribute_element_items" >
                     {   
-                        this.props.element.items.map(item => 
-                            < >
+                        this.props.element.items.map((item, index) => 
+                            
                                 <AttributeItem 
+                                    key={index}
                                     selectedId={this.state.selectedId}
                                     item={item} 
                                     type={this.props.element.type} 
                                     handleOnItemClick={this.handleOnItemClick}
                                 />
-                            </>
+                            
                         )
                     }
                 </div>    

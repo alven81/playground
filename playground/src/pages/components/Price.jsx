@@ -6,13 +6,21 @@ class Price extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            whatCurrency: this.props.getCurrency
+            //whatCurrency: []
         }
+    }
+
+    componentDidMount() {
+        console.log("Price: ", this.props.price);
     }
 
     render() {
         return (
-            <div className="price">
+        
+
+            (this.props.whatCurrency === null ?? this.props.price === null ) ? <>Loading...</> :
+
+            <div className="price"> what curr: {this.props.whatCurrency}
                 <p className={this.props.classCurrency}>
                     Price:
                 </p>
@@ -20,7 +28,7 @@ class Price extends React.Component {
                     {this.props.price[this.props.whatCurrency].currency.symbol}
                     {this.props.price[this.props.whatCurrency].amount}
                 </p>
-            </div> 
+            </div>
         )
     }
 }

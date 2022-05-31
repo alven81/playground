@@ -29,18 +29,25 @@ class Category extends React.Component {
                 }
                 }
             }`,
-            idCategory: 0
-            
+            setCategory: null,
+            setCategories: null,
         }
     }
 
     componentDidMount() {
-        this.props.loadCategory(this.state.categoriesQuery, this.props.category[0]);
+
+        this.setState({setCategory: this.props.getCategory});
+
+       setTimeout(() => //(if (this.state.setCategory !== null)
+            {this.props.loadCategory(this.state.categoriesQuery, this.state.setCategory[0])}, 100);
+            
+            setTimeout(() => //if (this.state.setCategories !== null)
+            {this.setState({setCategories: this.props.getCategories})}, 200);
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.category !== prevProps.category) {
-            this.props.loadCategory(this.state.categoriesQuery, this.props.category[0]);
+        if (this.props.getCategory !== prevProps.getCategory) {
+            this.props.loadCategory(this.state.categoriesQuery, this.state.setCategory[0]);
         }
     }
 
@@ -52,17 +59,20 @@ class Category extends React.Component {
             return <div style={{ color: 'red' }}>ERROR: {this.props.error}</div>
         }
         return (
-            <>                      
+            <>  
+            {   !this.state.setCategory ?
+
+                            <>HEADER LOADER</> :                    
                 <div className="container category">
                     <div className="category_title">
-                        <h2>{this.props.category[1]}</h2>
+                        <h2>{this.state.setCategory[1]}</h2>
                     </div>
                     <div className="category_product">
-                        {   !this.props.data ?
+                        {   !this.state.setCategories ?
 
-                            <>LOADER</> :
+                                        <>LOADER</> : 
 
-                            this.props.data.map((item, index) =>  
+                            this.state.setCategories.map((item, index) =>  
                                 <Link style={{ textDecoration: 'none' }} key={index}
                                 to={`/product/${item.id}`}>
                                     <ProductCard 
@@ -73,18 +83,18 @@ class Category extends React.Component {
                             )
                         }
                     </div>
-                </div> 
+                </div> }
             </>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    data: state.reduxСategories.data,
+    getCategories: state.reduxСategories.data,
+    getCategory: state.reduxCategory.data,
     loading: state.reduxСategories.loading,
-    error: state.reduxСategories.error,
-    category: state.reduxCategory.data    
-});
+    error: state.reduxСategories.error
+ });
 
 const mapDispatchToProps = {
     loadCategory
