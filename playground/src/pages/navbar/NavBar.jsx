@@ -54,7 +54,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    data: state.reduxCurrency.data
+
 });
     
 const mapDispatchToProps = {

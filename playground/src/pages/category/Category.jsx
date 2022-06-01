@@ -29,15 +29,13 @@ class Category extends React.Component {
                     }
                 }
                 }
-            }`
+            }`,
+            //whatCurrency: []
         }
     }
 
     componentDidMount() {
-
         this.props.loadCategory(this.state.categoriesQuery, this.props.categoryName[0]);
-
-        console.log("DidMount");
     };
 
     componentDidUpdate(prevProps) {
@@ -45,7 +43,6 @@ class Category extends React.Component {
         if (this.props.categoryName !== prevProps.categoryName )
             { 
                 this.props.loadCategory(this.state.categoriesQuery, this.props.categoryName[0])
-                console.log("update menu", this.props.categoryName);
             }
         }
 
@@ -58,30 +55,25 @@ class Category extends React.Component {
         }
         return (
             <>  
-            {     (this.props.categoriesList === null) ? <>LOADER</> : 
+                { (this.props.categoriesList === null) ? <>LOADER</> : 
 
-                <div className="container category">
-                    <div className="category_title">
-                        <h2>{this.props.categoryName[1]}</h2>
-                    </div>
-                    <div className="category_product">
-                        {   
-
-                                       
-
-                            this.props.categoriesList.map((item, index) =>
-                              
-                                <Link style={{ textDecoration: 'none' }} key={index} to={`/product/${item.id}`}>
-                                    <ErrorBoundary>
-                                        <ProductCard 
-                                            item = {item}
-                                        />
-                                    </ErrorBoundary>
-                                </Link>
-                            )
-                        }
-                    </div>
-                </div> }
+                    <div className="container category">
+                        <div className="category_title">
+                            <h2>{this.props.categoryName[1]}</h2>
+                        </div>
+                        <div className="category_product">
+                            {   
+                                this.props.categoriesList.map((item, index) =>
+                                    <Link style={{ textDecoration: 'none' }} key={index} to={`/product/${item.id}`}>
+                                        <ErrorBoundary>
+                                            <ProductCard item = {item} />
+                                        </ErrorBoundary>
+                                    </Link>
+                                )
+                            }
+                        </div>
+                    </div> 
+                }
             </>
         )
     }

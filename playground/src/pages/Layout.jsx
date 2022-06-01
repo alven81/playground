@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet } from "react-router";
 import NavBar from "./navbar/NavBar";
 
-
 class Layout extends React.Component {
     render() {
         return (
@@ -16,4 +15,4 @@ class Layout extends React.Component {
     }
 }
 
-  export default Layout
+export default Layout

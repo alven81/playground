@@ -21,7 +21,7 @@ class AttributeItem extends React.Component {
         return (
             <div>
                 {
-                    !this.state.item && !this.state.type ? <p>LOADER</p> : 
+                    !this.state.item && !this.state.type ? <p>LOADER AttributeItem</p> : 
 
                     <button
                         onClick={(e) => this.props.handleOnItemClick(this.props.item.id)}

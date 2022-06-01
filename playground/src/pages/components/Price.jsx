@@ -6,7 +6,7 @@ class Price extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            //whatCurrency: []
+            whatCurrency: null
         }
     }
 

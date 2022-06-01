@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import ErrorBoundary from "../../utils/ErrorBoundary";
 import CartElement from "./CartElement";
 
 class Cart extends React.Component {
    
-// componentDidUpdate(prevProps){
-//     //if (this.props.reduxCartInclude == prevProps.reduxCartInclude)
-//     console.log(this.props.reduxCartInclude);
-// }
+componentDidMount(prevProps){
+    //if (this.props.reduxCartInclude == prevProps.reduxCartInclude)
+    console.log("productsInCart: ", this.props.productsInCart);
+
+}
 
     render() {
         return (
@@ -16,16 +18,20 @@ class Cart extends React.Component {
                     <div className="category_title">
                         <h2>CART</h2>
                     </div>
-                    <button onClick={() => console.log(this.props.reduxCartInclude)}>click</button>
+                    <button onClick={() => console.log(this.props.productsInCart)}>click</button>
                     <div className="cart_product">
-                        {   !this.props.reduxCartInclude ?
+                        {   !this.props.productsInCart.length ?
 
                             <>LOADER</> :
 
-                            this.props.reduxCartInclude.map((item, index) =>  
+                            this.props.productsInCart.map((item, index) =>  
                             
                             <div>
-                                <CartElement cartItem={item[1]} qty={item[0]} key={index} />
+                               
+                               
+                                <ErrorBoundary>
+                                    <CartElement qty={item[0]} cartItem={item[1]} key={index} />
+                                </ErrorBoundary>
                             </div>
                             
                         )}
@@ -37,7 +43,7 @@ class Cart extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    reduxCartInclude: state.reduxCart.data
+    productsInCart: state.reduxCart.data
 });
 
 const mapDispatchToProps = {

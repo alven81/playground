@@ -26,16 +26,14 @@ class Currency extends React.Component {
     render() {
         return (
             <>
-                { !this.props.data ?
-
+                { !this.props.currencyList.length ? 
                     <>LOADER</> : 
 
-                    this.props.data.map((item, index) =>
-                        
-                            <CurrencyElement 
-                                currencyItem={item}
-                                key = {index} />
-                       
+                    this.props.currencyList.map((item, index) =>
+                        <CurrencyElement 
+                            currencyItem={item}
+                            key = {index} 
+                        />
                     ) 
                 }
             </> 
@@ -44,7 +42,7 @@ class Currency extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    data: state.reduxCurrencies.data,
+    currencyList: state.reduxCurrencies.data,
     loading: state.reduxCurrencies.loading,
     error: state.reduxCurrencies.error,
 });

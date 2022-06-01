@@ -1,4 +1,3 @@
- /* this.props.data.map(item => <div className="question-text" dangerouslySetInnerHTML={{__html: item.description}}/>) */
 import React from "react";
 import { connect } from "react-redux";
 import Attribute from "../components/Attribute";
@@ -12,36 +11,35 @@ class Product extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            //productId: this.props.productId,
-            categoriesQuery: `
-                {
-                    product (id: "${this.props.productId[0]}") {
-                        name
-                        inStock
-                        gallery
-                        description
-                        brand
-                        prices {
-                            currency {
-                                label
-                                symbol
-                            }
-                            amount
-                        }
-                        attributes {
-                            id
+            categoriesQuery: 
+                `
+                    {
+                        product (id: "${this.props.productId[0]}") {
                             name
-                            type
-                            items {
-                                displayValue
-                                value
+                            inStock
+                            gallery
+                            description
+                            brand
+                            prices {
+                                currency {
+                                    label
+                                    symbol
+                                }
+                                amount
+                            }
+                            attributes {
                                 id
+                                name
+                                type
+                                items {
+                                    displayValue
+                                    value
+                                    id
+                                }
                             }
                         }
                     }
-                }
                 `,   
-            //productOptions: this.props.productOptions,
             waitForCart: {}
         }
     }
@@ -51,24 +49,25 @@ class Product extends React.Component {
     }
 
     handleAddToCart = (e) => {
-        //e.preventDefault();
         this.isAllAttributesSelected(this.props.waitForCartAttributes)
     }
 
     isAllAttributesSelected (attributes) {
         let isEmpty = 0;
-        for (let item in attributes) {
-            if (attributes[item] === "" ) {++isEmpty}
-        }
+
+        for (let item in attributes) 
+            {
+                if (attributes[item] === "" ) {++isEmpty}
+            }
+
         if (isEmpty)
-                {console.log("not all attributes were filled!!!")}
-                    else 
-                {//console.log(isEmpty);
+            {console.log("not all attributes were filled!!!")}
+                else 
+            {
                 attributes["id"] = this.props.productId[0];
-                const reset = Object.assign({}, attributes);
-                this.props.addToCart(reset);}
-                
-        
+                const elementForCart = Object.assign({}, attributes);
+                this.props.addToCart([1, elementForCart]);
+            }
     }
 
     render() {
@@ -99,7 +98,11 @@ class Product extends React.Component {
                             price={this.props.productOptions.prices}
                         />}
                     </ErrorBoundary>
-                    <button className="product_info_button" onClick={() => this.handleAddToCart()}>Add to cart</button>
+                    <button 
+                        className="product_info_button" 
+                        onClick={() => this.handleAddToCart()}>
+                        Add to cart
+                    </button>
                     <div className="product_info_description">
                         <div dangerouslySetInnerHTML={{__html: this.props.productOptions.description}}/>
                     </div>

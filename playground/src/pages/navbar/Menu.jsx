@@ -31,19 +31,15 @@ class Menu extends React.Component {
         }
         return (
             <>
-                {   !this.props.data ?
+                {   !this.props.data.length ? <>LOADER</> : 
 
-                    <>LOADER</> : 
-
-                    this.props.data.map((item, index) =>  
-                        
-                            <MenuButton 
-                                menuItem={item}
-                                key = {index}
-                                index = {index}
-                                handleSetCategoryOnClick={this.props.handleSetCategoryOnClick}
-                            />
-                        
+                    this.props.data.map((item, index) =>
+                        <MenuButton 
+                            menuItem={item}
+                            key = {index}
+                            index = {index}
+                            handleSetCategoryOnClick={this.props.handleSetCategoryOnClick}
+                        />
                     ) 
                 }
             </> 
