@@ -10,7 +10,6 @@ componentDidMount(prevProps){
     console.log("productsInCart: ", this.props.productsInCart);
 
 }
-
     render() {
         return (
             <>                      
@@ -22,19 +21,16 @@ componentDidMount(prevProps){
                     <div className="cart_product">
                         {   !this.props.productsInCart.length ?
 
-                            <>LOADER</> :
+                           <>LOADER-Cart</> :
 
                             this.props.productsInCart.map((item, index) =>  
                             
                             <div>
-                               
-                               
-                                <ErrorBoundary>
-                                    <CartElement qty={item[0]} cartItem={item[1]} key={index} />
+                                <ErrorBoundary >
+                                    <CartElement qty={item[0]} cartItem={item[1]} key = {index} />
                                 </ErrorBoundary>
-                            </div>
-                            
-                        )}
+                            </div>)
+                        }
                     </div>
                 </div> 
             </>

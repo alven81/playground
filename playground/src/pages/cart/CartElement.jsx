@@ -51,13 +51,13 @@ import axios from "axios";
  
 
 
-   async   componentDidMount ()  {
+   async componentDidMount ()  {
 
-    console.log("item", this.props.qty);
-    console.log("cartItem", this.props.cartItem);
+   // console.log("item", this.props.qty);
+   console.log("cartItem", this.props.cartItem);
 
 
-   await    axios({
+   await axios({
             url: 'http://localhost:4000/', 
             method: 'POST',
             data: {
@@ -68,7 +68,7 @@ import axios from "axios";
 .then(response => response.product)
 .then(productOptions => this.setState({ productOptions }) )
 
-//setTimeout(() =>  console.log(this.state.productOptions ) , 200);
+//setTimeout(() =>  console.log("product options", this.state.productOptions ) , 200);
 }
 
      render() {
@@ -78,8 +78,6 @@ import axios from "axios";
         
 
                   <div className="product_info">   
-
-
 
                    <ErrorBoundary> 
                         <Name

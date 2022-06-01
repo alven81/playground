@@ -11,7 +11,7 @@ class Price extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Price: ", this.props.price);
+    //    console.log("Price: ", this.props.price);
     }
 
     render() {

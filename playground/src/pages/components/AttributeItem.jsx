@@ -21,11 +21,11 @@ class AttributeItem extends React.Component {
         return (
             <div>
                 {
-                    !this.state.item && !this.state.type ? <p>LOADER AttributeItem</p> : 
+                    !this.props.item && !this.props.type ? <p>LOADER AttributeItem</p> : 
 
                     <button
                         onClick={(e) => this.props.handleOnItemClick(this.props.item.id)}
-                        id={this.state.item.id}
+                        id={this.props.item.id}
                         style={{backgroundColor: `${this.state.item.value}`}} 
                         className={`attribute_element_items_${this.state.type} attribute_element_items_${this.state.type}_${(this.props.selectedId[1] === this.state.item.id) ? "selected" : ""}`} 
                     >
