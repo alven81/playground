@@ -3,6 +3,7 @@ $--c-text: #1D1F22;
 $--c-black: #1D1F22;
 $--c-stock: #8D8F9A;
 $--c-white: #FFFFFF;
+$--c-divider: #E5E5E5;
 
 @mixin fontRaleway ($weight, $fontSize, $lineHeight) {
     font: $weight #{$fontSize}px/#{$lineHeight}px "Raleway", sans-serif;
@@ -339,6 +340,14 @@ h2 {
             max-width: 292px;
         }
 
+    }
+}
+
+.cart {
+    &_product {
+        &_element {
+            border-bottom: 1px solid $--c-divider;
+        }
     }
 }
 

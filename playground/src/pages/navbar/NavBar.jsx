@@ -2,67 +2,72 @@ import React from "react";
 import Currency from "./Currency";
 import Menu from "./Menu";
 import { setCurrency, setCategory } from "../../store/actions/actions";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currencyValue: null
-        }
+            currencyValue: null,
+        };
     }
 
     componentDidMount() {
         this.props.setCurrency(0);
-    };
+    }
 
     handleOnSelect = (e) => {
         this.props.setCurrency(e);
-    }
-    
+    };
+
     handleSetCategoryOnClick = (e) => {
         this.props.setCategory(e);
-    }
+    };
 
     render() {
         return (
             <header className="container header">
                 <div className="header-nav">
-                   <Menu handleSetCategoryOnClick={this.handleSetCategoryOnClick}/>
+                    <Menu
+                        handleSetCategoryOnClick={this.handleSetCategoryOnClick}
+                    />
                 </div>
                 <div className="header-cart">
                     <Link to="/cart">
                         <button className="header-cart-button">
-                            <img src="./img/logo_transparent.svg" alt="Switch to cart"/>
+                            <img
+                                src="./img/logo_transparent.svg"
+                                alt="Switch to cart"
+                            />
                         </button>
                     </Link>
                 </div>
                 <div className="header-currency">
-                    <select name="currency" className="header-currency-select" onChange={(e) => this.handleOnSelect(e.target.selectedIndex)}>
+                    <select
+                        name="currency"
+                        className="header-currency-select"
+                        onChange={(e) =>
+                            this.handleOnSelect(e.target.selectedIndex)
+                        }
+                    >
                         <Currency />
                     </select>
-                    
-                        <button className="header-currency-button">
-                            <img src="./img/cart.svg" alt="Cart" />
-                        </button>
-                    
+
+                    <button className="header-currency-button">
+                        <img src="./img/cart.svg" alt="Cart" />
+                    </button>
                 </div>
-            </header> 
-        )
+            </header>
+        );
     }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({});
 
-});
-    
 const mapDispatchToProps = {
     setCurrency,
-    setCategory
+    setCategory,
 };
 
-export default connect(
-mapStateToProps,
-mapDispatchToProps
-)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
