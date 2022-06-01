@@ -6,7 +6,7 @@ import Price from "../components/Price";
 import { loadProduct } from "../../store/actions/actions";
 import ErrorBoundary from "../../utils/ErrorBoundary";
 import axios from "axios";
-import ImageSwitcher from "./ImageSwitcherjsx";
+import ImageSwitcher from "./ImageSwitcher.jsx";
 
 class CartElement extends React.Component {
     // qty={item[0]} cartItem={item[1]} key={index} />
@@ -91,13 +91,13 @@ class CartElement extends React.Component {
                 </div>
                 <div className="cart_product_quantity"></div>
                 <div className="cart_product_image">
-                    {/* <ErrorBoundary>
+                    <ErrorBoundary>
                         {this.state.productOptions.gallery && (
                             <ImageSwitcher
                                 images={this.state.productOptions.gallery}
                             />
                         )}
-                    </ErrorBoundary> */}
+                    </ErrorBoundary>
                 </div>
             </>
         );
