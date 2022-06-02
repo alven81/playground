@@ -1,28 +1,28 @@
-import {LOAD_PRODUCT_ERROR, LOAD_PRODUCT_LOADING, LOAD_PRODUCT_SUCCESS} from "../actions/actions";
+import {LOAD_CATEGORIES_ERROR, LOAD_CATEGORIES_LOADING, LOAD_CATEGORIES_SUCCESS} from "../actions/actions";
 
 const initialState = {
-    data: {},
+    data: [],
     loading: false,
     error: ''
 };
 
-export default function reduxProductReducer(state = initialState, action) {
+export default function loadCategories(state = initialState, action) {
     switch (action.type) {
-        case LOAD_PRODUCT_LOADING: {
+        case LOAD_CATEGORIES_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error:''
             };
         }
-        case LOAD_PRODUCT_SUCCESS: {
+        case LOAD_CATEGORIES_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false
             }
         }
-        case LOAD_PRODUCT_ERROR: {
+        case LOAD_CATEGORIES_ERROR: {
             return {
                 ...state,
                 loading: false,

@@ -1,4 +1,4 @@
-import {LOAD_CATEGORY_ERROR, LOAD_CATEGORY_LOADING, LOAD_CATEGORY_SUCCESS} from "../actions/actions";
+import {LOAD_MENU_ERROR, LOAD_MENU_LOADING, LOAD_MENU_SUCCESS} from "../actions/actions";
 
 const initialState = {
     data: [],
@@ -6,23 +6,23 @@ const initialState = {
     error: ''
 };
 
-export default function reduxCategriesReducer(state = initialState, action) {
+export default function loadMenu(state = initialState, action) {
     switch (action.type) {
-        case LOAD_CATEGORY_LOADING: {
+        case LOAD_MENU_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error:''
             };
         }
-        case LOAD_CATEGORY_SUCCESS: {
+        case LOAD_MENU_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false
             }
         }
-        case LOAD_CATEGORY_ERROR: {
+        case LOAD_MENU_ERROR: {
             return {
                 ...state,
                 loading: false,

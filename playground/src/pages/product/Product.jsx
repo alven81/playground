@@ -122,9 +122,9 @@ class Product extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  productId: state.reduxProductId.data,
-  productOptions: state.reduxProduct.data,
-  waitForCartAttributes: state.reduxWaitForCart.data,
+  productId: state.selectedProductId.data,
+  productOptions: state.loadProduct.data,
+  waitForCartAttributes: state.waitForCart.data,
 });
 
 const mapDispatchToProps = {

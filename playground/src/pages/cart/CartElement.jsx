@@ -59,9 +59,31 @@ class CartElement extends React.Component {
             .then((response) => response.data.data)
             .then((response) => response.product)
             .then((productOptions) => this.setState({ productOptions }));
-
-            setTimeout(() => console.log(this.state.productOptions.gallery), 300);
     }
+
+
+    // handleAddToCart = (e) => {
+    //     this.isAllAttributesSelected(this.props.waitForCartAttributes); //текущий пропс item
+    //   };
+    
+    //   isAllAttributesSelected(attributes) {
+    //     let isEmpty = 0;
+    
+    //     for (let item in attributes) {
+    //       if (attributes[item] === "") {
+    //         ++isEmpty;
+    //       }
+    //     }
+    
+    //     if (isEmpty) {
+    //       console.log("not all attributes were filled!!!");
+    //     } else {
+    //       attributes["id"] = this.props.productId[0];
+    //       const elementForCart = Object.assign({}, attributes);
+    //       this.props.addToCart([1, elementForCart]);
+    //     }
+    //   }
+
 
     render() {
         return this.state.productOptions == null ? (
@@ -77,7 +99,7 @@ class CartElement extends React.Component {
                     </ErrorBoundary>
                     <ErrorBoundary>
                         <Price
-                            classCurrency={"price_label-show"}
+                            classCurrency={"hide"}
                             price={this.state.productOptions.prices}
                         />
                     </ErrorBoundary>
@@ -89,7 +111,11 @@ class CartElement extends React.Component {
                         )}
                     </ErrorBoundary>
                 </div>
-                <div className="cart_product_quantity"></div>
+                <div className="cart_product_quantity">
+                    <button />
+                    <span>{this.props.qty}</span>
+                    <button />
+                </div>
                 <div className="cart_product_image">
                     <ErrorBoundary>
                         {this.state.productOptions.gallery && (
@@ -117,4 +143,3 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartElement);
 
-//export default CartElement

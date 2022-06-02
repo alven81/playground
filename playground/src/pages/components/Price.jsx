@@ -29,7 +29,7 @@ class Price extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    whatCurrency: state.reduxCurrency.data,
+    whatCurrency: state.currency.data,
 });
 
 export default connect(mapStateToProps)(Price);

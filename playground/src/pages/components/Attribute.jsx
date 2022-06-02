@@ -29,6 +29,7 @@ class Attribute extends React.Component {
                         element={element}
                         itemList={this.state.itemList}
                         key={index}
+                        //loadIdForCart = {loadIdForCart}
                     />
                 ))}
             </div>

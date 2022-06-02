@@ -9,7 +9,7 @@ class Cart extends React.Component {
             <>
                 <div className="container cart">
                     <div className="category_title">
-                        <h2>CART</h2>
+                        <h3>CART</h3>
                     </div>
                     <button
                         onClick={() => console.log(this.props.productsInCart)}
@@ -19,7 +19,10 @@ class Cart extends React.Component {
                     <div className="cart_product">
                         {!this.props.productsInCart.length ? (
                             <>LOADER-Cart</>
-                        ) : (
+                        ) : 
+                        
+                        (
+                            
                             this.props.productsInCart.map((item, index) => {
                                 return (
                                     <div className="cart_product_element">
@@ -34,6 +37,7 @@ class Cart extends React.Component {
                                 );
                             })
                         )}
+                        
                     </div>
                 </div>
             </>
@@ -42,7 +46,7 @@ class Cart extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    productsInCart: state.reduxCart.data,
+    productsInCart: state.cart.data,
 });
 
 const mapDispatchToProps = {

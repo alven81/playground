@@ -1,28 +1,28 @@
-import {LOAD_MENU_ERROR, LOAD_MENU_LOADING, LOAD_MENU_SUCCESS} from "../actions/actions";
+import {LOAD_PRODUCT_ERROR, LOAD_PRODUCT_LOADING, LOAD_PRODUCT_SUCCESS} from "../actions/actions";
 
 const initialState = {
-    data: [],
+    data: {},
     loading: false,
     error: ''
 };
 
-export default function reduxMenuReducer(state = initialState, action) {
+export default function loadProduct(state = initialState, action) {
     switch (action.type) {
-        case LOAD_MENU_LOADING: {
+        case LOAD_PRODUCT_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error:''
             };
         }
-        case LOAD_MENU_SUCCESS: {
+        case LOAD_PRODUCT_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false
             }
         }
-        case LOAD_MENU_ERROR: {
+        case LOAD_PRODUCT_ERROR: {
             return {
                 ...state,
                 loading: false,

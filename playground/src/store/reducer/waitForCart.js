@@ -1,12 +1,11 @@
-import {SET_SELECTED_PRODUCT_ID} from "../actions/actions";
+import {WAIT_FOR_CART} from "../actions/actions";
 
 const initialState = {
-    data: []
-};
+    data: null };
 
-export default function reduxSetProductIdReducer(state = initialState, action) {
+export default function waitForCart(state = initialState, action) {
     switch (action.type) {
-        case SET_SELECTED_PRODUCT_ID: {
+        case WAIT_FOR_CART: {
             return {
                 ...state,
                 data: action.payload

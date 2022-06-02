@@ -10,7 +10,7 @@ class AttributeItem extends React.Component {
     // }
 
     componentDidMount() {
-        console.log("item", this.props.type);
+       // console.log("item", this.props.type);
     }
     
     // componentDidUpdate(prevProps) {

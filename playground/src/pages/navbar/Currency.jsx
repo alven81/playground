@@ -37,9 +37,9 @@ class Currency extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    currencyList: state.reduxCurrencies.data,
-    loading: state.reduxCurrencies.loading,
-    error: state.reduxCurrencies.error,
+    currencyList: state.loadCurrencies.data,
+    loading: state.loadCurrencies.loading,
+    error: state.loadCurrencies.error,
 });
 
 const mapDispatchToProps = {

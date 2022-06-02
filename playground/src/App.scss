@@ -66,6 +66,12 @@ h2 {
     color: $--c-text;
 }
 
+h3 {
+    @include fontRaleway(700, 32, 40);
+    text-transform:capitalize;
+    color: $--c-text;
+}
+
 .container {
     width: 1238px;
     margin: 0 auto;
@@ -273,8 +279,9 @@ h2 {
                 text-align: center;
                 margin-bottom: 40px;
                 img {
-                    max-width: 79px;
-                    max-height: 80px;
+                    width: 100%;
+                        height: 100%;
+                        object-fit:cover;
                     cursor: zoom-in;
                     //transition: border-color 0.2s;
                     //box-sizing: border-box;
@@ -346,7 +353,163 @@ h2 {
 .cart {
     &_product {
         &_element {
+            display: flex;
+            justify-content: space-between;
             border-bottom: 1px solid $--c-divider;
+        }
+        &_info {
+            margin: 24px 0;
+        }
+        &_quantity {
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: auto;
+            span {
+                @include fontRaleway(500, 24, 38);
+            }
+            button {
+                position: relative;
+                width: 45px;
+                height: 45px;
+                background: transparent;
+                cursor: pointer;
+                border-color: $--c-black;
+                &:first-child {
+                    &:after {
+                        position: absolute;
+                        top: 50%; 
+                        right: 50%;
+                        transform: translate(50%,-50%);
+                        content: '';
+                        //display: block;
+                        height: 15px;
+                        border-left: 1px solid $--c-black;
+                        }
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                        &:active {
+                            transform: scale(0.9);
+                        }
+                    &:before {
+                        position: absolute;
+                        top: 50%; 
+                        right: 50%;
+                        transform: translate(50%,-50%) rotate(90deg);
+                        content: '';
+                        //display: block;
+                        height: 15px;
+                        border-right: 1px solid $--c-black;
+                        }
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                        &:active {
+                            transform: scale(0.9);
+                        }
+                    }
+                &:last-child {
+                    &:after {
+                        position: absolute;
+                        top: 50%; 
+                        right: 50%;
+                        transform: translate(50%,-50%);
+                        content: '';
+                        //display: block;
+                        width: 15px;
+                        height: 1px;
+                        border-bottom: 1px solid $--c-black;
+                    }
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                    &:active {
+                        transform: scale(0.9);
+                    }
+                }
+            }
+        }
+        &_image {
+            &_picture {
+                position: relative;
+                margin: 24px 0 24px 24px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 200px;
+                height: 288px;
+               // text-align: center;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit:cover;
+                        // object-position: 0% 100%;
+                    }
+                }
+            
+            &_buttons {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                bottom: 16px;
+                right: 16px;
+                height: 24px;
+                width: 56px;
+                //z-index: 10;
+                    button {
+                        position: relative;
+                        width: 24px;
+                        height: 24px;
+                        background-color: rgba(0, 0, 0, 0.73);
+                        border: 0;
+                        cursor: pointer;
+                    }
+                    :first-child {
+                        &:after {
+                            position: absolute;
+                            top: 50%; 
+                            right: 50%;
+                            transform: translate(50%,-50%) rotate(45deg);
+                            content: '';
+                            display: block;
+                            width: 7px;
+                            height: 7px;
+                            border-left: 1.5px solid $--c-white;
+                            border-bottom: 1.5px solid $--c-white;
+                            }
+                            &:hover {
+                                transform: scale(1.1);
+                            }
+                            &:active {
+                                transform: scale(0.9);
+                            }
+                    }
+                    :last-child {
+                        &:after {
+                            position: absolute;
+                            top: 50%; 
+                            right: 50%;
+                            transform: translate(50%,-50%) rotate(-135deg);
+                            content: '';
+                            display: block;
+                            width: 7px;
+                            height: 7px;
+                            border-left: 1.5px solid $--c-white;
+                            border-bottom: 1.5px solid $--c-white;
+                        }
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                        &:active {
+                            transform: scale(0.9);
+                        }
+                          
+                    }
+            }
         }
     }
 }

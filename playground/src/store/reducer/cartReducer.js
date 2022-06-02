@@ -5,7 +5,7 @@ const initialState = {
     data: [],
 };
 
-export default function reduxToCartReducer(state = initialState, action) {
+export default function cart(state = initialState, action) {
     switch (action.type) {
         case ADD_TO_CART: {
             if (findSameProduct(state.data, action.payload)[0] === -1) {

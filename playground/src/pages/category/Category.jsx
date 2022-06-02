@@ -1,7 +1,7 @@
 import "../../App.scss";
 import React from "react";
 import ProductCard from "./ProductCard";
-import { loadCategory } from "../../store/actions/actions";
+import { loadCategories } from "../../store/actions/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ErrorBoundary from "../../utils/ErrorBoundary";
@@ -34,7 +34,7 @@ class Category extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadCategory(
+        this.props.loadCategories(
             this.state.categoriesQuery,
             this.props.categoryName[0]
         );
@@ -42,7 +42,7 @@ class Category extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.categoryName !== prevProps.categoryName) {
-            this.props.loadCategory(
+            this.props.loadCategories(
                 this.state.categoriesQuery,
                 this.props.categoryName[0]
             );
@@ -88,17 +88,17 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    categoriesList: state.reduxСategories.data,
+    categoriesList: state.loadCategories.data,
 
     // Array [category number, category name]
-    categoryName: state.reduxCategory.data,
+    categoryName: state.category.data,
 
-    loading: state.reduxСategories.loading,
-    error: state.reduxСategories.error,
+    loading: state.loadCategories.loading,
+    error: state.loadCategories.error,
 });
 
 const mapDispatchToProps = {
-    loadCategory,
+    loadCategories,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category);

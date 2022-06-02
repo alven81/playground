@@ -1,4 +1,4 @@
-import {LOAD_CURRENCY_ERROR, LOAD_CURRENCY_LOADING, LOAD_CURRENCY_SUCCESS} from "../actions/actions";
+import {LOAD_CURRENCIES_ERROR, LOAD_CURRENCIES_LOADING, LOAD_CURRENCIES_SUCCESS} from "../actions/actions";
 
 const initialState = {
     data: [],
@@ -6,23 +6,23 @@ const initialState = {
     error: ''
 };
 
-export default function reduxCurrenciesReducer(state = initialState, action) {
+export default function loadCurrencies(state = initialState, action) {
     switch (action.type) {
-        case LOAD_CURRENCY_LOADING: {
+        case LOAD_CURRENCIES_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error:''
             };
         }
-        case LOAD_CURRENCY_SUCCESS: {
+        case LOAD_CURRENCIES_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false
             }
         }
-        case LOAD_CURRENCY_ERROR: {
+        case LOAD_CURRENCIES_ERROR: {
             return {
                 ...state,
                 loading: false,

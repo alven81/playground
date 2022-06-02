@@ -4,7 +4,7 @@ const initialState = {
     data: []
 };
 
-export default function reduxCurrencyReducer(state = initialState, action) {
+export default function currency(state = initialState, action) {
     switch (action.type) {
         case SET_CURRENCY: {
             return {

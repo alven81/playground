@@ -83,7 +83,7 @@ class ProductCard extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    settedCurrency: state.reduxCurrency.data,
+    settedCurrency: state.currency.data,
 });
 
 const mapDispatchToProps = {

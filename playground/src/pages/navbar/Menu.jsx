@@ -51,9 +51,9 @@ class Menu extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    data: state.reduxMenu.data,
-    loading: state.reduxMenu.loading,
-    error: state.reduxMenu.error,
+    data: state.loadMenu.data,
+    loading: state.loadMenu.loading,
+    error: state.loadMenu.error,
 });
 
 const mapDispatchToProps = {
