@@ -7,7 +7,7 @@ class Attribute extends React.Component {
         super(props);
         this.state = {
             itemList: {},
-            item: [],
+            //item: [],
         };
     }
     
@@ -16,7 +16,7 @@ class Attribute extends React.Component {
         if (this.props.item !== prevProps.item) {
             const itemListTempArray = {};
             this.props.item.map((item) => (itemListTempArray[item.id] = ""));
-            console.log("itemListTempArray", itemListTempArray);
+            //console.log("itemListTempArray", itemListTempArray);
             this.setState({ itemList: itemListTempArray });
         }
     }

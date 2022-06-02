@@ -26,7 +26,7 @@ class AttributeItem extends React.Component {
     render() {
         return (
             <div>
-                {!this.props.item && !this.props.type ? (
+                { !this.props.item.length && !this.props.type ? (
                     <Loader/>
                 ) : (
                     <button

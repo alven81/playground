@@ -14,7 +14,7 @@ class AttributeElement extends React.Component {
     }
 
     componentDidMount() {
-        //this.setState({ itemList: this.props.itemList });
+        //this.setState({ itemList: this.props.item });
     }
 
     //if load or click property => send to redux
@@ -33,20 +33,21 @@ class AttributeElement extends React.Component {
         let tempItem = this.props.itemList;
         tempItem[itemId] = itemResult;
         //this.setState({ itemList: tempItem });
-        console.log("tempItem", tempItem);
+        //console.log("tempItem", tempItem);
         this.props.waitForCart(tempItem);
     };
 
     render() {
-        return !this.props.element.items.length ? (
-            <Loader />
-        ) : (
-            <div className="attribute_element">
+        return <div className="attribute_element">
                 <p className="attribute_element_name">
                     {this.props.element.name}:
                 </p>
                 <div className="attribute_element_items">
-                    {this.props.element.items.map((item, index) => (
+                    {
+                    !this.props.element.items.length ? (
+                        <Loader />
+                    ) : (
+                    this.props.element.items.map((item, index) => (
                         <AttributeItem
                             key={index}
                             selectedId={this.state.selectedId}
@@ -54,11 +55,12 @@ class AttributeElement extends React.Component {
                             type={this.props.element.type}
                             handleOnItemClick={this.handleOnItemClick}
                         />
-                    ))}
+                    )))
+                    
+                    }
                 </div>
             </div>
-        );
-    }
+        }
 }
 
 const mapStateToProps = (state) => ({});
