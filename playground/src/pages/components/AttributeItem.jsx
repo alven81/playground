@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from "./Loader";
 
 class AttributeItem extends React.Component {
     //constructor(props) {
@@ -26,7 +27,7 @@ class AttributeItem extends React.Component {
         return (
             <div>
                 {!this.props.item && !this.props.type ? (
-                    <p>LOADER AttributeItem</p>
+                    <Loader/>
                 ) : (
                     <button
                         onClick={(e) =>

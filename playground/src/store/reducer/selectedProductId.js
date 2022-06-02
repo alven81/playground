@@ -1,7 +1,7 @@
-import {SET_SELECTED_PRODUCT_ID} from "../actions/actions";
+import { SET_SELECTED_PRODUCT_ID } from "../actions/actions";
 
 const initialState = {
-    data: []
+    data: [],
 };
 
 export default function selectedProductId(state = initialState, action) {
@@ -9,8 +9,8 @@ export default function selectedProductId(state = initialState, action) {
         case SET_SELECTED_PRODUCT_ID: {
             return {
                 ...state,
-                data: action.payload
-            }
+                data: action.payload,
+            };
         }
         default: {
             return state;

@@ -1,7 +1,7 @@
-import {SET_CURRENCY} from "../actions/actions";
+import { SET_CURRENCY } from "../actions/actions";
 
 const initialState = {
-    data: []
+    data: [],
 };
 
 export default function currency(state = initialState, action) {
@@ -9,8 +9,8 @@ export default function currency(state = initialState, action) {
         case SET_CURRENCY: {
             return {
                 ...state,
-                data: action.payload
-            }
+                data: action.payload,
+            };
         }
         default: {
             return state;

@@ -5,6 +5,7 @@ import { loadCategories } from "../../store/actions/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ErrorBoundary from "../../utils/ErrorBoundary";
+import Loader from "../components/Loader";
 
 class Category extends React.Component {
     constructor(props) {
@@ -51,7 +52,7 @@ class Category extends React.Component {
 
     render() {
         if (this.props.loading) {
-            return <div>Loading</div>;
+            return <Loader />;
         }
         if (this.props.error) {
             return (
@@ -61,7 +62,7 @@ class Category extends React.Component {
         return (
             <>
                 {this.props.categoriesList === null ? (
-                    <>LOADER</>
+                    <Loader />
                 ) : (
                     <div className="container category">
                         <div className="category_title">

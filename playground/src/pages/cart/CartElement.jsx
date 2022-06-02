@@ -7,6 +7,7 @@ import { loadProduct } from "../../store/actions/actions";
 import ErrorBoundary from "../../utils/ErrorBoundary";
 import axios from "axios";
 import ImageSwitcher from "./ImageSwitcher.jsx";
+import Loader from "../components/Loader";
 
 class CartElement extends React.Component {
     // qty={item[0]} cartItem={item[1]} key={index} />
@@ -61,33 +62,17 @@ class CartElement extends React.Component {
             .then((productOptions) => this.setState({ productOptions }));
     }
 
-
-    // handleAddToCart = (e) => {
-    //     this.isAllAttributesSelected(this.props.waitForCartAttributes); //текущий пропс item
-    //   };
-    
-    //   isAllAttributesSelected(attributes) {
-    //     let isEmpty = 0;
-    
-    //     for (let item in attributes) {
-    //       if (attributes[item] === "") {
-    //         ++isEmpty;
-    //       }
-    //     }
-    
-    //     if (isEmpty) {
-    //       console.log("not all attributes were filled!!!");
-    //     } else {
-    //       attributes["id"] = this.props.productId[0];
-    //       const elementForCart = Object.assign({}, attributes);
-    //       this.props.addToCart([1, elementForCart]);
-    //     }
-    //   }
+    handleUpQantity = (e) => {
+        const tempCart = this.props.productsInCart;
+        console.log(tempCart[[1]]);
+        let newCart = tempCart.map(item => (item[[1]][1] === this.props.productsInCart) ? console.log(item[[1]][0] += 1) : item)
+        console.log(newCart);
+    }
 
 
     render() {
         return this.state.productOptions == null ? (
-            <>Load</>
+            <Loader />
         ) : (
             <>
                 <div className="cart_product_info">
@@ -112,7 +97,7 @@ class CartElement extends React.Component {
                     </ErrorBoundary>
                 </div>
                 <div className="cart_product_quantity">
-                    <button />
+                    <button onClick={(e) => this.handleUpQantity(this.props.productId)} />
                     <span>{this.props.qty}</span>
                     <button />
                 </div>
@@ -131,6 +116,7 @@ class CartElement extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    productsInCart: state.cart.data,
     //productId: state.reduxProductId.data,
     //productOptionsList: state.reduxProduct.data,
     //waitForCartAttributes: state.reduxWaitForCart.data
@@ -142,4 +128,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartElement);
+
+
 

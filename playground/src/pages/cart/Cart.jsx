@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import ErrorBoundary from "../../utils/ErrorBoundary";
+import Loader from "../components/Loader";
 import CartElement from "./CartElement";
 
 class Cart extends React.Component {
+    
     render() {
         return (
             <>
@@ -18,18 +20,16 @@ class Cart extends React.Component {
                     </button>
                     <div className="cart_product">
                         {!this.props.productsInCart.length ? (
-                            <>LOADER-Cart</>
-                        ) : 
-                        
-                        (
-                            
+                            <Loader />
+                        ) : (
                             this.props.productsInCart.map((item, index) => {
                                 return (
                                     <div className="cart_product_element">
                                         <ErrorBoundary>
                                             <CartElement
                                                 qty={item[0]}
-                                                cartItem={item[1]}
+                                                productId={item[1]}
+                                                cartItem={item[2]}
                                                 key={index}
                                             />
                                         </ErrorBoundary>
@@ -37,7 +37,6 @@ class Cart extends React.Component {
                                 );
                             })
                         )}
-                        
                     </div>
                 </div>
             </>

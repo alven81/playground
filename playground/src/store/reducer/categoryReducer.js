@@ -1,7 +1,7 @@
-import {SET_CATEGORY} from "../actions/actions";
+import { SET_CATEGORY } from "../actions/actions";
 
 const initialState = {
-    data: [0, "all"]
+    data: [0, "all"],
 };
 
 export default function category(state = initialState, action) {
@@ -9,8 +9,8 @@ export default function category(state = initialState, action) {
         case SET_CATEGORY: {
             return {
                 ...state,
-                data: action.payload
-            }
+                data: action.payload,
+            };
         }
         default: {
             return state;

@@ -1,9 +1,13 @@
-import {LOAD_PRODUCT_ERROR, LOAD_PRODUCT_LOADING, LOAD_PRODUCT_SUCCESS} from "../actions/actions";
+import {
+    LOAD_PRODUCT_ERROR,
+    LOAD_PRODUCT_LOADING,
+    LOAD_PRODUCT_SUCCESS,
+} from "../actions/actions";
 
 const initialState = {
     data: {},
     loading: false,
-    error: ''
+    error: "",
 };
 
 export default function loadProduct(state = initialState, action) {
@@ -12,21 +16,21 @@ export default function loadProduct(state = initialState, action) {
             return {
                 ...state,
                 loading: true,
-                error:''
+                error: "",
             };
         }
         case LOAD_PRODUCT_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
-                loading: false
-            }
+                loading: false,
+            };
         }
         case LOAD_PRODUCT_ERROR: {
             return {
                 ...state,
                 loading: false,
-                error: action.error
+                error: action.error,
             };
         }
         default: {

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Loader from "./Loader";
 
 class Price extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Price extends React.Component {
 
     render() {
         return this.props.whatCurrency === null ?? this.props.price === null ? (
-            <>Loading...</>
+            <Loader />
         ) : (
             <div className="price">
                 <p className={this.props.classCurrency}>Price:</p>

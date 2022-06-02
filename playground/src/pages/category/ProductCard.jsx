@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setSelectedProductId } from "../../store/actions/actions";
+import Loader from "../components/Loader";
 
 class ProductCard extends React.Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class ProductCard extends React.Component {
     render() {
         return this.state.currentCurrency === null &&
             !this.props.item.length ? (
-            <>Loading card...</>
+            <Loader />
         ) : (
             <div
                 className="product-card"

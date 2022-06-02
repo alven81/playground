@@ -1,5 +1,6 @@
 import React from "react";
 import AttributeElement from "./AttributeElement";
+import Loader from "./Loader";
 
 class Attribute extends React.Component {
     constructor(props) {
@@ -9,19 +10,21 @@ class Attribute extends React.Component {
             item: [],
         };
     }
-
+    
+    // itemListTempArray -> itemlist - saving empty properties for waitForCart
     componentDidUpdate(prevProps) {
         if (this.props.item !== prevProps.item) {
             const itemListTempArray = {};
             this.props.item.map((item) => (itemListTempArray[item.id] = ""));
-            //console.log("itemListTempArray", itemListTempArray);
+            console.log("itemListTempArray", itemListTempArray);
             this.setState({ itemList: itemListTempArray });
         }
     }
 
+    
     render() {
         return !this.props.item.length && !this.state.itemList.length ? (
-            <p>LOADING-Attribute</p>
+            <Loader/>
         ) : (
             <div className="attribute">
                 {this.props.item.map((element, index) => (

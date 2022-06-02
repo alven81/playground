@@ -1,9 +1,13 @@
-import {LOAD_MENU_ERROR, LOAD_MENU_LOADING, LOAD_MENU_SUCCESS} from "../actions/actions";
+import {
+    LOAD_MENU_ERROR,
+    LOAD_MENU_LOADING,
+    LOAD_MENU_SUCCESS,
+} from "../actions/actions";
 
 const initialState = {
     data: [],
     loading: false,
-    error: ''
+    error: "",
 };
 
 export default function loadMenu(state = initialState, action) {
@@ -12,21 +16,21 @@ export default function loadMenu(state = initialState, action) {
             return {
                 ...state,
                 loading: true,
-                error:''
+                error: "",
             };
         }
         case LOAD_MENU_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
-                loading: false
-            }
+                loading: false,
+            };
         }
         case LOAD_MENU_ERROR: {
             return {
                 ...state,
                 loading: false,
-                error: action.error
+                error: action.error,
             };
         }
         default: {

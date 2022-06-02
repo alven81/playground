@@ -2,40 +2,44 @@ import React from "react";
 import { connect } from "react-redux";
 import AttributeItem from "./AttributeItem";
 import { waitForCart } from "../../store/actions/actions";
+import Loader from "./Loader";
 
 class AttributeElement extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedId: [],
-            itemList: this.props.itemList,
+            //itemList: this.props.itemList,
         };
     }
 
     componentDidMount() {
-        this.setState({ itemList: this.props.itemList });
-        
+        //this.setState({ itemList: this.props.itemList });
     }
 
+    //if load or click property => send to redux
     componentDidUpdate(prevProps) {
-        if (this.state.itemList !== prevProps.itemList)
-            this.props.waitForCart(this.state.itemList);
+        if (this.props.itemList !== prevProps.itemList)
+            this.props.waitForCart(this.props.itemList);
     }
-
-    setItemListProperty = (itemId, itemResult) => {
-        let tempItem = this.state.itemList;
-        tempItem[itemId] = itemResult;
-        this.setState({ itemList: tempItem });
-    };
 
     handleOnItemClick = (e) => {
         this.setState({ selectedId: [this.props.element.id, e] });
         this.setItemListProperty(this.props.element.id, e);
     };
 
+    setItemListProperty = (itemId, itemResult) => {
+        console.log(this.props.itemList);
+        let tempItem = this.props.itemList;
+        tempItem[itemId] = itemResult;
+        //this.setState({ itemList: tempItem });
+        console.log("tempItem", tempItem);
+        this.props.waitForCart(tempItem);
+    };
+
     render() {
         return !this.props.element.items.length ? (
-            <>LOAD AttributeElement</>
+            <Loader />
         ) : (
             <div className="attribute_element">
                 <p className="attribute_element_name">
