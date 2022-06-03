@@ -10,15 +10,15 @@ import { default as cart } from "./reducer/cartReducer";
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
-    loadCategories,
-    loadMenu,
-    loadCurrencies,
-    currency,
-    category,
-    selectedProductId,
-    loadProduct,
-    waitForCart,
-    cart,
+	loadCategories,
+	loadMenu,
+	loadCurrencies,
+	currency,
+	category,
+	selectedProductId,
+	loadProduct,
+	waitForCart,
+	cart,
 });
 
 export default reducers;

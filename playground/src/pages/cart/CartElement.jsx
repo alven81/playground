@@ -3,131 +3,185 @@ import { connect } from "react-redux";
 import Attribute from "../components/Attribute";
 import Name from "../components/Name";
 import Price from "../components/Price";
-import { loadProduct } from "../../store/actions/actions";
+import { addToCart } from "../../store/actions/actions";
 import ErrorBoundary from "../../utils/ErrorBoundary";
 import axios from "axios";
 import ImageSwitcher from "./ImageSwitcher.jsx";
 import Loader from "../components/Loader";
 
 class CartElement extends React.Component {
-    // qty={item[0]} cartItem={item[1]} key={index} />
+	// qty={item[0]} cartItem={item[1]} key={index} />
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            //cardItem: this.props.cardItem,
-            categoriesQuery: `
-                 {
-                     product (id: "${this.props.cartItem.id}") {
-                         name
-                         inStock
-                         gallery
-                         description
-                         brand
-                         prices {
-                             currency {
-                                 label
-                                 symbol
-                             }
-                             amount
-                         }
-                         attributes {
-                             id
-                             name
-                             type
-                             items {
-                                 displayValue
-                                 value
-                                 id
-                             }
-                         }
-                     }
-                 }
-                 `,
-            productOptions: null,
-            // waitForCart: {}
-        };
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			//cardItem: this.props.cardItem,
+			categoriesQuery: `
+                {
+                    product (id: "${this.props.cartItem.id}") {
+                        name
+                        inStock
+                        gallery
+                        description
+                        brand
+                        prices {
+                            currency {
+                                label
+                                symbol
+                            }
+                            amount
+                        }
+                        attributes {
+                            id
+                            name
+                            type
+                            items {
+                                displayValue
+                                value
+                                id
+                            }
+                        }
+                    }
+                }
+                `,
+			productOptions: null,
+			//element: [],
+			// waitForCart: {}
+		};
+	}
 
-    async componentDidMount() {
-        await axios({
-            url: "http://localhost:4000/",
-            method: "POST",
-            data: {
-                query: this.state.categoriesQuery,
-            },
-        })
-            .then((response) => response.data.data)
-            .then((response) => response.product)
-            .then((productOptions) => this.setState({ productOptions }));
-    }
+	async componentDidMount() {
+		await axios({
+			url: "http://localhost:4000/",
+			method: "POST",
+			data: {
+				query: this.state.categoriesQuery,
+			},
+		})
+			.then((response) => response.data.data)
+			.then((response) => response.product)
+			.then((productOptions) => this.setState({ productOptions }));
+	}
 
-    handleUpQantity = (e) => {
-        const tempCart = this.props.productsInCart;
-        console.log(tempCart[[1]]);
-        let newCart = tempCart.map(item => (item[[1]][1] === this.props.productsInCart) ? console.log(item[[1]][0] += 1) : item)
-        console.log(newCart);
-    }
+	handleUpQantity = (productInCartId) => {
+		const tempCart = this.props.productsInCart;
+		tempCart.map((productInCart) => this.encreaseQuantityInCart(productInCart, productInCartId));
+	};
 
+	encreaseQuantityInCart = (productInCart, productInCartId) => {
+		if (productInCart[1] === productInCartId) {
+			//itemUp[0];
+			this.props.addToCart(productInCart);
+			return;
+		}
+		return;
+	};
 
-    render() {
-        return this.state.productOptions == null ? (
-            <Loader />
-        ) : (
-            <>
-                <div className="cart_product_info">
-                    <ErrorBoundary>
-                        <Name
-                            brand={this.state.productOptions.brand}
-                            name={this.state.productOptions.name}
-                        />
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                        <Price
-                            classCurrency={"hide"}
-                            price={this.state.productOptions.prices}
-                        />
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                        {this.state.productOptions.attributes && (
-                            <Attribute
-                                item={this.state.productOptions.attributes}
-                            />
-                        )}
-                    </ErrorBoundary>
-                </div>
-                <div className="cart_product_quantity">
-                    <button onClick={(e) => this.handleUpQantity(this.props.productId)} />
-                    <span>{this.props.qty}</span>
-                    <button />
-                </div>
-                <div className="cart_product_image">
-                    <ErrorBoundary>
-                        {this.state.productOptions.gallery && (
-                            <ImageSwitcher
-                                images={this.state.productOptions.gallery}
-                            />
-                        )}
-                    </ErrorBoundary>
-                </div>
-            </>
-        );
-    }
+	handleDownQantity = (productInCartId) => {
+		const tempCart = this.props.productsInCart;
+		tempCart.map((productInCart) => this.decreaseQuantityInCart(productInCart, productInCartId));
+	};
+
+	decreaseQuantityInCart = (productInCart, productInCartId) => {
+		if (productInCart[1] === productInCartId) {
+			if (productInCart[0] !== 1) {
+				productInCart[0] -= 2;
+				this.props.addToCart(productInCart);
+				return;
+			}
+		} else return;
+	};
+
+	render() {
+		return this.state.productOptions == null ? (
+			<Loader />
+		) : (
+			<>
+				<div className="cart_product_info">
+					<ErrorBoundary>
+						<Name
+							brand={this.state.productOptions.brand}
+							name={this.state.productOptions.name}
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<Price
+							classCurrency={"hide"}
+							price={this.state.productOptions.prices}
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						{this.state.productOptions.attributes && (
+							<Attribute
+								item={this.state.productOptions.attributes}
+							/>
+						)}
+					</ErrorBoundary>
+				</div>
+				<div className="cart_product_quantity">
+					<button
+						onClick={() =>
+							this.handleUpQantity(this.props.productId)
+						}
+					/>
+					<span>{this.props.qty}</span>
+					<button
+						onClick={() =>
+							this.handleDownQantity(this.props.productId)
+						}
+					/>
+				</div>
+				<div className="cart_product_image">
+					<ErrorBoundary>
+						{this.state.productOptions.gallery && (
+							<ImageSwitcher
+								images={this.state.productOptions.gallery}
+							/>
+						)}
+					</ErrorBoundary>
+				</div>
+			</>
+		);
+	}
 }
 
 const mapStateToProps = (state) => ({
-    productsInCart: state.cart.data,
-    //productId: state.reduxProductId.data,
-    //productOptionsList: state.reduxProduct.data,
-    //waitForCartAttributes: state.reduxWaitForCart.data
+	productsInCart: state.cart.data,
+	//productId: state.reduxProductId.data,
+	//productOptionsList: state.reduxProduct.data,
+	//waitForCartAttributes: state.reduxWaitForCart.data
 });
 
 const mapDispatchToProps = {
-    loadProduct,
-    //addToCart
+	//loadProduct,
+	addToCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartElement);
 
+// handleUpQantity = (up) => {
+//     const tempCart = this.props.productsInCart;
+//     tempCart.map((itemUp) => this.encreaseQuantityInCart(itemUp, up));
+// };
 
+// encreaseQuantityInCart = (itemUp, up) => {
+//     if (itemUp[1] === up) {
+//         itemUp[0] = itemUp[0]++;
+//         this.props.addToCart(itemUp);
+//         return;
+//     }
+//     return;
+// };
 
+// handleDownQantity = (down) => {
+//     const tempCart = this.props.productsInCart;
+//     tempCart.map((itemDown) => this.decreaseQuantityInCart(itemDown, down));
+// };
+
+// decreaseQuantityInCart = (itemDown, down) => {
+//     if (itemDown[1] === down) {
+//         if (itemDown[0] !== 1) itemDown[0] = itemDown[0]--;
+//         this.props.addToCart(itemDown);
+//         return;
+//     } else return;
+// };
