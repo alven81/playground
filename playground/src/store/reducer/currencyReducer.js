@@ -1,7 +1,7 @@
 import { SET_CURRENCY } from "../actions/actions";
 
 const initialState = {
-    data: [],
+    data: [0],
 };
 
 export default function currency(state = initialState, action) {

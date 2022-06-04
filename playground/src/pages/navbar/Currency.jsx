@@ -1,49 +1,26 @@
 import "../../App.scss";
 import React from "react";
-import { loadCurrencies } from "../../store/actions/actions";
-import { connect } from "react-redux";
 import CurrencyElement from "./CurrencyElement";
+import Loader from "../components/Loader";
 
 class Currency extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currencyQuery: `{
-                currencies  {
-                    label
-                    symbol
-                }
-            }`,
-        };
-    }
-
-    componentDidMount() {
-        this.props.loadCurrencies(this.state.currencyQuery);
-    }
-
     render() {
         return (
-            <>
+            <ul>
                 {!this.props.currencyList.length ? (
-                    <>LOADER</>
+                    <Loader />
                 ) : (
                     this.props.currencyList.map((item, index) => (
-                        <CurrencyElement currencyItem={item} key={index} />
+                        <CurrencyElement
+                            currencyItem={item}
+                            key={index}
+                            currencyNumber={index}
+                        />
                     ))
                 )}
-            </>
+            </ul>
         );
     }
 }
 
-const mapStateToProps = (state) => ({
-    currencyList: state.loadCurrencies.data,
-    loading: state.loadCurrencies.loading,
-    error: state.loadCurrencies.error,
-});
-
-const mapDispatchToProps = {
-    loadCurrencies,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Currency);
+export default Currency;

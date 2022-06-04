@@ -3,14 +3,18 @@ import { connect } from "react-redux";
 import Attribute from "../components/Attribute";
 import Name from "../components/Name";
 import Price from "../components/Price";
-import { loadProduct, addToCart } from "../../store/actions/actions";
+import {
+    loadProduct,
+    addToCart,
+    waitForCart,
+} from "../../store/actions/actions";
 import ImageBox from "./ImageBox";
 import ErrorBoundary from "../../utils/ErrorBoundary";
 class Product extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			categoriesQuery: `
+    constructor(props) {
+        super(props);
+        this.state = {
+            categoriesQuery: `
                     {
                         product (id: "${this.props.productId[0]}") {
                             name
@@ -38,108 +42,113 @@ class Product extends React.Component {
                         }
                     }
                 `,
-			waitForCart: {},
-		};
-	}
+            //waitForCart: {},
+        };
+    }
 
-	componentDidMount() {
-		this.props.loadProduct(
-			this.state.categoriesQuery,
-			this.props.productId[0]
-		);
-	}
+    componentDidMount() {
+        this.props.loadProduct(
+            this.state.categoriesQuery,
+            this.props.productId[0]
+        );
+    }
 
-	handleAddToCart = (e) => {
-		this.isAllAttributesSelected(this.props.waitForCartAttributes);
-	};
+    componentWillUnmount() {
+        console.log("UNMOUNT");
+        this.props.waitForCart({ id: this.props.productId[0] });
+    }
 
-	isAllAttributesSelected(attributes) {
-		console.log("attributes", attributes);
-		let isEmpty = 0;
+    handleAddToCart = (e) => {
+        this.isAllAttributesSelected(this.props.waitForCartAttributes);
+    };
 
-		for (let item in attributes) {
-			if (attributes[item] === "") {
-				++isEmpty;
-			}
-		}
+    isAllAttributesSelected(attributes) {
+        console.log("attributes", attributes);
+        let isEmpty = 0;
 
-		if (isEmpty) {
-			console.log("not all attributes were filled!!!");
-		} else {
-			attributes["id"] = this.props.productId[0];
-			const elementForCart = Object.assign({}, attributes);
-			this.props.addToCart([1, Math.random() * 10e16, elementForCart]);
-		}
-	}
+        for (let item in attributes) {
+            if (attributes[item] === "") {
+                ++isEmpty;
+            }
+        }
+        if (isEmpty) {
+            console.log("not all attributes were filled!!!");
+        } else {
+            attributes["id"] = this.props.productId[0];
+            const elementForCart = Object.assign({}, attributes);
+            this.props.addToCart([1, Math.random() * 10e16, elementForCart]);
+        }
+    }
 
-	render() {
-		if (this.props.loading) {
-			return <div>Loading...</div>;
-		}
-		if (this.props.error) {
-			return (
-				<div style={{ color: "red" }}>ERROR: {this.props.error}</div>
-			);
-		}
-		return (
-			<div className="product container">
-				<div className="product_images">
-					<ErrorBoundary>
-						{this.props.productOptions.gallery && (
-							<ImageBox
-								images={this.props.productOptions.gallery}
-							/>
-						)}
-					</ErrorBoundary>
-				</div>
-				<div className="product_info">
-					<Name
-						brand={this.props.productOptions.brand}
-						name={this.props.productOptions.name}
-					/>
-					<ErrorBoundary>
-						{this.props.productOptions.attributes && (
-							<Attribute
-								item={this.props.productOptions.attributes}
-							/>
-						)}
-					</ErrorBoundary>
-					<ErrorBoundary>
-						{this.props.productOptions.prices && (
-							<Price
-								classCurrency={"price_label-show"}
-								price={this.props.productOptions.prices}
-							/>
-						)}
-					</ErrorBoundary>
-					<button
-						className="product_info_button"
-						onClick={() => this.handleAddToCart()}
-					>
-						Add to cart
-					</button>
-					<div className="product_info_description">
-						<div
-							dangerouslySetInnerHTML={{
-								__html: this.props.productOptions.description,
-							}}
-						/>
-					</div>
-				</div>
-			</div>
-		);
-	}
+    render() {
+        if (this.props.loading) {
+            return <div>Loading...</div>;
+        }
+        if (this.props.error) {
+            return (
+                <div style={{ color: "red" }}>ERROR: {this.props.error}</div>
+            );
+        }
+        return (
+            <div className="product container">
+                <div className="product_images">
+                    <ErrorBoundary>
+                        {this.props.productOptions.gallery && (
+                            <ImageBox
+                                images={this.props.productOptions.gallery}
+                            />
+                        )}
+                    </ErrorBoundary>
+                </div>
+                <div className="product_info">
+                    <Name
+                        brand={this.props.productOptions.brand}
+                        name={this.props.productOptions.name}
+                    />
+                    <ErrorBoundary>
+                        {this.props.productOptions.attributes && (
+                            <Attribute
+                                item={this.props.productOptions.attributes}
+                            />
+                        )}
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                        {this.props.productOptions.prices && (
+                            <Price
+                                classCurrency={"price_label-show"}
+                                price={this.props.productOptions.prices}
+                            />
+                        )}
+                    </ErrorBoundary>
+                    <button
+                        className="product_info_button"
+                        onClick={() => this.handleAddToCart()}
+                    >
+                        Add to cart
+                    </button>
+                    <div className="product_info_description">
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: this.props.productOptions.description,
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = (state) => ({
-	productId: state.selectedProductId.data,
-	productOptions: state.loadProduct.data,
-	waitForCartAttributes: state.waitForCart.data,
+    productId: state.selectedProductId.data,
+    productOptions: state.loadProduct.data,
+    waitForCartAttributes: state.waitForCart.data,
 });
 
 const mapDispatchToProps = {
-	loadProduct,
-	addToCart,
+    loadProduct,
+    addToCart,
+    waitForCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

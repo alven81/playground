@@ -3,6 +3,7 @@ $--c-text: #1D1F22;
 $--c-black: #1D1F22;
 $--c-stock: #8D8F9A;
 $--c-white: #FFFFFF;
+$--c-bkgrnd: #EEEEEE;
 $--c-divider: #E5E5E5;
 
 @mixin fontRaleway ($weight, $fontSize, $lineHeight) {
@@ -140,33 +141,199 @@ h3 {
     }
 
     &-currency {
+        position: relative;
         display: flex;
         @include fontRaleway(500, 18, 29);
         color: $--c-black;
+        position: relative;
+        z-index: 100;
+        cursor: pointer;
+        // span {
+        //     position: absolute;
+        //     bottom: -5px;
+        //     right: 85px;
+        // }
+        &-container{
+            display: flex;
+            width: 40px;
+            margin-right: 22px;
+            //height: 29px;
+            span {
+                display: block;
+            }
+            &-sign {
+                @include fontRaleway(500, 18, 29);
+                color: $--c-black;
+                padding: 0 10px;
+            }
+            &-arrows {
+                position: relative;
+                //border: 1px solid black;
+                // position: relative;
+                // top: 0px;
+                //content: "";
+                display: block;
+                width: 10px;
+                //height: 20px;
+                // border-right: 1px solid black;
+                // border-top: 1px solid black;
+                // transform: rotate(135deg);
+                // margin-top: 10px;
+                //margin-right: 0.5em;
+                //margin-left: 1.0em;
+                transition: all 0.5s;
+                
+                &:after {
+                    position: absolute;
+                    top: 50%;
+                    right: 2px;
+                    transform:rotate(-45deg);
+                    content: '';
+                    //display: block;
+                    height: 6px;
+                    border-left: 1px solid $--c-black;
+
+                }
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 2px;
+                    transform:rotate(45deg);
+                    content: '';
+                    //display: block;
+                    height: 6px;
+                    border-right: 1px solid $--c-black;
+
+                }
+            }
+            .arrows_transform {
+                transform: scale(-1, -1);
+            }
+        }
+        
 
         &-select {
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
+            background: $--c-white;
+            position: absolute;
+            z-index: 100000;
+            top: 50px;
+            right: 0px;
+            min-width: 114px;
+            box-shadow: (0px 4px 35px rgba(168, 172, 176, 0.19));
+            padding: 20px 0;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+            
+            &.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            &-container {
+
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &-button {
+                background: transparent;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0;
+                border: none;
+                vertical-align: middle;
+                margin-left: auto;
+
+                /* Strictly for positioning */
+                //     img {
+                //         transition: all 0.3s ease;
+
+                //         &:hover {
+                //             transition: all 0.3s ease;
+                //             transform: scale(1.2);
+                //         }
+
+                //         &:active {
+                //             transition: all 0.1s ease;
+                //             transform: scale(1.05);
+                //         }
+                //     }
+            }
+
+            ul {
+
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    text-decoration: none;
+                    //color: #333333;
+                    //padding: 15px 20px;
+                    cursor: pointer;
+                    height: 45px;
+
+                    p {
+                        margin: 8px 20px;
+                    }
+
+                    &:hover {
+                        background-color: $--c-bkgrnd;
+                    }
+
+
+                    // &:last-child {
+                    //     border-top: 1px solid $productPrice;
+                    //     }
+                }
+            }
         }
+
+
 
         &-button {
             display: block;
+            position: relative;
             background-color: transparent;
             border: none;
             cursor: pointer;
+            margin-right: 20px;
 
-            &:hover {
-                transform: scale(1.08);
-                border-bottom: 2px solid $--c-primary;
-            }
+            // &:hover {
+            //     transform: scale(1.08);
+            //     border-bottom: 2px solid $--c-primary;
+            // }
 
-            &:active {
-                border-bottom: 2px solid $--c-primary;
+            // &:active {
+            //     border-bottom: 2px solid $--c-primary;
 
-                img {
-                    transform: scale(0.9);
-                }
+            //     img {
+            //         transform: scale(0.9);
+            //     }
+            // }
+            &-quantity {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: -5px;
+                right: -7px;
+                height: 20px;
+                width: 20px;
+                border-radius: 20px;
+                background-color: $--c-black;
+                @include fontRoboto(700, 14, 16);
+                color: $--c-white;
             }
         }
     }
@@ -677,3 +844,10 @@ h3 {
 //     color: #5ECE7B;
 //     background-color: #5ECE7B;
 // }
+
+
+
+.navlink {
+    text-decoration: none;
+    color: inherit;
+}

@@ -23,12 +23,10 @@ class Attribute extends React.Component {
 
     
     render() {
-        return !this.props.item.length && !this.state.itemList.length ? (
-            <Loader/>
-        ) : (
-            <div className="attribute">
+        return      <div className="attribute">
                 {this.props.item.map((element, index) => (
                     <AttributeElement
+                        cartItem={this.props.cartItem}
                         element={element}
                         itemList={this.state.itemList}
                         key={index}
@@ -36,7 +34,7 @@ class Attribute extends React.Component {
                     />
                 ))}
             </div>
-        );
+   
     }
 }
 

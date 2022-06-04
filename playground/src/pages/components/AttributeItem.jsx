@@ -11,6 +11,7 @@ class AttributeItem extends React.Component {
     // }
 
     componentDidMount() {
+        console.log("this.state.cartItem", this.props.cartItem);
        // console.log("item", this.props.type);
     }
     

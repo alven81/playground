@@ -49,6 +49,7 @@ class AttributeElement extends React.Component {
                     ) : (
                     this.props.element.items.map((item, index) => (
                         <AttributeItem
+                            cartItem={this.props.cartItem}
                             key={index}
                             selectedId={this.state.selectedId}
                             item={item}
