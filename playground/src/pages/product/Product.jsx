@@ -109,6 +109,7 @@ class Product extends React.Component {
                         {this.props.productOptions.attributes && (
                             <Attribute
                                 item={this.props.productOptions.attributes}
+                                buttonActivity={""}
                             />
                         )}
                     </ErrorBoundary>

@@ -2,35 +2,35 @@ import React from "react";
 import Loader from "./Loader";
 
 class AttributeItem extends React.Component {
-    //constructor(props) {
+    // constructor(props) {
     //     super(props);
     //     this.state = {
-    //         item: null,
-    //         type: null,
+    //         // valueSelected: null
+    //         // item: null,
+    //         // type: null,
+    //         //cartItemArray: null
     //     };
     // }
 
-    componentDidMount() {
-        console.log("this.state.cartItem", this.props.cartItem);
-       // console.log("item", this.props.type);
-    }
-    
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.item !== prevProps.item) {
-    //         this.setState({
-    //             item: this.props.item,
-    //             type: this.props.type,
-    //         });
-    //     }
-    // }
+    isItValueSelected = () => {
+        for (let res in this.props.cartItem) {
+            //console.log("cartItemArray: ", this.props.cartItem[res]);
+            if (this.props.cartItem[res] === this.props.item.id)
+                return "selected";
+        }
+        return "";
+    };
 
     render() {
         return (
             <div>
-                { !this.props.item.length && !this.props.type ? (
-                    <Loader/>
+                {!this.props.item.length &&
+                !this.props.type &&
+                this.state.valueSelected !== null ? (
+                    <Loader />
                 ) : (
                     <button
+                        disabled={this.props.buttonActivity}
                         onClick={(e) =>
                             this.props.handleOnItemClick(this.props.item.id)
                         }
@@ -42,7 +42,8 @@ class AttributeItem extends React.Component {
                             this.props.selectedId[1] === this.props.item.id
                                 ? "selected"
                                 : ""
-                        }`}
+                        }${this.isItValueSelected()}
+                        `}
                     >
                         <p>
                             {this.props.type === "text"
@@ -57,63 +58,3 @@ class AttributeItem extends React.Component {
 }
 
 export default AttributeItem;
-
-
-
-// import React from "react";
-
-// class AttributeItem extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             item: "",
-//             type: "",
-//         };
-//     }
-
-//     componentDidMount() {
-//         console.log("item", this.props.item);
-//     }
-    
-//     componentDidUpdate(prevProps) {
-//         if (this.props.item !== prevProps.item) {
-//             this.setState({
-//                 item: this.props.item,
-//                 type: this.props.type,
-//             });
-//         }
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 {!this.props.item && !this.props.type ? (
-//                     <p>LOADER AttributeItem</p>
-//                 ) : (
-//                     <button
-//                         onClick={(e) =>
-//                             this.props.handleOnItemClick(this.props.item.id)
-//                         }
-//                         id={this.props.item.id}
-//                         style={{ backgroundColor: `${this.props.item.value}` }}
-//                         className={`attribute_element_items_${
-//                             this.state.type
-//                         } attribute_element_items_${this.state.type}_${
-//                             this.props.selectedId[1] === this.props.item.id
-//                                 ? "selected"
-//                                 : ""
-//                         }`}
-//                     >
-//                         <p>
-//                             {this.state.type === "text"
-//                                 ? this.props.item.value
-//                                 : ""}
-//                         </p>
-//                     </button>
-//                 )}
-//             </div>
-//         );
-//     }
-// }
-
-// export default AttributeItem;

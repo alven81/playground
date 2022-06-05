@@ -10,31 +10,31 @@ class Attribute extends React.Component {
             //item: [],
         };
     }
-    
+
     // itemListTempArray -> itemlist - saving empty properties for waitForCart
     componentDidUpdate(prevProps) {
         if (this.props.item !== prevProps.item) {
             const itemListTempArray = {};
             this.props.item.map((item) => (itemListTempArray[item.id] = ""));
-            //console.log("itemListTempArray", itemListTempArray);
+            console.log("itemListTempArray", itemListTempArray);
             this.setState({ itemList: itemListTempArray });
         }
     }
 
-    
     render() {
-        return      <div className="attribute">
+        return (
+            <div className="attribute">
                 {this.props.item.map((element, index) => (
                     <AttributeElement
                         cartItem={this.props.cartItem}
                         element={element}
                         itemList={this.state.itemList}
                         key={index}
-                        //loadIdForCart = {loadIdForCart}
+                        buttonActivity={this.props.buttonActivity}
                     />
                 ))}
             </div>
-   
+        );
     }
 }
 

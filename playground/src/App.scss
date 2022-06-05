@@ -66,12 +66,14 @@ $--c-divider: #E5E5E5;
 }
 
 h2 {
+    margin: 80px 0 55px;
     @include fontRaleway(400, 42, 29);
     text-transform: capitalize;
     color: $--c-text;
 }
 
 h3 {
+    margin: 80px 0 55px;
     @include fontRaleway(700, 32, 40);
     text-transform: capitalize;
     color: $--c-text;
@@ -558,6 +560,9 @@ h3 {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid $--c-divider;
+            &:first-child {
+                border-top: 1px solid $--c-divider;
+            }
         }
 
         &_info {
@@ -734,6 +739,19 @@ h3 {
 
                 }
             }
+        }
+    }
+    &_total {
+        display: flex;
+        &_title {
+            @include fontRaleway(400, 24, 28);
+            :last-child {
+                font-weight: 500;
+            }
+        }
+        &_value {
+            padding-left: 5px;
+            @include fontRaleway(700, 24, 28)
         }
     }
 }

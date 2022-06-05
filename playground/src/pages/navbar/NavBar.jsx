@@ -29,7 +29,7 @@ class Header extends React.Component {
 
     componentDidMount() {
         this.props.loadCurrencies(this.state.currencyQuery);
-        console.log("currencyList", this.props.currencyList);
+        //console.log("currencyList", this.props.currencyList);
     }
 
     componentDidUpdate(prevProps) {
@@ -106,7 +106,13 @@ class Header extends React.Component {
                     </div>
                     <button className="header-currency-button">
                         <img src="./img/cart.svg" alt="Cart" />
-                        <span className={this.state.productsInCart ? "header-currency-button-quantity" : "hide"}>
+                        <span
+                            className={
+                                this.state.productsInCart
+                                    ? "header-currency-button-quantity"
+                                    : "hide"
+                            }
+                        >
                             {this.state.productsInCart}
                         </span>
                     </button>
