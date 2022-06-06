@@ -17,6 +17,7 @@ export const SET_CATEGORY = "REDUX_SET_CATEGORY";
 export const SET_SELECTED_PRODUCT_ID = "REDUX_SET_SELECTED_PRODUCT_ID";
 export const WAIT_FOR_CART = "REDUX_WAIT_FOR_CART";
 export const ADD_TO_CART = "REDUX_ADD_TO_CART";
+export const CALC_TOTAL_PRICE = "REDUX_CALC_TOTAL_PRICE";
 
 export const loadCategories = (query, idCategory) => (dispatch) => {
     dispatch({ type: LOAD_CATEGORIES_LOADING });
@@ -113,6 +114,13 @@ export const waitForCart = (query) => {
 export const addToCart = (query) => {
     return {
         type: ADD_TO_CART,
+        payload: query,
+    };
+};
+
+export const calcTotalPrice = (query) => {
+    return {
+        type: CALC_TOTAL_PRICE,
         payload: query,
     };
 };

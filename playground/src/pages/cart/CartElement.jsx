@@ -62,7 +62,7 @@ class CartElement extends React.Component {
 			.then((response) => response.product)
 			.then((productOptions) => this.setState({ productOptions }));
 		//console.log("this.state.cartItem", this.props.cartItem);
-		//console.log("price", this.state.productOptions.prices);
+		//console.log(this.props.qty);
 	}
 
 	handleUpQantity = (productInCartId) => {
@@ -112,6 +112,8 @@ class CartElement extends React.Component {
 					</ErrorBoundary>
 					<ErrorBoundary>
 						<Price
+                            productId={this.props.productId}
+                            qty={this.props.qty}
 							classCurrency={"hide"}
 							price={this.state.productOptions.prices}
 						/>

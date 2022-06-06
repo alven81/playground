@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Loader from "./Loader";
+import { calcTotalPrice } from "../../store/actions/actions";
 
 class Price extends React.Component {
     constructor(props) {
@@ -10,9 +11,26 @@ class Price extends React.Component {
         };
     }
 
-    componentDidMount() {
-        //    console.log("Price: ", this.props.price);
-    }
+    componentDidMount(prevProps) {
+     //   if (this.props.productId === prevProps.productId ) {
+      //  if (this.props.qty) {
+           // if (this.props.productId !== prevProps.productId)
+            //
+            //this.props.calcTotalPrice(this.props.qty*this.props.price[this.props.whatCurrency].amount)
+            //this.props.calcTotalPrice(5)
+            //console.log("productId", this.props.productId, prevProps.productId);
+            //this.props.calcTotalPrice(this.props.qty*this.props.price[this.props.whatCurrency].amount)
+    //    }
+  //  }
+//console.log("MOUNTTTTTTTTTTT");
+     }
+
+     componentDidUpdate(prevProps) {
+         if (this.props.productId !== prevProps.productId ) {
+             this.props.calcTotalPrice(this.props.qty*this.props.price[this.props.whatCurrency].amount)
+        // }
+console.log("UPDATE");
+     }}
 
     render() {
         return this.props.whatCurrency === null ?? this.props.price === null ? (
@@ -33,4 +51,9 @@ const mapStateToProps = (state) => ({
     whatCurrency: state.currency.data,
 });
 
-export default connect(mapStateToProps)(Price);
+const mapDispatchToProps = {
+	//loadProduct,
+	calcTotalPrice,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Price);

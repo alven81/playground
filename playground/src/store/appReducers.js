@@ -7,6 +7,7 @@ import { default as category } from "./reducer/categoryReducer";
 import { default as selectedProductId } from "./reducer/selectedProductId";
 import { default as waitForCart } from "./reducer/waitForCart";
 import { default as cart } from "./reducer/cartReducer";
+import { default as calcTotalPrice } from "./reducer/calcTotalPriceReducer";
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
@@ -19,6 +20,7 @@ const reducers = combineReducers({
 	loadProduct,
 	waitForCart,
 	cart,
+    calcTotalPrice,
 });
 
 export default reducers;
