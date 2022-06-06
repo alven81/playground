@@ -10,13 +10,13 @@ import ImageSwitcher from "./ImageSwitcher.jsx";
 import Loader from "../components/Loader";
 
 class CartElement extends React.Component {
-    // qty={item[0]} cartItem={item[1]} key={index} />
+	// qty={item[0]} cartItem={item[1]} key={index} />
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            //cardItem: this.props.cardItem,
-            categoriesQuery: `
+	constructor(props) {
+		super(props);
+		this.state = {
+			//cardItem: this.props.cardItem,
+			categoriesQuery: `
                 {
                     product (id: "${this.props.cartItem.id}") {
                         name
@@ -44,125 +44,125 @@ class CartElement extends React.Component {
                     }
                 }
                 `,
-            productOptions: null,
-            //element: [],
-            // waitForCart: {}
-        };
-    }
+			productOptions: null,
+			//element: [],
+			// waitForCart: {}
+		};
+	}
 
-    async componentDidMount() {
-        await axios({
-            url: "http://localhost:4000/",
-            method: "POST",
-            data: {
-                query: this.state.categoriesQuery,
-            },
-        })
-            .then((response) => response.data.data)
-            .then((response) => response.product)
-            .then((productOptions) => this.setState({ productOptions }));
-        //console.log("this.state.cartItem", this.props.cartItem);
-        //console.log("price", this.state.productOptions.prices);
-    }
+	async componentDidMount() {
+		await axios({
+			url: "http://localhost:4000/",
+			method: "POST",
+			data: {
+				query: this.state.categoriesQuery,
+			},
+		})
+			.then((response) => response.data.data)
+			.then((response) => response.product)
+			.then((productOptions) => this.setState({ productOptions }));
+		//console.log("this.state.cartItem", this.props.cartItem);
+		//console.log("price", this.state.productOptions.prices);
+	}
 
-    handleUpQantity = (productInCartId) => {
-        const tempCart = this.props.productsInCart;
-        tempCart.map((productInCart) =>
-            this.encreaseQuantityInCart(productInCart, productInCartId)
-        );
-    };
+	handleUpQantity = (productInCartId) => {
+		const tempCart = this.props.productsInCart;
+		tempCart.map((productInCart) =>
+			this.encreaseQuantityInCart(productInCart, productInCartId)
+		);
+	};
 
-    encreaseQuantityInCart = (productInCart, productInCartId) => {
-        if (productInCart[1] === productInCartId) {
-            //itemUp[0];
-            this.props.addToCart(productInCart);
-            return;
-        }
-        return;
-    };
+	encreaseQuantityInCart = (productInCart, productInCartId) => {
+		if (productInCart[1] === productInCartId) {
+			//itemUp[0];
+			this.props.addToCart(productInCart);
+			return;
+		}
+		return;
+	};
 
-    handleDownQantity = (productInCartId) => {
-        const tempCart = this.props.productsInCart;
-        tempCart.map((productInCart) =>
-            this.decreaseQuantityInCart(productInCart, productInCartId)
-        );
-    };
+	handleDownQantity = (productInCartId) => {
+		const tempCart = this.props.productsInCart;
+		tempCart.map((productInCart) =>
+			this.decreaseQuantityInCart(productInCart, productInCartId)
+		);
+	};
 
-    decreaseQuantityInCart = (productInCart, productInCartId) => {
-        if (productInCart[1] === productInCartId) {
-            if (productInCart[0] !== 1) {
-                productInCart[0] -= 2;
-                this.props.addToCart(productInCart);
-                return;
-            }
-        } else return;
-    };
+	decreaseQuantityInCart = (productInCart, productInCartId) => {
+		if (productInCart[1] === productInCartId) {
+			if (productInCart[0] !== 1) {
+				productInCart[0] -= 2;
+				this.props.addToCart(productInCart);
+				return;
+			}
+		} else return;
+	};
 
-    render() {
-        return this.state.productOptions == null ? (
-            <Loader />
-        ) : (
-            <>
-                <div className="cart_product_info">
-                    <ErrorBoundary>
-                        <Name
-                            brand={this.state.productOptions.brand}
-                            name={this.state.productOptions.name}
-                        />
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                        <Price
-                            classCurrency={"hide"}
-                            price={this.state.productOptions.prices}
-                        />
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                        {this.state.productOptions.attributes && (
-                            <Attribute
-                                item={this.state.productOptions.attributes}
-                                cartItem={this.props.cartItem}
-                                buttonActivity={"disabled"}
-                            />
-                        )}
-                    </ErrorBoundary>
-                </div>
-                <div className="cart_product_quantity">
-                    <button
-                        onClick={() =>
-                            this.handleUpQantity(this.props.productId)
-                        }
-                    />
-                    <span>{this.props.qty}</span>
-                    <button
-                        onClick={() =>
-                            this.handleDownQantity(this.props.productId)
-                        }
-                    />
-                </div>
-                <div className="cart_product_image">
-                    <ErrorBoundary>
-                        {this.state.productOptions.gallery && (
-                            <ImageSwitcher
-                                images={this.state.productOptions.gallery}
-                            />
-                        )}
-                    </ErrorBoundary>
-                </div>
-            </>
-        );
-    }
+	render() {
+		return this.state.productOptions == null ? (
+			<Loader />
+		) : (
+			<>
+				<div className="cart_product_info">
+					<ErrorBoundary>
+						<Name
+							brand={this.state.productOptions.brand}
+							name={this.state.productOptions.name}
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<Price
+							classCurrency={"hide"}
+							price={this.state.productOptions.prices}
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						{this.state.productOptions.attributes && (
+							<Attribute
+								item={this.state.productOptions.attributes}
+								cartItem={this.props.cartItem}
+								buttonActivity={"disabled"}
+							/>
+						)}
+					</ErrorBoundary>
+				</div>
+				<div className="cart_product_quantity">
+					<button
+						onClick={() =>
+							this.handleUpQantity(this.props.productId)
+						}
+					/>
+					<span>{this.props.qty}</span>
+					<button
+						onClick={() =>
+							this.handleDownQantity(this.props.productId)
+						}
+					/>
+				</div>
+				<div className="cart_product_image">
+					<ErrorBoundary>
+						{this.state.productOptions.gallery && (
+							<ImageSwitcher
+								images={this.state.productOptions.gallery}
+							/>
+						)}
+					</ErrorBoundary>
+				</div>
+			</>
+		);
+	}
 }
 
 const mapStateToProps = (state) => ({
-    productsInCart: state.cart.data,
-    //productId: state.reduxProductId.data,
-    //productOptionsList: state.reduxProduct.data,
-    //waitForCartAttributes: state.reduxWaitForCart.data
+	productsInCart: state.cart.data,
+	//productId: state.reduxProductId.data,
+	//productOptionsList: state.reduxProduct.data,
+	//waitForCartAttributes: state.reduxWaitForCart.data
 });
 
 const mapDispatchToProps = {
-    //loadProduct,
-    addToCart,
+	//loadProduct,
+	addToCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartElement);

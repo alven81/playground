@@ -101,6 +101,7 @@ class Header extends React.Component {
                                 ? "header-currency-select active"
                                 : "header-currency-select"
                         }
+                        onClick={() => this.handleDropDownMenu()}
                     >
                         <Currency currencyList={this.props.currencyList} />
                     </div>
