@@ -63,6 +63,7 @@ class CartElement extends React.Component {
 			.then((productOptions) => this.setState({ productOptions }));
 		//console.log("this.state.cartItem", this.props.cartItem);
 		//console.log(this.props.qty);
+        console.log("CartElement MOUNTTTTTTTTTTT");
 	}
 
 	handleUpQantity = (productInCartId) => {

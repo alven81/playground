@@ -13,24 +13,24 @@ class Price extends React.Component {
 
     componentDidMount(prevProps) {
      //   if (this.props.productId === prevProps.productId ) {
-      //  if (this.props.qty) {
-           // if (this.props.productId !== prevProps.productId)
+        if (this.props.qty) {
+            //if (this.props.productId !== prevProps.productId)
             //
-            //this.props.calcTotalPrice(this.props.qty*this.props.price[this.props.whatCurrency].amount)
+            this.props.calcTotalPrice([this.props.qty*this.props.price[this.props.whatCurrency].amount, this.props.productId])
             //this.props.calcTotalPrice(5)
             //console.log("productId", this.props.productId, prevProps.productId);
             //this.props.calcTotalPrice(this.props.qty*this.props.price[this.props.whatCurrency].amount)
     //    }
   //  }
-//console.log("MOUNTTTTTTTTTTT");
+console.log("PRICE MOUNTTTTTTTTTTT");
      }
-
-     componentDidUpdate(prevProps) {
-         if (this.props.productId !== prevProps.productId ) {
-             this.props.calcTotalPrice(this.props.qty*this.props.price[this.props.whatCurrency].amount)
+    }
+   //  componentDidUpdate(prevProps) {
+        // if (this.props.productId === prevProps.productId ) {
+             //this.props.calcTotalPrice(this.props.qty*this.props.price[this.props.whatCurrency].amount)
         // }
-console.log("UPDATE");
-     }}
+//console.log("UPDATE Price");
+  //   }}
 
     render() {
         return this.props.whatCurrency === null ?? this.props.price === null ? (

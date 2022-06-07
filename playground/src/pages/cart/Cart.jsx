@@ -23,7 +23,7 @@ class Cart extends React.Component {
             currencyValue:
                 this.props.currencyList[this.props.currencyId].symbol,
         });
-        
+        console.log("Cart MOUNTTTTTTTTTTT");
     }
 
     componentDidUpdate(prevProps) {
