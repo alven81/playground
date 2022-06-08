@@ -750,6 +750,7 @@ h3 {
         }
     }
     &_total {
+        padding-top: 8px;
         display: flex;
         &_title {
             @include fontRaleway(400, 24, 28);

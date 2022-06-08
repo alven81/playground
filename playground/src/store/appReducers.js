@@ -2,6 +2,7 @@ import { default as loadCategories } from "./reducer/loadCategoriesReducer";
 import { default as loadMenu } from "./reducer/loadMenuReducer";
 import { default as loadCurrencies } from "./reducer/loadCurrenciesReducer";
 import { default as loadProduct } from "./reducer/loadProductReducer";
+import { default as loadCartElement } from "./reducer/loadCartElementReducer";
 import { default as currency } from "./reducer/currencyReducer";
 import { default as category } from "./reducer/categoryReducer";
 import { default as selectedProductId } from "./reducer/selectedProductId";
@@ -14,6 +15,7 @@ const reducers = combineReducers({
 	loadCategories,
 	loadMenu,
 	loadCurrencies,
+    loadCartElement,
 	currency,
 	category,
 	selectedProductId,
@@ -21,6 +23,7 @@ const reducers = combineReducers({
 	waitForCart,
 	cart,
     calcTotalPrice,
+   
 });
 
 export default reducers;

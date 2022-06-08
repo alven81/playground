@@ -12,6 +12,9 @@ export const LOAD_CURRENCIES_ERROR = "REDUX_THUNK_LOAD_CURRENCIES_ERROR";
 export const LOAD_PRODUCT_LOADING = "REDUX_THUNK_LOAD_PRODUCT_LOADING";
 export const LOAD_PRODUCT_SUCCESS = "REDUX_THUNK_LOAD_PRODUCT_SUCCESS";
 export const LOAD_PRODUCT_ERROR = "REDUX_THUNK_LOAD_PRODUCT_ERROR";
+export const LOAD_CART_ELEMENT_LOADING = "REDUX_THUNK_LOAD_CART_ELEMENT_LOADING";
+export const LOAD_CART_ELEMENT_SUCCESS = "REDUX_THUNK_LOAD_CART_ELEMENT_SUCCESS";
+export const LOAD_CART_ELEMENT_ERROR = "REDUX_THUNK_LOAD_CART_ELEMENT_ERROR";
 export const SET_CURRENCY = "REDUX_SET_CURRENCY";
 export const SET_CATEGORY = "REDUX_SET_CATEGORY";
 export const SET_SELECTED_PRODUCT_ID = "REDUX_SET_SELECTED_PRODUCT_ID";
@@ -78,6 +81,22 @@ export const loadProduct = (query, idProduct) => (dispatch) => {
             (error) =>
                 dispatch({
                     type: LOAD_PRODUCT_ERROR,
+                    error: error.message || "Unexpected Error!!!",
+                })
+        );
+};
+
+export const loadCartElement = (query, itemId) => (dispatch) => {
+    dispatch({ type: LOAD_CART_ELEMENT_LOADING });
+
+    Api.getData(query, itemId)
+        .then((response) => response.data.data)
+        .then((response) => response.product)
+        .then(
+            (data) => dispatch({ type: LOAD_CART_ELEMENT_SUCCESS, data }),
+            (error) =>
+                dispatch({
+                    type: LOAD_CART_ELEMENT_ERROR,
                     error: error.message || "Unexpected Error!!!",
                 })
         );

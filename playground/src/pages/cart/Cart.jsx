@@ -13,7 +13,6 @@ class Cart extends React.Component {
             totalPriceInCart: 0,
             totalTaxInCart: 0,
             currencyValue: "",
-            
         };
     }
 
@@ -25,9 +24,10 @@ class Cart extends React.Component {
             totalPriceInCart: this.calcTotalPriceInCart(
                 this.props.productsInCart
             ),
-            totalTaxInCart: (this.calcTotalPriceInCart(
-                this.props.productsInCart
-            )/121*21).toFixed(2),
+            totalTaxInCart: (
+                (this.calcTotalPriceInCart(this.props.productsInCart) / 121) *
+                21
+            ).toFixed(2),
             currencyValue:
                 this.props.currencyList[this.props.currencyId].symbol,
         });
@@ -45,9 +45,11 @@ class Cart extends React.Component {
                 totalProductsInCart: this.calcTotalProductsInCart(
                     this.props.productsInCart
                 ),
-                totalTaxInCart: (this.calcTotalPriceInCart(
-                    this.props.productsInCart
-                )/121*21).toFixed(2),
+                totalTaxInCart: (
+                    (this.calcTotalPriceInCart(this.props.productsInCart) /
+                        121) *
+                    21
+                ).toFixed(2),
             });
         }
 
@@ -78,24 +80,19 @@ class Cart extends React.Component {
                     <div className="category_title">
                         <h3>CART</h3>
                     </div>
-                    {/* <button
-                        onClick={() => console.log(this.props.productsInCart)}
-                    >
-                        click
-                    </button> */}
                     <div className="cart_product">
                         {!this.props.productsInCart.length ? (
                             <Loader />
                         ) : (
                             this.props.productsInCart.map((item, index) => {
                                 return (
-                                    <div className="cart_product_element">
+                                    <div className="cart_product_element" key={index}>
                                         <ErrorBoundary>
                                             <CartElement
                                                 qty={item[0]}
                                                 productId={item[1]}
                                                 cartItem={item[2]}
-                                                key={index}
+                                                //key={index}
                                             />
                                         </ErrorBoundary>
                                     </div>
@@ -110,7 +107,10 @@ class Cart extends React.Component {
                             <p>Total:</p>
                         </div>
                         <div className="cart_total_value">
-                            <p>{this.state.currencyValue}{this.state.totalTaxInCart}</p>
+                            <p>
+                                {this.state.currencyValue}
+                                {this.state.totalTaxInCart}
+                            </p>
                             <p>{this.state.totalProductsInCart}</p>
                             <p>
                                 {this.state.currencyValue}
@@ -118,11 +118,7 @@ class Cart extends React.Component {
                             </p>
                         </div>
                     </div>
-                    <button
-                        className="cart_button"
-                    >
-                        Order
-                    </button>
+                    <button className="cart_button">Order</button>
                 </div>
             </>
         );

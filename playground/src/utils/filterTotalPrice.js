@@ -6,8 +6,8 @@ function findSameProduct(arrayValuesForTotalPrice, priceForCheck) {
         (value) => value[1] === priceForCheck[1]
         //(value) => console.log("1: ",value[2], ", 2: ", product[2])
     );
-    console.log("isIt",isIt);
-    return isIt
+    console.log("isIt", isIt);
+    return isIt;
     // if (isIt !== -1) {
     //     //console.log(priceForCheck[1]);
     //     return priceForCheck[0];
