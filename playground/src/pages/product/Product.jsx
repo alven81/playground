@@ -76,7 +76,7 @@ class Product extends React.Component {
         } else {
             attributes["id"] = this.props.productId[0];
             const elementForCart = Object.assign({}, attributes);
-            this.props.addToCart([1, Math.random() * 10e16, elementForCart]);
+            this.props.addToCart([1, Math.random() * 10e16, elementForCart, this.props.productOptions.prices]);
         }
     }
 
@@ -122,10 +122,11 @@ class Product extends React.Component {
                         )}
                     </ErrorBoundary>
                     <button
+                        disabled={this.props.productOptions.inStock ? "disabled" : ""}
                         className="product_info_button"
                         onClick={() => this.handleAddToCart()}
                     >
-                        Add to cart
+                        {this.props.productOptions.inStock ? "Out of stock" : "Add to cart"}
                     </button>
                     <div className="product_info_description">
                         <div

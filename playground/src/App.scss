@@ -538,6 +538,7 @@ h3 {
             text-transform: uppercase;
             color: $--c-white;
             cursor: pointer;
+            
 
             &:hover {
                 transform: scale(1.01);
@@ -545,6 +546,12 @@ h3 {
 
             &:active {
                 transform: scale(0.98);
+            }
+            &:disabled {
+                border: 1px solid #999999;
+                background-color: #cccccc;
+                color: #666666;
+                transform: none;
             }
         }
 
@@ -753,6 +760,31 @@ h3 {
         &_value {
             padding-left: 5px;
             @include fontRaleway(700, 24, 28)
+        }
+    }
+    &_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        margin: 0 0 40px 0;
+        box-sizing: border-box;
+        max-height: 52px;
+        min-height: 52px;
+        width: 279px;
+        border: none;
+        background-color: $--c-primary;
+        @include fontRaleway(600, 16, 19);
+        text-transform: uppercase;
+        color: $--c-white;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.01);
+        }
+
+        &:active {
+            transform: scale(0.98);
         }
     }
 }

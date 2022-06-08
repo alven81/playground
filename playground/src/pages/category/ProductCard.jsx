@@ -27,10 +27,6 @@ class ProductCard extends React.Component {
         ]);
     };
 
-    handleOnCart = (e) => {
-        console.log(e);
-    };
-
     render() {
         return this.state.currentCurrency === null &&
             !this.props.item.length ? (
@@ -71,12 +67,15 @@ class ProductCard extends React.Component {
                     </p>
                 </div>
                 <span
-                    className="product-card_cart"
-                    onClick={(e) => {
-                        this.handleOnCart(e);
-                    }}
+                    className={
+                        this.props.item.inStock ? "" : "product-card_cart"
+                    }
                 >
-                    <img src="./img/empty_cart.svg" alt="cart" />
+                    {this.props.item.inStock ? (
+                        <></>
+                    ) : (
+                        <img src="./img/empty_cart.svg" alt="cart" />
+                    )}
                 </span>
             </div>
         );

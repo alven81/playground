@@ -11,29 +11,29 @@ class Price extends React.Component {
 		};
 	}
 
-	 componentDidMount(prevProps) {
-	//	if (this.props.qty) {
-        console.log("FUCK!", this.props.productId);
-	 		this.props.calcTotalPrice([
-	 			this.props.qty *
-	 				this.props.price[this.props.whatCurrency].amount,
-	 			this.props.productId
-	 		]);
+	//  componentDidMount(prevProps) {
+	// //	if (this.props.qty) {
+    //     console.log("FUCK!", this.props.productId);
+	//  		this.props.calcTotalPrice([
+	//  			this.props.qty *
+	//  				this.props.price[this.props.whatCurrency].amount,
+	//  			this.props.productId
+	//  		]);
 
-      //  }
+    //   //  }
              
-	 }
+	//  }
 
-    componentDidUpdate (prevProps) {
-        if (this.props.qty !== prevProps.qty)
-        {console.log("See Res:",this.props.qty,this.props.price[this.props.whatCurrency].amount,  this.props.productId);
-        this.props.calcTotalPrice([
-            this.props.qty *
-                this.props.price[this.props.whatCurrency].amount,
-            this.props.productId
-        ])}
+    // componentDidUpdate (prevProps) {
+    //     if (this.props.qty !== prevProps.qty)
+    //     {console.log("See Res:",this.props.qty,this.props.price[this.props.whatCurrency].amount,  this.props.productId);
+    //     this.props.calcTotalPrice([
+    //         this.props.qty *
+    //             this.props.price[this.props.whatCurrency].amount,
+    //         this.props.productId
+    //     ])}
 
-    } 
+    // } 
 
     
 
