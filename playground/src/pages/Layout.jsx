@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router";
+import Bag from "./bag/Bag";
 import NavBar from "./navbar/NavBar";
 
 class Layout extends React.Component {

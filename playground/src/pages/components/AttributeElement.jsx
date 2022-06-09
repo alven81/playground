@@ -39,23 +39,22 @@ class AttributeElement extends React.Component {
         console.log(this.props.itemList);
         let tempItem = this.props.itemList;
         tempItem[itemId] = itemResult;
-        //this.setState({ itemList: tempItem });
-        //console.log("tempItem", tempItem);
         this.props.waitForCart(tempItem);
     };
 
     render() {
         return (
-            <div className="attribute_element">
-                <p className="attribute_element_name">
+            <div className={`${this.props.attributeClass}_element`}>
+                <p className={`${this.props.attributeClass}_element_name`}>
                     {this.props.element.name}:
                 </p>
-                <div className="attribute_element_items">
+                <div className={`${this.props.attributeClass}_element_items`}>
                     {!this.props.element.items.length ? (
                         <Loader />
                     ) : (
                         this.props.element.items.map((item, index) => (
                             <AttributeItem
+                                attributeClass={this.props.attributeClass}
                                 buttonActivity={this.props.buttonActivity}
                                 cartItem={this.props.cartItem}
                                 key={index}

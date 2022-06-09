@@ -82,7 +82,7 @@ class Cart extends React.Component {
                     </div>
                     <div className="cart_product">
                         {!this.props.productsInCart.length ? (
-                            <Loader />
+                            <h4>Cart is empty</h4>
                         ) : (
                             this.props.productsInCart.map((item, index) => {
                                 return (

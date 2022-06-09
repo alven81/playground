@@ -32,13 +32,14 @@ class AttributeItem extends React.Component {
                     <button
                         disabled={this.props.buttonActivity}
                         onClick={(e) =>
-                            this.props.handleOnItemClick(this.props.item.id)
+                            {e.stopPropagation();
+                                this.props.handleOnItemClick(this.props.item.id)}
                         }
                         id={this.props.item.id}
                         style={{ backgroundColor: `${this.props.item.value}` }}
-                        className={`attribute_element_items_${
+                        className={`${this.props.attributeClass}_element_items_${
                             this.props.type
-                        } attribute_element_items_${this.props.type}_${
+                        } ${this.props.attributeClass}_element_items_${this.props.type}_${
                             this.props.selectedId[1] === this.props.item.id
                                 ? "selected"
                                 : ""

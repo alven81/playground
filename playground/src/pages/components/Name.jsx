@@ -3,7 +3,7 @@ import React from "react";
 class Name extends React.Component {
     render() {
         return (
-            <div className="product_info_title">
+            <div className={this.props.nameClass}>
                 <p>{this.props.brand}</p>
                 <p>{this.props.name}</p>
             </div>

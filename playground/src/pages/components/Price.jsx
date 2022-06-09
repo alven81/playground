@@ -41,9 +41,9 @@ class Price extends React.Component {
 		return this.props.whatCurrency === null && this.props.price === null ? (
 			<Loader />
 		) : (
-			<div className="price">
+			<div className={this.props.priceClass}>
 				<p className={this.props.classCurrency}>Price:</p>
-				<p className="price_currency">
+				<p className={`${this.props.priceClass}_currency`}>
 					{this.props.price[this.props.whatCurrency].currency.symbol}
 					{this.props.price[this.props.whatCurrency].amount}
 				</p>

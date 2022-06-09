@@ -6,7 +6,7 @@ import Price from "../components/Price";
 import { addToCart } from "../../store/actions/actions";
 import ErrorBoundary from "../../utils/ErrorBoundary";
 import axios from "axios";
-import ImageSwitcher from "./ImageSwitcher.jsx";
+import BagImageSwitcher from "./BagImageSwitcher.jsx";
 import Loader from "../components/Loader";
 import encreaseQuantityInCart from "../../utils/encreaseQuantityInCart";
 import decreaseQuantityInCart from "../../utils/decreaseQuantityInCart";
@@ -60,7 +60,8 @@ class CartElement extends React.Component {
             .then((productOptions) => this.setState({ productOptions }));
     }
 
-    handleUpQantity = (productInCartId) => {
+    handleUpQantity = (e, productInCartId) => {
+        e.stopPropagation();
         const tempCart = this.props.productsInCart;
         tempCart.map((productInCart) =>
             encreaseQuantityInCart(
@@ -71,7 +72,8 @@ class CartElement extends React.Component {
         );
     };
 
-    handleDownQantity = (productInCartId) => {
+    handleDownQantity = (e, productInCartId) => {
+        e.stopPropagation();
         const tempCart = this.props.productsInCart;
         tempCart.map((productInCart) =>
             decreaseQuantityInCart(
@@ -87,17 +89,17 @@ class CartElement extends React.Component {
             <Loader />
         ) : (
             <>
-                <div className="cart_product_info">
+                <div className="bag_product_info">
                     <ErrorBoundary>
                         <Name
-                            nameClass={"product_info_title"}
+                            nameClass={"product_info_title bag_name"}
                             brand={this.state.productOptions.brand}
                             name={this.state.productOptions.name}
                         />
                     </ErrorBoundary>
                     <ErrorBoundary>
                         <Price
-                            priceClass={"price"}
+                            priceClass={"price bag_price"}
                             productId={this.props.productId}
                             qty={this.props.qty}
                             classCurrency={"hide"}
@@ -107,7 +109,7 @@ class CartElement extends React.Component {
                     <ErrorBoundary>
                         {this.state.productOptions.attributes && (
                             <Attribute
-                                attributeClass={"attribute"}
+                                attributeClass={"attribute bag_attribute"}
                                 item={this.state.productOptions.attributes}
                                 cartItem={this.props.cartItem}
                                 buttonActivity={"disabled"}
@@ -115,23 +117,23 @@ class CartElement extends React.Component {
                         )}
                     </ErrorBoundary>
                 </div>
-                <div className="cart_product_quantity">
+                <div className="bag_product_quantity">
                     <button
-                        onClick={() =>
-                            this.handleUpQantity(this.props.productId)
+                        onClick={(e) =>
+                            this.handleUpQantity(e, this.props.productId)
                         }
                     />
                     <span>{this.props.qty}</span>
                     <button
-                        onClick={() =>
-                            this.handleDownQantity(this.props.productId)
+                        onClick={(e) =>
+                            this.handleDownQantity(e, this.props.productId)
                         }
                     />
                 </div>
-                <div className="cart_product_image">
+                <div className="bag_image">
                     <ErrorBoundary>
                         {this.state.productOptions.gallery && (
-                            <ImageSwitcher
+                            <BagImageSwitcher
                                 images={this.state.productOptions.gallery}
                             />
                         )}

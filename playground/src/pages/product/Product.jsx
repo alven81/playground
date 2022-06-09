@@ -102,12 +102,14 @@ class Product extends React.Component {
                 </div>
                 <div className="product_info">
                     <Name
+                        nameClass={"product_info_title"}
                         brand={this.props.productOptions.brand}
                         name={this.props.productOptions.name}
                     />
                     <ErrorBoundary>
                         {this.props.productOptions.attributes && (
                             <Attribute
+                                attributeClass={"attribute"}
                                 item={this.props.productOptions.attributes}
                                 buttonActivity={""}
                             />
@@ -116,6 +118,7 @@ class Product extends React.Component {
                     <ErrorBoundary>
                         {this.props.productOptions.prices && (
                             <Price
+                                priceClass={"price"}
                                 classCurrency={"price_label-show"}
                                 price={this.props.productOptions.prices}
                             />
