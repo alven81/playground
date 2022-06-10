@@ -5,6 +5,8 @@ $--c-stock: #8d8f9a;
 $--c-white: #ffffff;
 $--c-bkgrnd: #eeeeee;
 $--c-divider: #e5e5e5;
+$--shadow-button: 0px 4px 35px rgba(168, 172, 176, 0.50);
+$--shadow-background: (0px 4px 35px rgba(168, 172, 176, 0.19));
 
 @mixin fontRaleway($weight, $fontSize, $lineHeight) {
 	font: $weight #{$fontSize}px/#{$lineHeight}px "Raleway", sans-serif;
@@ -21,47 +23,6 @@ $--c-divider: #e5e5e5;
 .hide {
 	display: none;
 }
-
-.App {
-	text-align: center;
-}
-
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-}
-
-.App-link {
-	color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-
-	to {
-		transform: rotate(360deg);
-	}
-}
-
 h2 {
 	margin: 80px 0 55px;
 	@include fontRaleway(400, 42, 29);
@@ -80,7 +41,6 @@ h4 {
 	text-align: center;
 	margin: 80px 0 55px;
 	@include fontRaleway(700, 32, 40);
-	//text-transform: capitalize;
 	color: $--c-text;
 }
 
@@ -153,16 +113,12 @@ h4 {
 		position: relative;
 		z-index: 100;
 		cursor: pointer;
-		// span {
-		//     position: absolute;
-		//     bottom: -5px;
-		//     right: 85px;
-		// }
+
 		&-container {
 			display: flex;
 			width: 40px;
 			margin-right: 22px;
-			//height: 29px;
+
 			span {
 				display: block;
 			}
@@ -173,19 +129,8 @@ h4 {
 			}
 			&-arrows {
 				position: relative;
-				//border: 1px solid black;
-				// position: relative;
-				// top: 0px;
-				//content: "";
 				display: block;
 				width: 10px;
-				//height: 20px;
-				// border-right: 1px solid black;
-				// border-top: 1px solid black;
-				// transform: rotate(135deg);
-				// margin-top: 10px;
-				//margin-right: 0.5em;
-				//margin-left: 1.0em;
 				transition: all 0.5s;
 
 				&:after {
@@ -194,7 +139,6 @@ h4 {
 					right: 2px;
 					transform: rotate(-45deg);
 					content: "";
-					//display: block;
 					height: 6px;
 					border-left: 1px solid $--c-black;
 				}
@@ -204,7 +148,6 @@ h4 {
 					left: 2px;
 					transform: rotate(45deg);
 					content: "";
-					//display: block;
 					height: 6px;
 					border-right: 1px solid $--c-black;
 				}
@@ -221,7 +164,7 @@ h4 {
 			top: 50px;
 			right: 0px;
 			min-width: 114px;
-			box-shadow: (0px 4px 35px rgba(168, 172, 176, 0.19));
+			box-shadow: $--shadow-background;
 			padding: 20px 0;
 			visibility: hidden;
 			opacity: 0;
@@ -251,21 +194,6 @@ h4 {
 				border: none;
 				vertical-align: middle;
 				margin-left: auto;
-
-				/* Strictly for positioning */
-				//     img {
-				//         transition: all 0.3s ease;
-
-				//         &:hover {
-				//             transition: all 0.3s ease;
-				//             transform: scale(1.2);
-				//         }
-
-				//         &:active {
-				//             transition: all 0.1s ease;
-				//             transform: scale(1.05);
-				//         }
-				//     }
 			}
 
 			ul {
@@ -278,8 +206,6 @@ h4 {
 					justify-content: flex-start;
 					align-items: center;
 					text-decoration: none;
-					//color: #333333;
-					//padding: 15px 20px;
 					cursor: pointer;
 					height: 45px;
 
@@ -290,10 +216,6 @@ h4 {
 					&:hover {
 						background-color: $--c-bkgrnd;
 					}
-
-					// &:last-child {
-					//     border-top: 1px solid $productPrice;
-					//     }
 				}
 			}
 		}
@@ -305,19 +227,6 @@ h4 {
 			border: none;
 			cursor: pointer;
 			margin-right: 20px;
-
-			// &:hover {
-			//     transform: scale(1.08);
-			//     border-bottom: 2px solid $--c-primary;
-			// }
-
-			// &:active {
-			//     border-bottom: 2px solid $--c-primary;
-
-			//     img {
-			//         transform: scale(0.9);
-			//     }
-			// }
 			&-quantity {
 				position: absolute;
 				display: flex;
@@ -364,12 +273,9 @@ h4 {
 
 	&:hover {
 		cursor: pointer;
-		box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+		box-shadow: $--shadow-background;
 	}
 
-	// &:active {
-	//     transform: scale(0.99);
-	// }
 	&_img {
 		position: relative;
 		display: flex;
@@ -427,9 +333,6 @@ h4 {
 		align-items: center;
 		width: 354px;
 		height: 330px;
-		// top: 50%;
-		// left: 50%;
-		// transform: translate(-50%, -50%);
 		@include fontRaleway(400, 24, 38);
 		text-transform: uppercase;
 		color: $--c-stock;
@@ -444,7 +347,6 @@ h4 {
 .product {
 	display: flex;
 	justify-content: flex-start;
-	//gap: 100px;
 	margin-top: 60px;
 
 	&_images {
@@ -455,7 +357,6 @@ h4 {
 		&_thumbnails {
 			display: flex;
 			flex-direction: column;
-			//gap: 40px;
 			margin-right: 40px;
 			overflow: auto;
 			scrollbar-width: none;
@@ -473,8 +374,6 @@ h4 {
 					height: 100%;
 					object-fit: cover;
 					cursor: zoom-in;
-					//transition: border-color 0.2s;
-					//box-sizing: border-box;
 				}
 			}
 		}
@@ -533,7 +432,7 @@ h4 {
 			cursor: pointer;
 
 			&:hover {
-				transform: scale(1.01);
+                box-shadow: $--shadow-button;
 			}
 
 			&:active {
@@ -544,6 +443,7 @@ h4 {
 				background-color: #cccccc;
 				color: #666666;
 				transform: none;
+                box-shadow: none;
 			}
 		}
 
@@ -595,13 +495,12 @@ h4 {
 						right: 50%;
 						transform: translate(50%, -50%);
 						content: "";
-						//display: block;
 						height: 15px;
 						border-left: 1px solid $--c-black;
 					}
 
 					&:hover {
-						transform: scale(1.1);
+                        box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -614,13 +513,12 @@ h4 {
 						right: 50%;
 						transform: translate(50%, -50%) rotate(90deg);
 						content: "";
-						//display: block;
 						height: 15px;
 						border-right: 1px solid $--c-black;
 					}
 
 					&:hover {
-						transform: scale(1.1);
+                        box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -635,14 +533,13 @@ h4 {
 						right: 50%;
 						transform: translate(50%, -50%);
 						content: "";
-						//display: block;
 						width: 15px;
 						height: 1px;
 						border-bottom: 1px solid $--c-black;
 					}
 
 					&:hover {
-						transform: scale(1.1);
+                        box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -662,13 +559,10 @@ h4 {
 				align-items: center;
 				width: 200px;
 				height: 288px;
-
-				// text-align: center;
 				img {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
-					// object-position: 0% 100%;
 				}
 			}
 
@@ -680,8 +574,6 @@ h4 {
 				right: 16px;
 				height: 24px;
 				width: 56px;
-
-				//z-index: 10;
 				button {
 					position: relative;
 					width: 24px;
@@ -771,7 +663,7 @@ h4 {
 		cursor: pointer;
 
 		&:hover {
-			transform: scale(1.01);
+            box-shadow: $--shadow-button;
 		}
 
 		&:active {
@@ -789,21 +681,19 @@ h4 {
 	z-index: 100001;
 	top: 80px;
 	right: 0px;
-	box-shadow: (0px 4px 35px rgba(168, 172, 176, 0.19));
+	box-shadow: $--shadow-background;
 	padding: 32px 16px;
 	visibility: hidden;
 	opacity: 0;
 	transform: translateY(-20px);
 	transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-    overflow-x: hidden;
+	overflow-x: hidden;
 
 	&.active {
 		opacity: 1;
 		visibility: visible;
 		transform: translateY(0);
 	}
-
-	//    components styles
 
 	.bag_name {
 		@include fontRaleway(300, 16, 26);
@@ -814,110 +704,96 @@ h4 {
 
 			&:first-child {
 				font: inherit;
-				//margin-bottom: 20px;
-				//font-weight: 600;
-				//margin-bottom: 16px;
 			}
 		}
 	}
 
-    .bag_price {
-        &_label-hide {
-            display: none;
-        }
-    
-        &_currency {
-            margin: 4px 0 0 0;
-            @include fontRaleway(500, 16, 26);
-        }
-    }
-
-    .bag_attribute {
-        display: flex;
-        flex-direction: column;
-    
-        &_element {
-            &_name {
-                margin: 0 0 8px 0;
-                @include fontRaleway(400, 14, 16);
-                color: $--c-text;
-                text-transform: capitalize;
-            }
-    
-            &_items {
-                display: flex;
-                justify-content: flex-start;
-                flex-direction: row;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 8px;
-    
-                &_text {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border: 1px solid $--c-black;
-                    width: 34px;
-                    height: 24px;
-                    gap: 12px;
-                    @include fontSource(400, 14, 22);
-                    color: $--c-black;
-                    background-color: $--c-white;
-                    cursor: pointer;
-    
-                    &_selected {
-                        background-color: $--c-black;
-                        color: $--c-white;
-                    }
-                }
-    
-                &_swatch {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border: none;
-                    width: 16px;
-                    height: 16px;
-                    gap: 8px;
-                    cursor: pointer;
-    
-                    &_selected {
-                        outline: 1px solid $--c-primary;
-                        outline-offset: 2px;
-                    }
-                }
-            }
-        }
-    }
-
-    &_title {
-        margin-bottom: 32px;
-        :first-child {
-            @include fontRaleway(700, 16, 26);
-        }
-        @include fontRaleway(500, 16, 26);
-
-    }
-
-	&_product {
-
-        &_element {
-            padding: 4px 0;
-			display: flex;
-			justify-content: space-between;
-            margin-bottom: 32px;
-			// border-bottom: 1px solid $--c-divider;
-			// &:first-child {
-			// 	border-top: 1px solid $--c-divider;
-			// }
+	.bag_price {
+		&_label-hide {
+			display: none;
 		}
 
-		//&_info {
-		//	margin: 24px 0;
-		//}
+		&_currency {
+			margin: 4px 0 0 0;
+			@include fontRaleway(500, 16, 26);
+		}
+	}
+
+	.bag_attribute {
+		display: flex;
+		flex-direction: column;
+
+		&_element {
+			&_name {
+				margin: 0 0 8px 0;
+				@include fontRaleway(400, 14, 16);
+				color: $--c-text;
+				text-transform: capitalize;
+			}
+
+			&_items {
+				display: flex;
+				justify-content: flex-start;
+				flex-direction: row;
+				align-items: center;
+				gap: 8px;
+				margin-bottom: 8px;
+
+				&_text {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border: 1px solid $--c-black;
+					width: 34px;
+					height: 24px;
+					gap: 12px;
+					@include fontSource(400, 14, 22);
+					color: $--c-black;
+					background-color: $--c-white;
+					cursor: pointer;
+
+					&_selected {
+						background-color: $--c-black;
+						color: $--c-white;
+					}
+				}
+
+				&_swatch {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border: none;
+					width: 16px;
+					height: 16px;
+					gap: 8px;
+					cursor: pointer;
+
+					&_selected {
+						outline: 1px solid $--c-primary;
+						outline-offset: 2px;
+					}
+				}
+			}
+		}
+	}
+
+	&_title {
+		margin-bottom: 32px;
+		:first-child {
+			@include fontRaleway(700, 16, 26);
+		}
+		@include fontRaleway(500, 16, 26);
+	}
+
+	&_product {
+		&_element {
+			padding: 4px 0;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 32px;
+		}
 
 		&_quantity {
-			//margin: 24px 0;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -943,13 +819,12 @@ h4 {
 						right: 50%;
 						transform: translate(50%, -50%);
 						content: "";
-						//display: block;
 						height: 8px;
 						border-left: 1px solid $--c-black;
 					}
 
 					&:hover {
-						transform: scale(1.1);
+                        box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -962,13 +837,12 @@ h4 {
 						right: 50%;
 						transform: translate(50%, -50%) rotate(90deg);
 						content: "";
-						//display: block;
 						height: 8px;
 						border-right: 1px solid $--c-black;
 					}
 
 					&:hover {
-						transform: scale(1.1);
+                        box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -983,14 +857,13 @@ h4 {
 						right: 50%;
 						transform: translate(50%, -50%);
 						content: "";
-						//display: block;
 						width: 8px;
 						height: 1px;
 						border-bottom: 1px solid $--c-black;
 					}
 
 					&:hover {
-						transform: scale(1.1);
+                        box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -1010,13 +883,10 @@ h4 {
 				align-items: center;
 				width: 121px;
 				height: 190px;
-
-				// text-align: center;
 				img {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
-					// object-position: 0% 100%;
 				}
 			}
 
@@ -1028,8 +898,6 @@ h4 {
 				right: 16px;
 				height: 24px;
 				width: 56px;
-
-				//z-index: 10;
 				button {
 					position: relative;
 					width: 24px;
@@ -1088,52 +956,61 @@ h4 {
 		}
 	}
 	&_total {
-		//padding-top: 8px;
 		&_title {
-            display: flex;
-            justify-content: space-between;
+			display: flex;
+			justify-content: space-between;
 			@include fontRoboto(500, 16, 18);
 			:last-child {
-				@include fontRaleway(700, 16, 26)
+				@include fontRaleway(700, 16, 26);
 			}
 		}
 	}
-	&_button {
+	&_checkout {
 		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-		margin: 0 0 40px 0;
-		box-sizing: border-box;
-		max-height: 52px;
-		min-height: 52px;
-		width: 279px;
-		border: none;
-		background-color: $--c-primary;
-		@include fontRaleway(600, 16, 19);
-		text-transform: uppercase;
-		color: $--c-white;
-		cursor: pointer;
+		gap: 12px;
+		&_button {
+            text-decoration: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: 1;
+			box-sizing: border-box;
+			max-height: 43px;
+			min-height: 43px;
+			width: 140px;
+			border: none;
+			background-color: $--c-primary;
+			@include fontRaleway(600, 16, 19);
+			text-transform: uppercase;
+			color: $--c-white;
+			cursor: pointer;
 
-		&:hover {
-			transform: scale(1.01);
-		}
+			&:hover {
+                box-shadow: $--shadow-button;
+			}
 
-		&:active {
-			transform: scale(0.98);
+			&:active {
+				transform: scale(0.98);
+			}
+            
 		}
+        :first-child {
+                background-color: $--c-white;
+                border: 1px solid $--c-black;
+                color: $--c-text;
+            }
 	}
-    &_background {
-        z-index: 10;
-        top: 80px;
-        left: 0;
-        position: fixed;
-        display: block;
-        width: 100vw;
-        height: 90vh;
-        background-color: rgba(57, 55, 72, 0.22);;
-        transition: all 1s;
-    }
+	&_background {
+		z-index: 10;
+		top: 80px;
+		left: 0;
+		position: fixed;
+		display: block;
+		width: 100vw;
+		height: 90vh;
+		background-color: rgba(57, 55, 72, 0.22);
+		transition: all 1s;
+	}
 }
 
 .attribute {
@@ -1198,7 +1075,6 @@ h4 {
 		@include fontRoboto(700, 18, 18);
 		text-transform: uppercase;
 		margin-bottom: 25px;
-		//margin: 0;
 	}
 
 	&_label-hide {
@@ -1236,11 +1112,6 @@ h4 {
 	align-items: center;
 	margin: 50px;
 }
-
-// .product-card_stock > .product-card_description {
-//     color: #5ECE7B;
-//     background-color: #5ECE7B;
-// }
 
 .navlink {
 	text-decoration: none;

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ErrorBoundary from "../../utils/ErrorBoundary";
+import { Link } from "react-router-dom";
 //import Loader from "../components/Loader";
 import BagElement from "./BagElement";
 //import CartElement from "./BagElement";
@@ -117,9 +118,11 @@ class Cart extends React.Component {
 						</p>
 					</div>
 				</div>
-                <div>
-                    <button className="bag_button">Order</button>
-                    <button className="bag_button">Order</button>
+                <div className="bag_checkout">
+                    <Link className="bag_checkout_button" to="cart">
+                        View bag
+                    </Link>
+                    <button className="bag_checkout_button">Check out</button>
                 </div>
 				
 			</>
