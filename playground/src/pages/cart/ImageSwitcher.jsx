@@ -9,11 +9,6 @@ class ImageSwitcher extends React.Component {
 		};
 	}
 
-	// componentDidMount() {
-
-	//     console.log("start component");
-	// }
-
 	handleListImageRight() {
 		this.setState({ imageItem: this.state.imageItem + 1 });
 		if (this.state.imageItem === this.props.images.length - 1) {

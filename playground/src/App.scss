@@ -5,7 +5,7 @@ $--c-stock: #8d8f9a;
 $--c-white: #ffffff;
 $--c-bkgrnd: #eeeeee;
 $--c-divider: #e5e5e5;
-$--shadow-button: 0px 4px 35px rgba(168, 172, 176, 0.50);
+$--shadow-button: 0px 4px 35px rgba(168, 172, 176, 0.5);
 $--shadow-background: (0px 4px 35px rgba(168, 172, 176, 0.19));
 
 @mixin fontRaleway($weight, $fontSize, $lineHeight) {
@@ -432,7 +432,7 @@ h4 {
 			cursor: pointer;
 
 			&:hover {
-                box-shadow: $--shadow-button;
+				box-shadow: $--shadow-button;
 			}
 
 			&:active {
@@ -443,7 +443,7 @@ h4 {
 				background-color: #cccccc;
 				color: #666666;
 				transform: none;
-                box-shadow: none;
+				box-shadow: none;
 			}
 		}
 
@@ -500,7 +500,7 @@ h4 {
 					}
 
 					&:hover {
-                        box-shadow: $--shadow-button;
+						box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -518,7 +518,7 @@ h4 {
 					}
 
 					&:hover {
-                        box-shadow: $--shadow-button;
+						box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -539,7 +539,7 @@ h4 {
 					}
 
 					&:hover {
-                        box-shadow: $--shadow-button;
+						box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -663,7 +663,7 @@ h4 {
 		cursor: pointer;
 
 		&:hover {
-            box-shadow: $--shadow-button;
+			box-shadow: $--shadow-button;
 		}
 
 		&:active {
@@ -824,7 +824,7 @@ h4 {
 					}
 
 					&:hover {
-                        box-shadow: $--shadow-button;
+						box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -842,7 +842,7 @@ h4 {
 					}
 
 					&:hover {
-                        box-shadow: $--shadow-button;
+						box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -863,7 +863,7 @@ h4 {
 					}
 
 					&:hover {
-                        box-shadow: $--shadow-button;
+						box-shadow: $--shadow-button;
 					}
 
 					&:active {
@@ -969,7 +969,7 @@ h4 {
 		display: flex;
 		gap: 12px;
 		&_button {
-            text-decoration: none;
+			text-decoration: none;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -986,19 +986,18 @@ h4 {
 			cursor: pointer;
 
 			&:hover {
-                box-shadow: $--shadow-button;
+				box-shadow: $--shadow-button;
 			}
 
 			&:active {
 				transform: scale(0.98);
 			}
-            
 		}
-        :first-child {
-                background-color: $--c-white;
-                border: 1px solid $--c-black;
-                color: $--c-text;
-            }
+		:first-child {
+			background-color: $--c-white;
+			border: 1px solid $--c-black;
+			color: $--c-text;
+		}
 	}
 	&_background {
 		z-index: 10;

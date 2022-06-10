@@ -15,15 +15,14 @@ const reducers = combineReducers({
 	loadCategories,
 	loadMenu,
 	loadCurrencies,
-    loadCartElement,
+	loadCartElement,
 	currency,
 	category,
 	selectedProductId,
 	loadProduct,
 	waitForCart,
 	cart,
-    calcTotalPrice,
-   
+	calcTotalPrice,
 });
 
 export default reducers;

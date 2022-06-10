@@ -9,25 +9,6 @@ class BagImageSwitcher extends React.Component {
 		};
 	}
 
-	// componentDidMount() {
-
-	//     console.log("start component");
-	// }
-
-	// handleListImageRight() {
-	// 	this.setState({ imageItem: this.state.imageItem + 1 });
-	// 	if (this.state.imageItem === this.props.images.length - 1) {
-	// 		this.setState({ imageItem: 0 });
-	// 	}
-	// }
-
-	// handleListImageLeft() {
-	// 	this.setState({ imageItem: this.state.imageItem - 1 });
-	// 	if (this.state.imageItem === 0) {
-	// 		this.setState({ imageItem: this.props.images.length - 1 });
-	// 	}
-	// }
-
 	render() {
 		return (
 			<>
@@ -40,20 +21,6 @@ class BagImageSwitcher extends React.Component {
 							alt=""
 						/>
 					)}
-					{/* <div className="bag_product_image_buttons">
-						<button
-							onClick={(e) => {
-								e.stopPropagation();
-								this.handleListImageLeft();
-							}}
-						/>
-						<button
-							onClick={(e) => {
-								e.stopPropagation();
-								this.handleListImageRight();
-							}}
-						/>
-					</div> */}
 				</div>
 			</>
 		);

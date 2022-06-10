@@ -83,6 +83,7 @@ class Cart extends React.Component {
                             <h4>Cart is empty</h4>
                         ) : (
                             this.props.productsInCart.map((item, index) => {
+                                if (item[0] > 0)
                                 return (
                                     <div className="cart_product_element" key={index}>
                                         <ErrorBoundary>

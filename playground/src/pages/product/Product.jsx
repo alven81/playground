@@ -10,7 +10,7 @@ import {
 } from "../../store/actions/actions";
 import ImageBox from "./ImageBox";
 import ErrorBoundary from "../../utils/ErrorBoundary";
-import { createBrowserHistory } from 'history';
+//import { createBrowserHistory } from 'history';
 
 class Product extends React.Component {
     constructor(props) {

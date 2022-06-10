@@ -1,13 +1,11 @@
 import React from "react";
 import AttributeElement from "./AttributeElement";
-//import Loader from "./Loader";
 
 class Attribute extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             itemList: {},
-            //item: [],
         };
     }
 

@@ -91,6 +91,7 @@ class Cart extends React.Component {
 						<h4>Cart is empty</h4>
 					) : (
 						this.props.productsInCart.map((item, index) => {
+                            if (item[0] > 0)
 							return (
 								<div
 									className="bag_product_element"

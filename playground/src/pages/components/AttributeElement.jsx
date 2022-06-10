@@ -9,24 +9,12 @@ class AttributeElement extends React.Component {
         super(props);
         this.state = {
             selectedId: [],
-            //itemList: this.props.itemList,
         };
     }
 
-    componentDidMount() {
-        //this.setState({ itemList: this.props.item });
-        //console.log(this.state.selectedId);
-        //console.log(this.props.cartItem);
-    }
-
-    componentWillUnmount() {}
-
-    //if load or click property => send to redux
     componentDidUpdate(prevProps) {
         if (this.props.itemList !== prevProps.itemList)
             this.props.waitForCart(this.props.itemList);
-        //console.log("item click",this.state.selectedId);
-        //this.setState({selectedId: [this.props.cartItem, this.props.cartItem]})
     }
 
     handleOnItemClick = (e) => {
