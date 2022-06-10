@@ -36,7 +36,7 @@ class AttributeElement extends React.Component {
     };
 
     setItemListProperty = (itemId, itemResult) => {
-        console.log(this.props.itemList);
+        //console.log(this.props.itemList);
         let tempItem = this.props.itemList;
         tempItem[itemId] = itemResult;
         this.props.waitForCart(tempItem);

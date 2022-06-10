@@ -6,12 +6,12 @@ const initialState = {
 };
 
 export default function cart(state = initialState, action) {
-    console.log("reducerrrrrкеуеу", action.payload);
+    //console.log("reducerrrrrкеуеу", action.payload);
     switch (action.type) {
         case CALC_TOTAL_PRICE: {
             //console.log("reducer filterTotalPrice", state.data, action.payload);
              if (filterTotalPrice(state.data, action.payload) === -1) {
-                console.log("reducer filterTotalPrice", state.data, action.payload);
+                //console.log("reducer filterTotalPrice", state.data, action.payload);
 
                 return {
                     ...state,

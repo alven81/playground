@@ -10,13 +10,15 @@ import {
 } from "../../store/actions/actions";
 import ImageBox from "./ImageBox";
 import ErrorBoundary from "../../utils/ErrorBoundary";
+import { createBrowserHistory } from 'history';
+
 class Product extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = {  //product (id: "${this.props.productId[0]}") {
             categoriesQuery: `
                     {
-                        product (id: "${this.props.productId[0]}") {
+                        product (id: "${window.location.pathname.split('/').slice(2).join()}") {
                             name
                             inStock
                             gallery
@@ -47,15 +49,28 @@ class Product extends React.Component {
     }
 
     componentDidMount() {
+
         this.props.loadProduct(
             this.state.categoriesQuery,
-            this.props.productId[0]
+            //this.props.productId[0] !!!!!
+            window.location.pathname.split('/').slice(2).join()
         );
+        //console.log("window.location.pathname", window.location.pathname.split('/').slice(2).join());
+        //console.log(this.state.categoriesQuery,
+        //    this.props.productId[0]);
+
+        // let history = createBrowserHistory();
+        // history.listen(({ location, action }) => {
+        //     console.log(action, location.pathname, location.state);
+        //   // this is called whenever new locations come in
+        //   // the action is POP, PUSH, or REPLACE
+        // });
     }
 
     componentWillUnmount() {
-        console.log("UNMOUNT");
-        this.props.waitForCart({ id: this.props.productId[0] });
+        //console.log("UNMOUNT");
+        //this.props.waitForCart({ id: this.props.productId[0] }); !!!!! 
+        this.props.waitForCart({ id: window.location.pathname.split('/').slice(2).join() });
     }
 
     handleAddToCart = (e) => {
@@ -74,7 +89,8 @@ class Product extends React.Component {
         if (isEmpty) {
             console.log("not all attributes were filled!!!");
         } else {
-            attributes["id"] = this.props.productId[0];
+            //attributes["id"] = this.props.productId[0]; !!!!!
+            attributes["id"] =window.location.pathname.split('/').slice(2).join()
             const elementForCart = Object.assign({}, attributes);
             this.props.addToCart([1, Math.random() * 10e16, elementForCart, this.props.productOptions.prices]);
         }

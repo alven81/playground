@@ -674,9 +674,9 @@ h4 {
 
 .bag {
 	width: 325px;
-	height: 677px;
+	max-height: 677px;
 	position: absolute;
-	overflow: scroll;
+	overflow: auto;
 	background: $--c-white;
 	z-index: 100001;
 	top: 80px;
@@ -687,7 +687,7 @@ h4 {
 	opacity: 0;
 	transform: translateY(-20px);
 	transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-	overflow-x: hidden;
+	//overflow-x: hidden;
 
 	&.active {
 		opacity: 1;

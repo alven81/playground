@@ -79,7 +79,7 @@ class Header extends React.Component {
 					<Link to="/cart">
 						<button className="header-cart-button">
 							<img
-								src="./img/logo_transparent.svg"
+								src="/img/logo_transparent.svg"
 								alt="Switch to cart"
 							/>
 						</button>
@@ -115,7 +115,7 @@ class Header extends React.Component {
 						className="header-currency-button"
 						onClick={() => this.handleDropDownBag()}
 					>
-						<img src="./img/cart.svg" alt="Cart" />
+						<img src="/img/cart.svg" alt="Cart" />
 						<span
 							className={
 								this.state.productsInCart
