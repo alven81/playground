@@ -16,7 +16,6 @@ class ImageBox extends React.Component {
             this.setState({ thumbnailImages: this.props.images });
         }
     }
-
   
     render() {
         return (

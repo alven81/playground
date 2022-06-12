@@ -125,9 +125,9 @@ class Cart extends React.Component {
 
 const mapStateToProps = (state) => ({
     productsInCart: state.cart.data,
-    currencyList: state.loadCurrencies.data, //
-    currencyId: state.currency.data, //
-    totalPrice: state.calcTotalPrice.data, //
+    currencyList: state.loadCurrencies.data,
+    currencyId: state.currency.data,
+    totalPrice: state.calcTotalPrice.data,
 });
 
 export default connect(mapStateToProps)(Cart);

@@ -4,6 +4,7 @@ import Attribute from "../components/Attribute";
 import Name from "../components/Name";
 import Price from "../components/Price";
 import { addToCart } from "../../store/actions/actions";
+import { buildProductQuery } from "../../store/queries";
 import ErrorBoundary from "../components/ErrorBoundary";
 import axios from "axios";
 import ImageSwitcher from "./ImageSwitcher.jsx";
@@ -15,34 +16,6 @@ class CartElement extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categoriesQuery: `
-                {
-                    product (id: "${this.props.cartItem.id}") {
-                        name
-                        inStock
-                        gallery
-                        description
-                        brand
-                        prices {
-                            currency {
-                                label
-                                symbol
-                            }
-                            amount
-                        }
-                        attributes {
-                            id
-                            name
-                            type
-                            items {
-                                displayValue
-                                value
-                                id
-                            }
-                        }
-                    }
-                }
-                `,
             productOptions: null,
         };
     }
@@ -52,7 +25,7 @@ class CartElement extends React.Component {
             url: "http://localhost:4000/",
             method: "POST",
             data: {
-                query: this.state.categoriesQuery,
+                query: buildProductQuery(this.props.cartItem.id),
             },
         })
             .then((response) => response.data.data)

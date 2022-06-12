@@ -1,23 +1,14 @@
 import "../../App.scss";
 import React from "react";
 import { loadMenu } from "../../store/actions/actions";
+import { menuQuery } from "../../store/queries";
 import { connect } from "react-redux";
 import MenuButton from "./MenuButton";
 
 class Menu extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            menuQuery: `{
-                    categories  {
-                    name
-                    }
-                }`,
-        };
-    }
 
     componentDidMount() {
-        this.props.loadMenu(this.state.menuQuery);
+        this.props.loadMenu(menuQuery);
     }
 
     render() {

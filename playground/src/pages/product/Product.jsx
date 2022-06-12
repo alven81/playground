@@ -8,54 +8,24 @@ import {
     addToCart,
     waitForCart,
 } from "../../store/actions/actions";
+import { buildProductQuery } from "../../store/queries";
 import ImageBox from "./ImageBox";
 import ErrorBoundary from "../components/ErrorBoundary";
 
 class Product extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            categoriesQuery: `
-                    {
-                        product (id: "${window.location.pathname.split('/').slice(2).join()}") {
-                            name
-                            inStock
-                            gallery
-                            description
-                            brand
-                            prices {
-                                currency {
-                                    label
-                                    symbol
-                                }
-                                amount
-                            }
-                            attributes {
-                                id
-                                name
-                                type
-                                items {
-                                    displayValue
-                                    value
-                                    id
-                                }
-                            }
-                        }
-                    }
-                `,
-        };
-    }
-
     componentDidMount() {
-
         this.props.loadProduct(
-            this.state.categoriesQuery,
-            window.location.pathname.split('/').slice(2).join()
+            buildProductQuery(
+                window.location.pathname.split("/").slice(2).join()
+            ),
+            window.location.pathname.split("/").slice(2).join()
         );
     }
 
     componentWillUnmount() {
-        this.props.waitForCart({ id: window.location.pathname.split('/').slice(2).join() });
+        this.props.waitForCart({
+            id: window.location.pathname.split("/").slice(2).join(),
+        });
     }
 
     handleAddToCart = (e) => {
@@ -73,9 +43,17 @@ class Product extends React.Component {
         if (isEmpty) {
             console.log("not all attributes were filled!!!");
         } else {
-            attributes["id"] =window.location.pathname.split('/').slice(2).join()
+            attributes["id"] = window.location.pathname
+                .split("/")
+                .slice(2)
+                .join();
             const elementForCart = Object.assign({}, attributes);
-            this.props.addToCart([1, Math.random() * 10e16, elementForCart, this.props.productOptions.prices]);
+            this.props.addToCart([
+                1,
+                Math.random() * 10e16,
+                elementForCart,
+                this.props.productOptions.prices,
+            ]);
         }
     }
 
@@ -124,11 +102,15 @@ class Product extends React.Component {
                         )}
                     </ErrorBoundary>
                     <button
-                        disabled={this.props.productOptions.inStock ? "disabled" : ""}
+                        disabled={
+                            this.props.productOptions.inStock ? "disabled" : ""
+                        }
                         className="product_info_button"
                         onClick={() => this.handleAddToCart()}
                     >
-                        {this.props.productOptions.inStock ? "Out of stock" : "Add to cart"}
+                        {this.props.productOptions.inStock
+                            ? "Out of stock"
+                            : "Add to cart"}
                     </button>
                     <div className="product_info_description">
                         <div
