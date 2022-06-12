@@ -1,32 +1,32 @@
 import {
-    LOAD_PRODUCT_ERROR,
-    LOAD_PRODUCT_LOADING,
-    LOAD_PRODUCT_SUCCESS,
-} from "../actions/actions";
+    LOAD_MENU_ERROR,
+    LOAD_MENU_LOADING,
+    LOAD_MENU_SUCCESS,
+} from "../constants";
 
 const initialState = {
-    data: {},
+    data: [],
     loading: false,
     error: "",
 };
 
-export default function loadProduct(state = initialState, action) {
+export default function menu(state = initialState, action) {
     switch (action.type) {
-        case LOAD_PRODUCT_LOADING: {
+        case LOAD_MENU_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error: "",
             };
         }
-        case LOAD_PRODUCT_SUCCESS: {
+        case LOAD_MENU_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false,
             };
         }
-        case LOAD_PRODUCT_ERROR: {
+        case LOAD_MENU_ERROR: {
             return {
                 ...state,
                 loading: false,

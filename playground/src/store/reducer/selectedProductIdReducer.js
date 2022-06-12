@@ -1,4 +1,4 @@
-import { SET_SELECTED_PRODUCT_ID } from "../actions/actions";
+import { SET_SELECTED_PRODUCT_ID } from "../constants";
 
 const initialState = {
     data: [],

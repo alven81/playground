@@ -4,11 +4,11 @@ import Attribute from "../components/Attribute";
 import Name from "../components/Name";
 import Price from "../components/Price";
 import { addToCart } from "../../store/actions/actions";
-import ErrorBoundary from "../../utils/ErrorBoundary";
+import ErrorBoundary from "../components/ErrorBoundary";
 import axios from "axios";
 import ImageSwitcher from "./ImageSwitcher.jsx";
 import Loader from "../components/Loader";
-import encreaseQuantityInCart from "../../utils/encreaseQuantityInCart";
+import increaseQuantityInCart from "../../utils/increaseQuantityInCart";
 import decreaseQuantityInCart from "../../utils/decreaseQuantityInCart";
 
 class CartElement extends React.Component {
@@ -63,7 +63,7 @@ class CartElement extends React.Component {
     handleUpQantity = (productInCartId) => {
         const tempCart = this.props.productsInCart;
         tempCart.map((productInCart) =>
-            encreaseQuantityInCart(
+            increaseQuantityInCart(
                 productInCart,
                 productInCartId,
                 this.props.addToCart

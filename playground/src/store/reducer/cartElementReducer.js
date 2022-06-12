@@ -1,32 +1,32 @@
 import {
-    LOAD_MENU_ERROR,
-    LOAD_MENU_LOADING,
-    LOAD_MENU_SUCCESS,
-} from "../actions/actions";
+    LOAD_CART_ELEMENT_ERROR,
+    LOAD_CART_ELEMENT_LOADING,
+    LOAD_CART_ELEMENT_SUCCESS,
+} from "../constants";
 
 const initialState = {
-    data: [],
+    data: {},
     loading: false,
     error: "",
 };
 
-export default function loadMenu(state = initialState, action) {
+export default function cartElement(state = initialState, action) {
     switch (action.type) {
-        case LOAD_MENU_LOADING: {
+        case LOAD_CART_ELEMENT_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error: "",
             };
         }
-        case LOAD_MENU_SUCCESS: {
+        case LOAD_CART_ELEMENT_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false,
             };
         }
-        case LOAD_MENU_ERROR: {
+        case LOAD_CART_ELEMENT_ERROR: {
             return {
                 ...state,
                 loading: false,

@@ -1,8 +1,8 @@
 import {
-    LOAD_CURRENCIES_ERROR,
-    LOAD_CURRENCIES_LOADING,
-    LOAD_CURRENCIES_SUCCESS,
-} from "../actions/actions";
+    LOAD_CATEGORIES_ERROR,
+    LOAD_CATEGORIES_LOADING,
+    LOAD_CATEGORIES_SUCCESS,
+} from "../constants";
 
 const initialState = {
     data: [],
@@ -10,23 +10,23 @@ const initialState = {
     error: "",
 };
 
-export default function loadCurrencies(state = initialState, action) {
+export default function categories(state = initialState, action) {
     switch (action.type) {
-        case LOAD_CURRENCIES_LOADING: {
+        case LOAD_CATEGORIES_LOADING: {
             return {
                 ...state,
                 loading: true,
                 error: "",
             };
         }
-        case LOAD_CURRENCIES_SUCCESS: {
+        case LOAD_CATEGORIES_SUCCESS: {
             return {
                 ...state,
                 data: action.data,
                 loading: false,
             };
         }
-        case LOAD_CURRENCIES_ERROR: {
+        case LOAD_CATEGORIES_ERROR: {
             return {
                 ...state,
                 loading: false,

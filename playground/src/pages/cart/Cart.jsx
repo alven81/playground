@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import ErrorBoundary from "../../utils/ErrorBoundary";
+import ErrorBoundary from "../components/ErrorBoundary";
 import CartElement from "./CartElement";
 
 class Cart extends React.Component {

@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import ErrorBoundary from "../../utils/ErrorBoundary";
+import ErrorBoundary from "../components/ErrorBoundary";
 import { Link } from "react-router-dom";
-//import Loader from "../components/Loader";
 import BagElement from "./BagElement";
-//import CartElement from "./BagElement";
-//import TotalPrice from "./TotalPrice";
+
 
 class Cart extends React.Component {
 	constructor(props) {

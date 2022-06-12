@@ -1,4 +1,4 @@
-import { WAIT_FOR_CART } from "../actions/actions";
+import { WAIT_FOR_CART } from "../constants";
 
 const initialState = {
     data: null,

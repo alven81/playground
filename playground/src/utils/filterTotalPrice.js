@@ -3,7 +3,6 @@ function findSameProduct(arrayValuesForTotalPrice, priceForCheck) {
 	isIt = arrayValuesForTotalPrice.findIndex(
 		(value) => value[1] === priceForCheck[1]
 	);
-	console.log("isIt", isIt);
 	return isIt;
 }
 

@@ -327,11 +327,10 @@
 	&_background {
 		z-index: 10;
 		top: 80px;
-		left: 0;
 		position: fixed;
 		display: block;
 		width: 100vw;
-		height: 90vh;
+		height: 100vh;
 		background-color: rgba(57, 55, 72, 0.22);
 		transition: all 1s;
 	}

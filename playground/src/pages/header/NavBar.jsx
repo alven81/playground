@@ -31,7 +31,6 @@ class Header extends React.Component {
 
 	componentDidMount() {
 		this.props.loadCurrencies(this.state.currencyQuery);
-		//console.log("currencyList", this.props.currencyList);
 	}
 
 	componentDidUpdate(prevProps) {

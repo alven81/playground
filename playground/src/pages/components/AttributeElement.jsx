@@ -20,11 +20,9 @@ class AttributeElement extends React.Component {
     handleOnItemClick = (e) => {
         this.setState({ selectedId: [this.props.element.id, e] });
         this.setItemListProperty(this.props.element.id, e);
-        //console.log("item click",[this.props.element.id, e]);
     };
 
     setItemListProperty = (itemId, itemResult) => {
-        //console.log(this.props.itemList);
         let tempItem = this.props.itemList;
         tempItem[itemId] = itemResult;
         this.props.waitForCart(tempItem);

@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 import { loadCategories } from "../../store/actions/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import ErrorBoundary from "../../utils/ErrorBoundary";
+import ErrorBoundary from "../components/ErrorBoundary";
 import Loader from "../components/Loader";
 
 class Category extends React.Component {
