@@ -6,17 +6,19 @@ class ImageBox extends React.Component {
         super(props);
         this.state = {
             mainImage: null,
-            thumbnailImages: null
+            thumbnailImages: null,
         };
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.images !== prevProps.images) {
-            this.setState({ mainImage: this.props.images[0] });
-            this.setState({ thumbnailImages: this.props.images });
+            this.setState({
+                mainImage: this.props.images[0],
+                thumbnailImages: this.props.images,
+            });
         }
     }
-  
+
     render() {
         return (
             <>

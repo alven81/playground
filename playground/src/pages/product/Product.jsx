@@ -106,7 +106,7 @@ class Product extends React.Component {
                             this.props.productOptions.inStock ? "disabled" : ""
                         }
                         className="product_info_button"
-                        onClick={() => this.handleAddToCart()}
+                        onClick={this.handleAddToCart}
                     >
                         {this.props.productOptions.inStock
                             ? "Out of stock"

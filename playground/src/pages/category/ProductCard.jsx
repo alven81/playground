@@ -34,7 +34,7 @@ class ProductCard extends React.Component {
         ) : (
             <div
                 className="product-card"
-                onClick={() => this.handleOnProductCard()}
+                onClick={this.handleOnProductCard}
             >
                 <div className="product-card_img">
                     <img

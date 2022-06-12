@@ -7,7 +7,7 @@ class MenuButton extends React.Component {
             <Link to="/">
                 <button
                     className="header-nav-button"
-                    onClick={(e) =>
+                    onClick={() =>
                         this.props.handleSetCategoryOnClick([
                             this.props.index,
                             this.props.menuItem.name,

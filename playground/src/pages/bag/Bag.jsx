@@ -4,7 +4,6 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import { Link } from "react-router-dom";
 import BagElement from "./BagElement";
 
-
 class Cart extends React.Component {
 	constructor(props) {
 		super(props);
@@ -100,7 +99,6 @@ class Cart extends React.Component {
 											qty={item[0]}
 											productId={item[1]}
 											cartItem={item[2]}
-											//key={index}
 										/>
 									</ErrorBoundary>
 								</div>

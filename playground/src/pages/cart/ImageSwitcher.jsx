@@ -9,14 +9,14 @@ class ImageSwitcher extends React.Component {
 		};
 	}
 
-	handleListImageRight() {
+	handleListImageRight = () => {
 		this.setState({ imageItem: this.state.imageItem + 1 });
 		if (this.state.imageItem === this.props.images.length - 1) {
 			this.setState({ imageItem: 0 });
 		}
 	}
 
-	handleListImageLeft() {
+	handleListImageLeft = () => {
 		this.setState({ imageItem: this.state.imageItem - 1 });
 		if (this.state.imageItem === 0) {
 			this.setState({ imageItem: this.props.images.length - 1 });
@@ -36,8 +36,8 @@ class ImageSwitcher extends React.Component {
 						/>
 					)}
 					<div className="cart_product_image_buttons">
-						<button onClick={() => this.handleListImageLeft()} />
-						<button onClick={() => this.handleListImageRight()} />
+						<button onClick={this.handleListImageLeft} />
+						<button onClick={this.handleListImageRight} />
 					</div>
 				</div>
 			</>

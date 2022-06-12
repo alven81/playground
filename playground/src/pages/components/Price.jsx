@@ -7,19 +7,19 @@ class Price extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			whatCurrency: null,
+			usedCurrency: null,
 		};
 	}
 
 	render() {
-		return this.props.whatCurrency === null && this.props.price === null ? (
+		return this.props.usedCurrency === null && this.props.price === null ? (
 			<Loader />
 		) : (
 			<div className={this.props.priceClass}>
 				<p className={this.props.classCurrency}>Price:</p>
 				<p className={`${this.props.priceClass}_currency`}>
-					{this.props.price[this.props.whatCurrency].currency.symbol}
-					{this.props.price[this.props.whatCurrency].amount}
+					{this.props.price[this.props.usedCurrency].currency.symbol}
+					{this.props.price[this.props.usedCurrency].amount}
 				</p>
 			</div>
 		);
@@ -27,7 +27,7 @@ class Price extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	whatCurrency: state.currency.data,
+	usedCurrency: state.currency.data,
 });
 
 const mapDispatchToProps = {

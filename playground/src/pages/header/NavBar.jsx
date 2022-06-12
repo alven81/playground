@@ -82,7 +82,7 @@ class Header extends React.Component {
                 <div className="header-currency">
                     <div
                         className="header-currency-container"
-                        onClick={() => this.handleDropDownMenu()}
+                        onClick={this.handleDropDownMenu}
                     >
                         <span className="header-currency-container-sign">
                             {this.state.currencyValue}
@@ -101,13 +101,13 @@ class Header extends React.Component {
                                 ? "header-currency-select active"
                                 : "header-currency-select"
                         }
-                        onClick={() => this.handleDropDownMenu()}
+                        onClick={this.handleDropDownMenu}
                     >
                         <Currency currencyList={this.props.currencyList} />
                     </div>
                     <button
                         className="header-currency-button"
-                        onClick={() => this.handleDropDownBag()}
+                        onClick={this.handleDropDownBag}
                     >
                         <img src="/img/cart.svg" alt="Cart" />
                         <span
@@ -127,13 +127,12 @@ class Header extends React.Component {
                             ? "bag_background container"
                             : "hide"
                     }
-                ></span>
-
+                />
                 <div
                     className={
                         this.state.dropDownBagState ? "bag active" : "bag"
                     }
-                    onClick={() => this.handleDropDownBag()}
+                    onClick={this.handleDropDownBag}
                 >
                     <Bag
                         currencyList={this.props.currencyList}
