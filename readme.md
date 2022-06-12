@@ -1,4 +1,5 @@
 
+npm run build --prefix junior-react-endpoint
 npm start --prefix junior-react-endpoint
 npm start --prefix playground
 

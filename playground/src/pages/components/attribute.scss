@@ -1,0 +1,56 @@
+.attribute {
+	display: flex;
+	flex-direction: column;
+
+	&_element {
+		&_name {
+			margin: 0 0 8px 0;
+			@include fontRaleway(700, 18, 18);
+			color: $--c-text;
+			text-transform: uppercase;
+		}
+
+		&_items {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 24px;
+
+			&_text {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid $--c-black;
+				width: 63px;
+				height: 45px;
+				gap: 12px;
+				@include fontSource(400, 16, 18);
+				color: $--c-black;
+				background-color: $--c-white;
+				cursor: pointer;
+
+				&_selected {
+					background-color: $--c-black;
+					color: $--c-white;
+				}
+			}
+
+			&_swatch {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: none;
+				width: 32px;
+				height: 32px;
+				gap: 8px;
+				cursor: pointer;
+
+				&_selected {
+					outline: 1px solid $--c-primary;
+					outline-offset: 2px;
+				}
+			}
+		}
+	}
+}

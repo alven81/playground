@@ -1,0 +1,14 @@
+.category {
+	padding: 0 100px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	flex-direction: column;
+
+	&_product {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		gap: 40px;
+	}
+}

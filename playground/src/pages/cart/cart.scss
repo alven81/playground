@@ -1,0 +1,218 @@
+.cart {
+	&_product {
+		&_element {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 1px solid $--c-divider;
+			&:first-child {
+				border-top: 1px solid $--c-divider;
+			}
+		}
+
+		&_info {
+			margin: 24px 0;
+		}
+
+		&_quantity {
+			margin: 24px 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			margin-left: auto;
+
+			span {
+				@include fontRaleway(500, 24, 38);
+			}
+
+			button {
+				position: relative;
+				width: 45px;
+				height: 45px;
+				background: transparent;
+				cursor: pointer;
+				border-color: $--c-black;
+
+				&:first-child {
+					&:after {
+						position: absolute;
+						top: 50%;
+						right: 50%;
+						transform: translate(50%, -50%);
+						content: "";
+						height: 15px;
+						border-left: 1px solid $--c-black;
+					}
+
+					&:hover {
+						box-shadow: $--shadow-button;
+					}
+
+					&:active {
+						transform: scale(0.9);
+					}
+
+					&:before {
+						position: absolute;
+						top: 50%;
+						right: 50%;
+						transform: translate(50%, -50%) rotate(90deg);
+						content: "";
+						height: 15px;
+						border-right: 1px solid $--c-black;
+					}
+
+					&:hover {
+						box-shadow: $--shadow-button;
+					}
+
+					&:active {
+						transform: scale(0.9);
+					}
+				}
+
+				&:last-child {
+					&:after {
+						position: absolute;
+						top: 50%;
+						right: 50%;
+						transform: translate(50%, -50%);
+						content: "";
+						width: 15px;
+						height: 1px;
+						border-bottom: 1px solid $--c-black;
+					}
+
+					&:hover {
+						box-shadow: $--shadow-button;
+					}
+
+					&:active {
+						transform: scale(0.9);
+					}
+				}
+			}
+		}
+
+		&_image {
+			&_picture {
+				position: relative;
+				margin: 24px 0 24px 24px;
+				box-sizing: border-box;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 200px;
+				height: 288px;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+
+			&_buttons {
+				display: flex;
+				justify-content: space-between;
+				position: absolute;
+				bottom: 16px;
+				right: 16px;
+				height: 24px;
+				width: 56px;
+				button {
+					position: relative;
+					width: 24px;
+					height: 24px;
+					background-color: rgba(0, 0, 0, 0.73);
+					border: 0;
+					cursor: pointer;
+				}
+
+				:first-child {
+					&:after {
+						position: absolute;
+						top: 50%;
+						right: 50%;
+						transform: translate(50%, -50%) rotate(45deg);
+						content: "";
+						display: block;
+						width: 7px;
+						height: 7px;
+						border-left: 1.5px solid $--c-white;
+						border-bottom: 1.5px solid $--c-white;
+					}
+
+					&:hover {
+						transform: scale(1.1);
+					}
+
+					&:active {
+						transform: scale(0.9);
+					}
+				}
+
+				:last-child {
+					&:after {
+						position: absolute;
+						top: 50%;
+						right: 50%;
+						transform: translate(50%, -50%) rotate(-135deg);
+						content: "";
+						display: block;
+						width: 7px;
+						height: 7px;
+						border-left: 1.5px solid $--c-white;
+						border-bottom: 1.5px solid $--c-white;
+					}
+
+					&:hover {
+						transform: scale(1.1);
+					}
+
+					&:active {
+						transform: scale(0.9);
+					}
+				}
+			}
+		}
+	}
+	&_total {
+		padding-top: 8px;
+		display: flex;
+		&_title {
+			@include fontRaleway(400, 24, 28);
+			:last-child {
+				font-weight: 500;
+			}
+		}
+		&_value {
+			padding-left: 5px;
+			@include fontRaleway(700, 24, 28);
+		}
+	}
+	&_button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+		margin: 0 0 40px 0;
+		box-sizing: border-box;
+		max-height: 52px;
+		min-height: 52px;
+		width: 279px;
+		border: none;
+		background-color: $--c-primary;
+		@include fontRaleway(600, 16, 19);
+		text-transform: uppercase;
+		color: $--c-white;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: $--shadow-button;
+		}
+
+		&:active {
+			transform: scale(0.98);
+		}
+	}
+}

@@ -1,0 +1,16 @@
+.price {
+	&_label-show {
+		@include fontRoboto(700, 18, 18);
+		text-transform: uppercase;
+		margin-bottom: 25px;
+	}
+
+	&_label-hide {
+		display: none;
+	}
+
+	&_currency {
+		margin: 0 0 30px 0;
+		@include fontRaleway(700, 24, 18);
+	}
+}
