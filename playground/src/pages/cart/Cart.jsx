@@ -91,7 +91,6 @@ class Cart extends React.Component {
                                                 qty={item[0]}
                                                 productId={item[1]}
                                                 cartItem={item[2]}
-                                                //key={index}
                                             />
                                         </ErrorBoundary>
                                     </div>
@@ -131,9 +130,4 @@ const mapStateToProps = (state) => ({
     totalPrice: state.calcTotalPrice.data, //
 });
 
-const mapDispatchToProps = {
-    // loadProduct,
-    // addToCart
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps)(Cart);

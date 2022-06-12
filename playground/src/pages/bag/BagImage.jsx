@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "../components/Loader";
 
-class BagImageSwitcher extends React.Component {
+class BagImage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,4 +27,4 @@ class BagImageSwitcher extends React.Component {
 	}
 }
 
-export default BagImageSwitcher;
+export default BagImage;

@@ -8,20 +8,20 @@ import Product from "./pages/product/Product";
 import Cart from "./pages/cart/Cart";
 
 class App extends React.Component {
-	render() {
-		return (
-			<>
-				<Routes>
-					<Route path="/" element={<Layout />}>
-						<Route index element={<Category />} />
-						<Route path="/product/:id" element={<Product />} />
-						<Route path="/cart" element={<Cart />} />
-						<Route path="*" element={<PageNotFound />} />
-					</Route>
-				</Routes>
-			</>
-		);
-	}
+    render() {
+        return (
+            <>
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Category />} />
+                        <Route path="/product/:id" element={<Product />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="*" element={<PageNotFound />} />
+                    </Route>
+                </Routes>
+            </>
+        );
+    }
 }
 
 export default App;

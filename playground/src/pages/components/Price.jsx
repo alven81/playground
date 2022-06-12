@@ -31,7 +31,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-	//loadProduct,
 	calcTotalPrice,
 };
 

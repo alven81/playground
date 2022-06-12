@@ -6,7 +6,7 @@ import Price from "../components/Price";
 import { addToCart } from "../../store/actions/actions";
 import ErrorBoundary from "../components/ErrorBoundary";
 import axios from "axios";
-import BagImageSwitcher from "./BagImageSwitcher.jsx";
+import BagImage from "./BagImage.jsx";
 import Loader from "../components/Loader";
 import increaseQuantityInCart from "../../utils/increaseQuantityInCart";
 import decreaseQuantityInCart from "../../utils/decreaseQuantityInCart";
@@ -133,7 +133,7 @@ class CartElement extends React.Component {
                 <div className="bag_image">
                     <ErrorBoundary>
                         {this.state.productOptions.gallery && (
-                            <BagImageSwitcher
+                            <BagImage
                                 images={this.state.productOptions.gallery}
                             />
                         )}
@@ -146,13 +146,9 @@ class CartElement extends React.Component {
 
 const mapStateToProps = (state) => ({
     productsInCart: state.cart.data,
-    //productId: state.reduxProductId.data,
-    //productOptionsList: state.reduxProduct.data,
-    //waitForCartAttributes: state.reduxWaitForCart.data
 });
 
 const mapDispatchToProps = {
-    //loadProduct,
     addToCart,
 };
 

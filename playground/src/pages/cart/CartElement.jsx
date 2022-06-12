@@ -144,13 +144,9 @@ class CartElement extends React.Component {
 
 const mapStateToProps = (state) => ({
     productsInCart: state.cart.data,
-    //productId: state.reduxProductId.data,
-    //productOptionsList: state.reduxProduct.data,
-    //waitForCartAttributes: state.reduxWaitForCart.data
 });
 
 const mapDispatchToProps = {
-    //loadProduct,
     addToCart,
 };
 

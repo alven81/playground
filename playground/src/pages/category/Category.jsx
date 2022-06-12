@@ -30,7 +30,6 @@ class Category extends React.Component {
                 }
                 }
             }`,
-            //whatCurrency: []
         };
     }
 
@@ -90,10 +89,7 @@ class Category extends React.Component {
 
 const mapStateToProps = (state) => ({
     categoriesList: state.loadCategories.data,
-
-    // Array [category number, category name]
     categoryName: state.category.data,
-
     loading: state.loadCategories.loading,
     error: state.loadCategories.error,
 });
