@@ -13,6 +13,7 @@ class ProductCard extends React.Component {
 
     componentDidMount() {
         this.setState({ currentCurrency: this.props.settedCurrency });
+        console.log("inStock", this.props.item.inStock, this.props.item.name);
     }
 
     componentDidUpdate(prevProps) {
@@ -27,15 +28,17 @@ class ProductCard extends React.Component {
         ]);
     };
 
+    handleOnAddToCart = (e) => {
+        e.preventDefault();
+        console.log("add to cart");
+    }
+
     render() {
         return this.state.currentCurrency === null &&
             !this.props.item.length ? (
             <Loader />
         ) : (
-            <div
-                className="product-card"
-                onClick={this.handleOnProductCard}
-            >
+            <div className="product-card" onClick={this.handleOnProductCard}>
                 <div className="product-card_img">
                     <img
                         src={this.props.item.gallery[0]}
@@ -43,7 +46,7 @@ class ProductCard extends React.Component {
                     />
                     <span
                         className={
-                            this.props.item.inStock
+                            !this.props.item.inStock
                                 ? "product-card_stock"
                                 : "hide"
                         }
@@ -66,15 +69,15 @@ class ProductCard extends React.Component {
                         }
                     </p>
                 </div>
-                <span
+                <span onClick={(e) => this.handleOnAddToCart(e)}
                     className={
-                        this.props.item.inStock ? "" : "product-card_cart"
+                        this.props.item.inStock ? "product-card_cart" : ""
                     }
                 >
                     {this.props.item.inStock ? (
-                        <></>
-                    ) : (
                         <img src="./img/empty_cart.svg" alt="cart" />
+                    ) : (
+                        <></>
                     )}
                 </span>
             </div>

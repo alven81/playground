@@ -14,6 +14,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 
 class Product extends React.Component {
     componentDidMount() {
+        console.log(window.location.pathname);
         this.props.loadProduct(
             buildProductQuery(
                 window.location.pathname.split("/").slice(2).join()
@@ -103,12 +104,12 @@ class Product extends React.Component {
                     </ErrorBoundary>
                     <button
                         disabled={
-                            this.props.productOptions.inStock ? "disabled" : ""
+                            !this.props.productOptions.inStock ? "disabled" : ""
                         }
                         className="product_info_button"
                         onClick={this.handleAddToCart}
                     >
-                        {this.props.productOptions.inStock
+                        {!this.props.productOptions.inStock
                             ? "Out of stock"
                             : "Add to cart"}
                     </button>
