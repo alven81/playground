@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class MenuButton extends React.Component {
     render() {
         return (
-            <Link to="/">
-                <button
-                    className="header-nav-button"
+            <NavLink to={`/${this.props.menuItem.name}`}                    
                     onClick={() =>
                         this.props.handleSetCategoryOnClick([
                             this.props.index,
@@ -15,8 +13,7 @@ class MenuButton extends React.Component {
                     }
                 >
                     {this.props.menuItem.name}
-                </button>
-            </Link>
+            </NavLink>
         );
     }
 }

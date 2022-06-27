@@ -14,8 +14,8 @@ class App extends React.Component {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Category />} />
-                        <Route path="/product/:id" element={<Product />} />
-                        <Route path="/cart" element={<Cart />} />
+                        <Route path="product/:id" element={<Product />} />
+                        <Route path="cart" element={<Cart />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Route>
                 </Routes>

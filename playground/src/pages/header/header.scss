@@ -4,32 +4,28 @@
 	align-items: center;
 	height: 80px;
 	position: relative;
+
 	&-nav {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
-		&-button {
-			padding: 4px 16px 0;
+		padding: 28px 16px 0;
+		a {
 			font-family: inherit;
 			@include fontRaleway(400, 16, 19);
 			color: $--c-text;
 			text-transform: uppercase;
+			text-decoration: none;
 			height: 80px;
 			background-color: transparent;
 			border: none;
 			cursor: pointer;
+		}
 
-			&:hover {
-				color: $--c-primary;
-				border-bottom: 2px solid $--c-primary;
-			}
-
-			&:active {
-				color: $--c-primary;
-				border-bottom: 2px solid $--c-primary;
-				padding-top: 7px;
-			}
+		.active {
+			color: $--c-primary;
+			border-bottom: 2px solid $--c-primary;
+			//padding-top: 7px;
 		}
 	}
 
