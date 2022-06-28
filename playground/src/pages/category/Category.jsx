@@ -6,49 +6,30 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ErrorBoundary from "../components/ErrorBoundary";
 import Loader from "../components/Loader";
+import { buildCategoryQuery } from "../../store/queries";
 
 class Category extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            categoriesQuery: `
-            {
-                categories {
-                products {
-                    id
-                    name
-                    inStock
-                    gallery
-                    description
-                        prices {
-                            currency {
-                                label
-                                symbol
-                            }
-                    amount
-                    }
-                }
-                }
-            }`,
-        };
-    }
 
     componentDidMount() {
-       console.log(this.props.categoryName, this.props.categoryIndex, window.location.pathname);
-       console.log("This Work!!!", window.location.pathname.split("/")[1]);
+       console.log(this.props.categoryName, window.location.pathname);
+       console.log("componentDidMount", window.location.pathname.split("/")[1]);
         this.props.loadCategories(
-            this.state.categoriesQuery,
-            this.props.categoryIndex
+            buildCategoryQuery(
+                window.location.pathname.split("/")[1]
+            ),
+            window.location.pathname.split("/")[1]
         );
     }
 
     componentDidUpdate(prevProps) {
         
         if (this.props.categoryIndex !== prevProps.categoryIndex) {
-            console.log("This Work update!!!", window.location.pathname.split("/")[1]);
+            console.log("componentDidUpdate!!!");
             // this.props.loadCategories(
-            //     this.state.categoriesQuery,
-            //     this.props.categoryName[0]
+            //     buildCategoryQuery(
+            //         window.location.pathname.split("/")[1]
+            //     ),
+            //     window.location.pathname.split("/")[1]
             // );
         }
     }
@@ -69,7 +50,7 @@ class Category extends React.Component {
                 ) : (
                     <div className="container category">
                         <div className="category_title">
-                            <h2>{this.props.categoryName}</h2>
+                            <h2>{window.location.pathname.split("/")[1]}</h2>
                         </div>
                         <div className="category_product">
                             {this.props.categoriesList.map((item, index) => (

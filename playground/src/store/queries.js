@@ -25,6 +25,27 @@ const buildProductQuery = (id) => `{
     }
 }`;
 
+const buildCategoryQuery = (id) => `{           
+    category (input: {
+               title: "${id}"
+             })  {
+        products {
+            id
+            name
+            inStock
+            gallery
+            description
+                prices {
+                    currency {
+                        label
+                        symbol
+                    }
+            amount
+            }
+        }
+    }
+}`;
+
 const menuQuery = `{
     categories  {
     name
@@ -38,4 +59,4 @@ const currencyQuery = `{
     }
 }`;
 
-export { buildProductQuery, menuQuery, currencyQuery };
+export { buildProductQuery, buildCategoryQuery, menuQuery, currencyQuery };

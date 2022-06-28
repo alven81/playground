@@ -24,12 +24,12 @@ import {
     CALC_TOTAL_PRICE,
 } from "../constants";
 
-export const loadCategories = (query, idCategory) => (dispatch) => {
+export const loadCategories = (query) => (dispatch) => {
     dispatch({ type: LOAD_CATEGORIES_LOADING });
-console.log("this:", query, idCategory );
-    Api.getData(query, idCategory)
+console.log("this:", query);
+    Api.getData(query)
         .then((response) => response.data.data)
-        .then((response) => response.categories[idCategory].products)
+        .then((response) => response.category.products)
         .then(
             (data) => dispatch({ type: LOAD_CATEGORIES_SUCCESS, data }),
             (error) =>
