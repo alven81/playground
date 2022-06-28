@@ -34,18 +34,22 @@ class Category extends React.Component {
     }
 
     componentDidMount() {
+       console.log(this.props.categoryName, this.props.categoryIndex, window.location.pathname);
+       console.log("This Work!!!", window.location.pathname.split("/")[1]);
         this.props.loadCategories(
             this.state.categoriesQuery,
-            this.props.categoryName[0]
+            this.props.categoryIndex
         );
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.categoryName !== prevProps.categoryName) {
-            this.props.loadCategories(
-                this.state.categoriesQuery,
-                this.props.categoryName[0]
-            );
+        
+        if (this.props.categoryIndex !== prevProps.categoryIndex) {
+            console.log("This Work update!!!", window.location.pathname.split("/")[1]);
+            // this.props.loadCategories(
+            //     this.state.categoriesQuery,
+            //     this.props.categoryName[0]
+            // );
         }
     }
 
@@ -65,14 +69,14 @@ class Category extends React.Component {
                 ) : (
                     <div className="container category">
                         <div className="category_title">
-                            <h2>{this.props.categoryName[1]}</h2>
+                            <h2>{this.props.categoryName}</h2>
                         </div>
                         <div className="category_product">
                             {this.props.categoriesList.map((item, index) => (
                                 <Link
                                     style={{ textDecoration: "none" }}
                                     key={index}
-                                    to={`/product/${item.id}`}
+                                    to={`${window.location.pathname.split("/")[1]}/${item.id}`}
                                 >
                                     <ErrorBoundary>
                                         <ProductCard item={item} />
@@ -89,7 +93,7 @@ class Category extends React.Component {
 
 const mapStateToProps = (state) => ({
     categoriesList: state.loadCategories.data,
-    categoryName: state.category.data,
+    //categoryName: state.category.data,
     loading: state.loadCategories.loading,
     error: state.loadCategories.error,
 });

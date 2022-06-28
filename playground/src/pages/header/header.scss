@@ -9,8 +9,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: 28px 16px 0;
+		height: 80px;
+
 		a {
+			padding: 28px 16px 0;
+			display: block;
+			box-sizing: border-box;
 			font-family: inherit;
 			@include fontRaleway(400, 16, 19);
 			color: $--c-text;
@@ -22,31 +26,21 @@
 			cursor: pointer;
 		}
 
-		.active {
+		.active-link {
 			color: $--c-primary;
 			border-bottom: 2px solid $--c-primary;
-			//padding-top: 7px;
 		}
 	}
 
 	&-cart {
-		&-button {
-			background-color: transparent;
-			border: none;
-			cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 80px;
+		padding: 24px 16px 0;
 
-			&:hover {
-				transform: scale(1.08);
-				border-bottom: 2px solid $--c-primary;
-			}
-
-			&:active {
-				border-bottom: 2px solid $--c-primary;
-
-				img {
-					transform: scale(0.9);
-				}
-			}
+		.active-cart {
+			border-bottom: 2px solid $--c-primary;
 		}
 	}
 

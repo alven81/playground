@@ -26,7 +26,7 @@ import {
 
 export const loadCategories = (query, idCategory) => (dispatch) => {
     dispatch({ type: LOAD_CATEGORIES_LOADING });
-
+console.log("this:", query, idCategory );
     Api.getData(query, idCategory)
         .then((response) => response.data.data)
         .then((response) => response.categories[idCategory].products)
