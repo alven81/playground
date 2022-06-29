@@ -26,7 +26,6 @@ import {
 
 export const loadCategories = (query) => (dispatch) => {
     dispatch({ type: LOAD_CATEGORIES_LOADING });
-console.log("this:", query);
     Api.getData(query)
         .then((response) => response.data.data)
         .then((response) => response.category.products)
@@ -111,12 +110,12 @@ export const setCurrency = (query) => {
     };
 };
 
-export const setCategory = (query) => {
-    return {
-        type: SET_CATEGORY,
-        payload: query,
-    };
-};
+// export const setCategory = (query) => {
+//     return {
+//         type: SET_CATEGORY,
+//         payload: query,
+//     };
+// };
 
 export const setSelectedProductId = (query) => {
     return {

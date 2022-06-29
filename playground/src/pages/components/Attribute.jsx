@@ -9,6 +9,10 @@ class Attribute extends React.Component {
         };
     }
 
+    componentDidMount() {
+        console.log("Attribute this.props.item: ", this.props.item);
+    }
+
     // itemListTempArray -> itemlist - saving empty properties for waitForCart
     componentDidUpdate(prevProps) {
         if (this.props.item !== prevProps.item) {

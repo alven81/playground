@@ -7,22 +7,15 @@ const setActive = ({isActive}) => isActive ? "active-link" : "";
 class MenuButton extends React.Component {
 	render() {
 		return (
-			<div >
 				<NavLink
                     className={setActive}
 					to={`/${this.props.menuItem.name}`}
 					onClick={
-						//console.log(this.props.menuItem, this.props.index)
-						<Category categoryName = {window.location.pathname.split("/")[1]}/>
-						// this.props.handleSetCategoryOnClick([
-						// 	this.props.index,
-						// 	this.props.menuItem.name,
-						// ])
+						<Category />
 					}
 				>
 					{this.props.menuItem.name}
 				</NavLink>
-			</div>
 		);
 	}
 }

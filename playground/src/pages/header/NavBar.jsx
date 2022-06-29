@@ -3,7 +3,7 @@ import Currency from "./Currency";
 import Menu from "./Menu";
 import {
 	setCurrency,
-	setCategory,
+	//setCategory,
 	loadCurrencies,
 } from "../../store/actions/actions";
 import { currencyQuery } from "../../store/queries";
@@ -155,7 +155,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
 	setCurrency,
-	setCategory,
+	//setCategory,
 	loadCurrencies,
 };
 

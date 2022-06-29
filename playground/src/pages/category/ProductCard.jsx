@@ -13,7 +13,6 @@ class ProductCard extends React.Component {
 
     componentDidMount() {
         this.setState({ currentCurrency: this.props.settedCurrency });
-        console.log("inStock", this.props.item.inStock, this.props.item.name);
     }
 
     componentDidUpdate(prevProps) {

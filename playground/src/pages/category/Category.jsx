@@ -11,27 +11,12 @@ import { buildCategoryQuery } from "../../store/queries";
 class Category extends React.Component {
 
     componentDidMount() {
-       console.log(this.props.categoryName, window.location.pathname);
-       console.log("componentDidMount", window.location.pathname.split("/")[1]);
         this.props.loadCategories(
             buildCategoryQuery(
                 window.location.pathname.split("/")[1]
             ),
             window.location.pathname.split("/")[1]
         );
-    }
-
-    componentDidUpdate(prevProps) {
-        
-        if (this.props.categoryIndex !== prevProps.categoryIndex) {
-            console.log("componentDidUpdate!!!");
-            // this.props.loadCategories(
-            //     buildCategoryQuery(
-            //         window.location.pathname.split("/")[1]
-            //     ),
-            //     window.location.pathname.split("/")[1]
-            // );
-        }
     }
 
     render() {
@@ -57,7 +42,7 @@ class Category extends React.Component {
                                 <Link
                                     style={{ textDecoration: "none" }}
                                     key={index}
-                                    to={`${window.location.pathname.split("/")[1]}/${item.id}`}
+                                    to={`${item.id}`}
                                 >
                                     <ErrorBoundary>
                                         <ProductCard item={item} />
@@ -74,7 +59,6 @@ class Category extends React.Component {
 
 const mapStateToProps = (state) => ({
     categoriesList: state.loadCategories.data,
-    //categoryName: state.category.data,
     loading: state.loadCategories.loading,
     error: state.loadCategories.error,
 });

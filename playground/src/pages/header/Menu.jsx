@@ -13,7 +13,7 @@ class Menu extends React.Component {
 
     render() {
         if (this.props.loading) {
-            return <div>Loading</div>;
+            return <div>Loading...</div>;
         }
         if (this.props.error) {
             return (
