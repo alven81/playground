@@ -9,10 +9,10 @@ class MenuButton extends React.Component {
 		return (
 				<NavLink
                     className={setActive}
-					to={`/${this.props.menuItem.name}`}
-					onClick={
-						<Category />
-					}
+					to={this.props.menuItem.name}
+					// onClick={
+					// 	<Category />
+					// }
 				>
 					{this.props.menuItem.name}
 				</NavLink>

@@ -11,6 +11,7 @@ import { buildCategoryQuery } from "../../store/queries";
 class Category extends React.Component {
 
     componentDidMount() {
+        console.log(window.location.pathname.split("/")[1]);
         this.props.loadCategories(
             buildCategoryQuery(
                 window.location.pathname.split("/")[1]
